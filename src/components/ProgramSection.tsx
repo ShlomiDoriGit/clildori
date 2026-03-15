@@ -48,7 +48,7 @@ const ProgramSection = () => (
           className="rounded-2xl bg-background border border-border p-6 text-center"
         >
           <p className="text-lg font-body text-foreground">
-            💸 ידעת? ניתן לקבל החזר של עד <span className="font-bold text-primary">80%</span> מהביטוחים הפרטיים!
+            ידעת? ניתן לקבל החזר של עד <span className="font-bold text-primary">80%</span> מהביטוחים הפרטיים!
           </p>
         </motion.div>
       </motion.div>
