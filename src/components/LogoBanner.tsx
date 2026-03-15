@@ -1,21 +1,21 @@
 import { motion } from "framer-motion";
-import logo from "@/assets/logo.png";
+import logo from "@/assets/logo-updated.png";
 
-const LogoBanner = () =>
-<motion.header
-  initial={{ opacity: 0 }}
-  animate={{ opacity: 1 }}
-  transition={{ duration: 1 }}
-  className="w-full bg-primary/5 py-4 border-b border-border">
-  
-    <div className="container mx-auto px-6 flex justify-center">
+const LogoBanner = () => (
+  <motion.header
+    initial={{ opacity: 0 }}
+    animate={{ opacity: 1 }}
+    transition={{ duration: 1 }}
+    className="w-full bg-gradient-to-l from-primary/10 via-primary/5 to-transparent py-6 md:py-8 border-b border-border"
+  >
+    <div className="w-full px-4 flex justify-center">
       <img
-
-      alt="כליל דורי - תזונאית קלינית"
-      className="h-20 md:h-28 lg:h-36 w-auto object-contain border border-none rounded-lg" src="/lovable-uploads/87cdf65b-cb06-451c-8d2d-c126bd40d161.png" />
-    
+        src={logo}
+        alt="כליל דורי - תזונאית קלינית"
+        className="h-24 md:h-36 lg:h-44 w-auto object-contain"
+      />
     </div>
-  </motion.header>;
-
+  </motion.header>
+);
 
 export default LogoBanner;
