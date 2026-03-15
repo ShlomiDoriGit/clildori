@@ -1,14 +1,14 @@
 import { useState } from "react";
 import { motion, AnimatePresence } from "framer-motion";
 import { MessageCircle, ChevronRight, ChevronLeft, Check } from "lucide-react";
-import card1 from "@/assets/card-1.jpg";
 import card2 from "@/assets/card-2.jpg";
+import recipeBook from "@/assets/recipe-book.png";
 
 const products = [
   {
     title: "ליווי תזונתי",
-    subtitle: "תזונה מותאמת גוף ונפש ✨",
-    description: `נעים להכיר, אני כליל דורי תזונאית קלינית – תזונה מותאמת גוף ונפש ✨
+    subtitle: "תזונה מותאמת גוף ונפש",
+    description: `נעים להכיר, אני כליל דורי תזונאית קלינית – תזונה מותאמת גוף ונפש
 
 אני מלווה נשים וגברים בתהליכי ירידה במשקל, איזון מטבולי ושיפור אורח חיים, תוך התייחסות להיבטים רגשיים והתנהגותיים של האכילה.
 
@@ -27,7 +27,7 @@ const products = [
     image: null,
   },
   {
-    title: "ריסט לבטן",
+    title: "אתחול לבטן",
     subtitle: "ספר מתכונים דיגיטלי",
     description:
       "ספר המתכונים הדיגיטלי למערכת עיכול רגועה. ללא גלוטן, ללא לקטוז, ללא סוכר וללא ממתיקים מלאכותיים. חוברת מתכונים קלים להכנה, המבוססים על חומרי גלם איכותיים וידידותיים למערכת העיכול.",
@@ -37,7 +37,7 @@ const products = [
     label: "מחיר השקה",
     fullPrice: "120 ש״ח",
     cta: false,
-    image: card1,
+    image: recipeBook,
   },
   {
     title: "קלפי חיזוק",
@@ -156,7 +156,7 @@ const ProductsSection = () => {
                         onClick={() => setExpanded(true)}
                         className="text-primary font-semibold text-sm hover:underline font-body"
                       >
-                        לפרטים נוספים ←
+                        לפרטים נוספים
                       </button>
                     </motion.div>
                   ) : (
@@ -193,7 +193,7 @@ const ProductsSection = () => {
 
                       {product.note && (
                         <p className="text-xs text-primary font-body bg-primary/5 rounded-xl p-4 mb-5 leading-relaxed whitespace-pre-line">
-                          💸 {product.note}
+                          {product.note}
                         </p>
                       )}
 

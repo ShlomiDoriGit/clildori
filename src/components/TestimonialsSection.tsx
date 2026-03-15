@@ -48,7 +48,7 @@ const TestimonialsSection = () => {
           viewport={{ once: true }}
           className="font-display text-3xl md:text-4xl font-bold text-foreground text-center mb-6"
         >
-          מטופלים מספרים 💜
+          מטופלים מספרים
         </motion.h2>
         <motion.p
           initial={{ opacity: 0 }}
@@ -124,7 +124,7 @@ const TestimonialsSection = () => {
             rel="noopener noreferrer"
             className="inline-flex items-center gap-2 text-primary font-semibold font-body hover:underline text-lg"
           >
-            📹 צפו בסיפורי ההצלחה שלנו
+            צפו בסיפורי ההצלחה שלנו
           </a>
         </motion.div>
 
@@ -141,7 +141,7 @@ const TestimonialsSection = () => {
             rel="noopener noreferrer"
             className="inline-flex items-center gap-3 rounded-full bg-primary px-8 py-4 text-lg font-semibold text-primary-foreground shadow-lg transition-all hover:shadow-xl hover:scale-105"
           >
-            גם אני רוצה להתחיל ✨
+            גם אני רוצה להתחיל
           </a>
         </motion.div>
       </div>
