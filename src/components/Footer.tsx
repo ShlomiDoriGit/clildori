@@ -1,10 +1,14 @@
 import { Instagram, Mail, MessageCircle } from "lucide-react";
-import logo from "@/assets/logo-updated.png";
+import logoCircle from "@/assets/logo-circle.png";
 
 const Footer = () => (
   <footer className="bg-gradient-to-t from-primary/10 via-secondary to-secondary py-16">
     <div className="container mx-auto px-6 text-center">
-      <img src={logo} alt="לוגו כליל דורי" className="h-20 md:h-28 mx-auto mb-6 object-contain" />
+      <img
+        src={logoCircle}
+        alt="לוגו כליל דורי"
+        className="h-24 md:h-32 w-auto mx-auto mb-6 object-contain rounded-full shadow-md"
+      />
 
       <h3 className="font-display text-2xl font-bold text-foreground mb-4">
         לרכישה ותיאום פגישה
