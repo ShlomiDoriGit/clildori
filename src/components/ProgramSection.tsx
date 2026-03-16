@@ -2,14 +2,15 @@ import { motion } from "framer-motion";
 import { Check } from "lucide-react";
 
 const points = [
-  "סדרת פגישות אונליין",
-  "תפריט אישי מבוסס בדיקות דם",
-  "פרוטוקול תוספים מותאם",
-  "וליווי צמוד בין המפגשים",
+  "סדרת פגישות ייעוץ תזונתי אונליין.",
+  "בניית תפריט תזונתי בהתאם למצב הבריאותי, בדיקות הדם, ההעדפות ואורח החיים.",
+  "התאמת פרוטוקול תוספי תזונה מותאם מטרות ומבוסס ספרות עדכנית.",
+  "ליווי ותמיכה שוטפת בין המפגשים, כולל מענה לשאלות והתאמות לפי הצורך.",
+  "מתן כלים פרקטיים לשינוי הרגלים, ויסות אכילה, ניהול סטרס ושמירה על התוצאות לאורך זמן.",
 ];
 
 const ProgramSection = () => (
-  <section className="py-24 bg-secondary">
+  <section id="program" className="py-24 bg-secondary">
     <div className="container mx-auto px-6 max-w-3xl">
       <motion.div
         initial={{ opacity: 0, y: 30 }}
@@ -18,11 +19,14 @@ const ProgramSection = () => (
         transition={{ duration: 0.6 }}
         className="text-right"
       >
-        <h2 className="font-display text-3xl md:text-4xl font-bold text-foreground mb-12">
-          מה כוללת תוכנית הליווי?
+        <h2 className="font-display text-3xl md:text-4xl font-bold text-foreground mb-4">
+          שירותים
         </h2>
+        <p className="text-muted-foreground font-body text-lg mb-12">
+          מה כוללת תוכנית הליווי התזונתי:
+        </p>
 
-        <ul className="space-y-6 mb-12">
+        <ul className="space-y-5 mb-12">
           {points.map((point, i) => (
             <motion.li
               key={i}
@@ -30,9 +34,9 @@ const ProgramSection = () => (
               whileInView={{ opacity: 1, x: 0 }}
               viewport={{ once: true }}
               transition={{ delay: i * 0.1, duration: 0.4 }}
-              className="flex items-center gap-4 text-lg font-body text-foreground"
+              className="flex items-start gap-4 text-base font-body text-foreground"
             >
-              <span className="flex h-8 w-8 shrink-0 items-center justify-center rounded-full bg-primary">
+              <span className="flex h-7 w-7 shrink-0 items-center justify-center rounded-full bg-primary mt-0.5">
                 <Check className="h-4 w-4 text-primary-foreground" />
               </span>
               {point}

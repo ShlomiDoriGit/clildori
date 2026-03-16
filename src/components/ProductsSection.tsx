@@ -66,7 +66,7 @@ const ProductsSection = () => {
   const product = products[activeIndex];
 
   return (
-    <section className="py-24 bg-background">
+    <section id="products" className="py-24 bg-background">
       <div className="container mx-auto px-6">
         <motion.h2
           initial={{ opacity: 0, y: 20 }}
