@@ -2,15 +2,15 @@ import { Instagram, Mail, MessageCircle } from "lucide-react";
 import logoCircle from "@/assets/logo-circle.png";
 
 const Footer = () => (
-  <footer className="bg-gradient-to-t from-primary/10 via-secondary to-secondary py-16">
+  <footer id="footer" className="bg-secondary py-16">
     <div className="container mx-auto px-6 text-center">
       <img
         src={logoCircle}
         alt="לוגו כליל דורי"
-        className="h-24 md:h-32 w-auto mx-auto mb-6 object-contain rounded-full shadow-md"
+        className="h-24 md:h-32 w-auto mx-auto mb-6 object-contain"
       />
 
-      <h3 className="font-display text-2xl font-bold text-foreground mb-4">
+      <h3 className="font-display text-3xl md:text-4xl font-bold text-foreground mb-8">
         לרכישה ותיאום פגישה
       </h3>
 
@@ -18,7 +18,7 @@ const Footer = () => (
         href="https://wa.me/972559272658"
         target="_blank"
         rel="noopener noreferrer"
-        className="inline-flex items-center gap-2 rounded-full bg-primary px-6 py-3 text-primary-foreground font-semibold transition-all hover:scale-105 mb-8"
+        className="inline-flex items-center gap-2 rounded-full bg-primary px-8 py-4 text-lg text-primary-foreground font-semibold transition-all hover:scale-105 hover:shadow-xl mb-10"
       >
         <MessageCircle className="h-5 w-5" />
         שלחו הודעה בוואטסאפ
