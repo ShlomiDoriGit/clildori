@@ -134,12 +134,12 @@ const TestimonialsSection = () => {
               animate={{ opacity: 1, x: 0 }}
               exit={{ opacity: 0, x: -80 }}
               transition={{ duration: 0.4, ease: "easeInOut" }}
-              className="rounded-3xl overflow-hidden shadow-lg bg-card aspect-[3/4] flex items-center justify-center"
+              className="rounded-3xl overflow-hidden shadow-lg bg-card flex items-center justify-center"
             >
               <img
                 src={testimonials[current].image}
                 alt={testimonials[current].alt}
-                className="w-full h-full object-cover"
+                className="w-full h-auto object-contain"
                 loading="lazy"
               />
             </motion.div>

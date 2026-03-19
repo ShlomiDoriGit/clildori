@@ -136,12 +136,14 @@ const ProductsSection = () => {
               className="rounded-3xl bg-card overflow-hidden shadow-lg"
             >
               {product.image && (
-                <img
-                  src={product.image}
-                  alt={product.title}
-                  className="w-full h-56 md:h-72 object-cover"
-                  loading="lazy"
-                />
+                <div className="w-full flex items-center justify-center bg-gradient-to-b from-primary/5 to-transparent p-4">
+                  <img
+                    src={product.image}
+                    alt={product.title}
+                    className="max-w-[280px] md:max-w-[320px] w-full h-auto object-contain rounded-2xl"
+                    loading="lazy"
+                  />
+                </div>
               )}
               <div className="p-8 md:p-10">
                 <h3 className="font-display text-2xl md:text-3xl font-bold text-foreground mb-1">
