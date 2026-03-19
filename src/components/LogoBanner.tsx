@@ -1,9 +1,9 @@
 import { useState } from "react";
 import { motion } from "framer-motion";
 import { Menu, X } from "lucide-react";
-import logoCircle from "@/assets/logo-circle.png";
+import logoUpdated from "@/assets/logo-updated.png";
 
-const navItems = ["דף בית", "מי אני", "מוצרים", "צרו קשר"];
+const navItems = ["דף בית", "מי אני", "צרו קשר"];
 
 const LogoBanner = () => {
   const [menuOpen, setMenuOpen] = useState(false);
@@ -13,7 +13,6 @@ const LogoBanner = () => {
     const sectionMap: Record<string, string> = {
       "דף בית": "hero",
       "מי אני": "hero",
-      "מוצרים": "products",
       "צרו קשר": "footer",
     };
     const el = document.getElementById(sectionMap[label] || "hero");
@@ -52,7 +51,7 @@ const LogoBanner = () => {
 
         {/* Logo */}
         <motion.img
-          src={logoCircle}
+          src={logoUpdated}
           alt="כליל דורי"
           className="h-12 md:h-16 w-auto object-contain"
           initial={{ scale: 0.9, opacity: 0 }}

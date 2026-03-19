@@ -1,4 +1,4 @@
-import { Instagram, Mail, MessageCircle } from "lucide-react";
+import { Instagram, Mail } from "lucide-react";
 import logoCircle from "@/assets/logo-circle.png";
 
 const Footer = () => (
@@ -18,10 +18,9 @@ const Footer = () => (
         href="https://wa.me/972559272658"
         target="_blank"
         rel="noopener noreferrer"
-        className="inline-flex items-center gap-2 rounded-full bg-primary px-8 py-4 text-lg text-primary-foreground font-semibold transition-all hover:scale-105 hover:shadow-xl mb-10"
+        className="inline-flex items-center gap-2 rounded-full bg-primary px-10 py-4 text-lg text-primary-foreground font-bold transition-all hover:scale-105 hover:shadow-xl mb-10"
       >
-        <MessageCircle className="h-5 w-5" />
-        שלחו הודעה בוואטסאפ
+        גם אני רוצה להתחיל
       </a>
 
       <div className="flex justify-center gap-6 mb-6">

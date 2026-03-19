@@ -3,6 +3,9 @@ import { motion, AnimatePresence } from "framer-motion";
 import { MessageCircle, ChevronRight, ChevronLeft, Check } from "lucide-react";
 import card2 from "@/assets/card-2.jpg";
 import recipeBook from "@/assets/recipe-book.png";
+import cardExample1 from "@/assets/card-example-1.jpg";
+import cardExample2 from "@/assets/card-example-2.jpg";
+import cardExample3 from "@/assets/card-example-3.jpg";
 
 const products = [
   {
@@ -25,12 +28,14 @@ const products = [
     label: "לפרטים נוספים",
     cta: true,
     image: null,
+    specialOffer: null,
+    gallery: null,
   },
   {
     title: "אתחול לבטן",
-    subtitle: "ספר מתכונים דיגיטלי",
+    subtitle: "ספר המתכונים הדיגיטלי למערכת עיכול רגועה",
     description:
-      "ספר המתכונים הדיגיטלי למערכת עיכול רגועה. ללא גלוטן, ללא לקטוז, ללא סוכר וללא ממתיקים מלאכותיים. חוברת מתכונים קלים להכנה, המבוססים על חומרי גלם איכותיים וידידותיים למערכת העיכול.",
+      "חוברת מתכונים דיגיטלית שנבנתה במיוחד עבור אנשים עם רגישות לגלוטן וללקטוז, וגם עבור מי שמסתובב יום יום עם נפיחות, גזים או יציאות לא סדירות ולא מצליח להבין למה.\n\nהחוברת כוללת מתכונים קלים להכנה, המבוססים על חומרי גלם איכותיים וידידותיים למערכת העיכול. ללא גלוטן, דל לקטוז, ללא סוכר וללא ממתיקים מלאכותיים.\n\nמעבר לרעיונות לארוחות יומיומיות, החוברת מאפשרת לבצע מגשר סטרס תזונתי לגוף, להפחית עומס ממערכת העיכול, להרגיע את הבטן ולהתחיל להרגיש קלילים יותר.\n\nזו דרך פשוטה להתחיל לאכול בצורה שעושה טוב לגוף, תוך מתכונים שמרגיעים את מערכת העיכול ומסייעים להפחתת תסמינים.",
     points: null,
     note: null,
     price: "79 ש״ח",
@@ -38,12 +43,14 @@ const products = [
     fullPrice: "120 ש״ח",
     cta: false,
     image: recipeBook,
+    specialOffer: "מי שרוכש תוכנית ליווי מקבל את החוברת מתכונים בחינם!",
+    gallery: null,
   },
   {
     title: "קלפי חיזוק",
     subtitle: "ליצירת קשר רגוע ובריא יותר עם אוכל",
     description:
-      "סט קלפים שנוצר במיוחד עבור נשים המתמודדות עם מערכת יחסים מורכבת עם אוכל. כל קלף כולל מסר מעודד, נקודת מבט חדשה או שאלה להתבוננות, שמאפשר לצרכים האמיתיים שלך. הקלפים מיועדים לשימוש כלי אישי, כחלק מתהליך או כרגעי התבוננות במהלך היום. הקלפים יכולים לשמש ככלי לפתוח מערכת יחסים רגועה ואינטימית יותר עם אוכל.",
+      "סט קלפים שנוצר במיוחד עבור נשים המתמודדות עם מערכת יחסים מורכבת עם אוכל. כל קלף כולל מסר מעודד, נקודת מבט חדשה או שאלה להתבוננות, שמאפשר להתחבר מחדש לגוף, לרגשות ולצרכים האמיתיים.\n\nהקלפים מיועדים לשימוש ככלי אישי, כחלק מתהליך או כרגעי התבוננות במהלך היום. הקלפים יכולים לשמש ככלי לפתוח מערכת יחסים רגועה ואינטימית יותר עם אוכל.",
     points: null,
     note: null,
     price: "119 ש״ח",
@@ -51,15 +58,19 @@ const products = [
     fullPrice: "149 ש״ח",
     cta: false,
     image: card2,
+    specialOffer: null,
+    gallery: [cardExample1, cardExample2, cardExample3],
   },
 ];
 
 const ProductsSection = () => {
   const [activeIndex, setActiveIndex] = useState(0);
   const [expanded, setExpanded] = useState(false);
+  const [galleryIndex, setGalleryIndex] = useState(0);
 
   const goTo = (dir: number) => {
     setExpanded(false);
+    setGalleryIndex(0);
     setActiveIndex((prev) => (prev + dir + products.length) % products.length);
   };
 
@@ -85,6 +96,7 @@ const ProductsSection = () => {
               onClick={() => {
                 setActiveIndex(i);
                 setExpanded(false);
+                setGalleryIndex(0);
               }}
               className={`px-5 py-2.5 rounded-full font-display font-semibold text-sm transition-all ${
                 i === activeIndex
@@ -99,7 +111,6 @@ const ProductsSection = () => {
 
         {/* Card */}
         <div className="relative max-w-2xl mx-auto">
-          {/* Navigation arrows */}
           <button
             onClick={() => goTo(-1)}
             className="absolute top-1/2 -translate-y-1/2 -right-4 md:-right-14 z-10 w-10 h-10 rounded-full bg-card shadow-md flex items-center justify-center text-muted-foreground hover:text-foreground transition-colors"
@@ -140,7 +151,6 @@ const ProductsSection = () => {
                   {product.subtitle}
                 </p>
 
-                {/* Collapsed summary or expanded details */}
                 <AnimatePresence mode="wait">
                   {!expanded ? (
                     <motion.div
@@ -207,6 +217,56 @@ const ProductsSection = () => {
                   )}
                 </AnimatePresence>
 
+                {/* Special offer */}
+                {product.specialOffer && (
+                  <motion.div
+                    initial={{ opacity: 0, scale: 0.95 }}
+                    whileInView={{ opacity: 1, scale: 1 }}
+                    viewport={{ once: true }}
+                    className="mt-6 rounded-2xl bg-primary/10 border border-primary/20 p-5 text-center"
+                  >
+                    <p className="font-display text-lg md:text-xl font-bold text-primary">
+                      {product.specialOffer}
+                    </p>
+                  </motion.div>
+                )}
+
+                {/* Gallery for cards */}
+                {product.gallery && (
+                  <div className="mt-6">
+                    <p className="font-display font-bold text-foreground mb-3 text-sm">
+                      דוגמאות לקלפים:
+                    </p>
+                    <div className="relative">
+                      <AnimatePresence mode="wait">
+                        <motion.img
+                          key={galleryIndex}
+                          src={product.gallery[galleryIndex]}
+                          alt={`דוגמה לקלף ${galleryIndex + 1}`}
+                          className="w-full h-48 md:h-64 object-contain rounded-xl"
+                          initial={{ opacity: 0 }}
+                          animate={{ opacity: 1 }}
+                          exit={{ opacity: 0 }}
+                          transition={{ duration: 0.3 }}
+                        />
+                      </AnimatePresence>
+                      <div className="flex justify-center gap-2 mt-3">
+                        {product.gallery.map((_, gi) => (
+                          <button
+                            key={gi}
+                            onClick={() => setGalleryIndex(gi)}
+                            className={`w-2 h-2 rounded-full transition-all ${
+                              gi === galleryIndex
+                                ? "bg-primary w-5"
+                                : "bg-muted-foreground/30"
+                            }`}
+                          />
+                        ))}
+                      </div>
+                    </div>
+                  </div>
+                )}
+
                 {/* Price */}
                 {product.price && (
                   <div className="flex items-baseline gap-2 mt-6 mb-4">
@@ -248,6 +308,7 @@ const ProductsSection = () => {
                 onClick={() => {
                   setActiveIndex(i);
                   setExpanded(false);
+                  setGalleryIndex(0);
                 }}
                 className={`w-2.5 h-2.5 rounded-full transition-all ${
                   i === activeIndex
