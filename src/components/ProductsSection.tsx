@@ -2,7 +2,7 @@ import { useState } from "react";
 import { motion, AnimatePresence } from "framer-motion";
 import { MessageCircle, ChevronRight, ChevronLeft, Check } from "lucide-react";
 import card2 from "@/assets/card-2.jpg";
-import recipeBook from "@/assets/recipe-book.png";
+import recipeBook from "@/assets/recipe-cover.png";
 import cardExample1 from "@/assets/card-example-1.jpg";
 import cardExample2 from "@/assets/card-example-2.jpg";
 import cardExample3 from "@/assets/card-example-3.jpg";
