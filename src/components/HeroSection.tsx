@@ -1,5 +1,4 @@
 import { motion } from "framer-motion";
-import { CalendarDays } from "lucide-react";
 import heroImage from "@/assets/clil-hero.png";
 
 const HeroSection = () => (
@@ -34,20 +33,9 @@ const HeroSection = () => (
         <p className="text-lg md:text-xl text-foreground/80 font-display font-bold leading-relaxed mb-4">
           תזונה מותאמת <span className="text-primary">גוף ונפש</span>
         </p>
-        <p className="text-base md:text-lg text-muted-foreground font-body leading-relaxed mb-10 max-w-lg">
+        <p className="text-base md:text-lg text-muted-foreground font-body leading-relaxed max-w-lg">
           מלווה נשים וגברים בתהליכי ירידה במשקל, איזון מטבולי ושיפור אורח חיים, תוך התייחסות להיבטים רגשיים והתנהגותיים של האכילה.
         </p>
-        <motion.a
-          href="https://wa.me/972559272658"
-          target="_blank"
-          rel="noopener noreferrer"
-          whileHover={{ scale: 1.04 }}
-          whileTap={{ scale: 0.97 }}
-          className="inline-flex items-center gap-2 rounded-full bg-accent text-accent-foreground px-8 py-4 text-lg font-display font-bold shadow-lg transition-shadow hover:shadow-xl"
-        >
-          <CalendarDays className="h-5 w-5" />
-          לתיאום פגישת ייעוץ
-        </motion.a>
       </motion.div>
     </div>
   </section>
