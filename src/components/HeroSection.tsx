@@ -1,32 +1,32 @@
 import { motion } from "framer-motion";
+import { CalendarDays } from "lucide-react";
+import heroImage from "@/assets/clil-hero.png";
 
 const HeroSection = () => (
-  <section id="hero" className="relative min-h-[80vh] flex items-center overflow-hidden bg-secondary">
+  <section id="hero" className="relative min-h-[85vh] flex items-center overflow-hidden bg-gradient-to-b from-secondary to-background">
     <div className="container mx-auto flex flex-col-reverse lg:flex-row items-center gap-12 px-6 py-20 lg:py-0">
       {/* Image */}
       <motion.div
-        initial={{ opacity: 0, x: -40 }}
-        animate={{ opacity: 1, x: 0 }}
-        transition={{ duration: 0.8, delay: 0.2 }}
+        initial={{ opacity: 0, x: -30, filter: "blur(6px)" }}
+        animate={{ opacity: 1, x: 0, filter: "blur(0px)" }}
+        transition={{ duration: 0.8, delay: 0.25, ease: [0.16, 1, 0.3, 1] }}
         className="w-full lg:w-1/2 flex justify-center"
       >
-        <div className="relative">
-          <img
-            alt="כליל דורי - תזונאית קלינית"
-            className="w-72 lg:w-[420px] rounded-3xl object-cover shadow-2xl"
-            src="/lovable-uploads/2319db81-7e7e-42f4-bda2-87c5903f852d.png"
-          />
-        </div>
+        <img
+          alt="כליל דורי - תזונאית קלינית"
+          className="w-72 lg:w-[420px] rounded-3xl object-cover shadow-[0_20px_60px_-10px_hsl(262_88%_51%/0.18)]"
+          src={heroImage}
+        />
       </motion.div>
 
       {/* Text */}
       <motion.div
-        initial={{ opacity: 0, y: 30 }}
-        animate={{ opacity: 1, y: 0 }}
-        transition={{ duration: 0.7 }}
+        initial={{ opacity: 0, y: 24, filter: "blur(4px)" }}
+        animate={{ opacity: 1, y: 0, filter: "blur(0px)" }}
+        transition={{ duration: 0.7, ease: [0.16, 1, 0.3, 1] }}
         className="w-full lg:w-1/2 text-right"
       >
-        <h1 className="font-display text-4xl md:text-5xl lg:text-6xl font-extrabold text-foreground leading-tight mb-6">
+        <h1 className="font-display text-4xl md:text-5xl lg:text-6xl font-extrabold text-foreground leading-[1.1] mb-6">
           כליל דורי
           <br />
           <span className="text-primary">תזונאית קלינית</span>
@@ -34,9 +34,20 @@ const HeroSection = () => (
         <p className="text-lg md:text-xl text-foreground/80 font-display font-bold leading-relaxed mb-4">
           תזונה מותאמת <span className="text-primary">גוף ונפש</span>
         </p>
-        <p className="text-base md:text-lg text-muted-foreground font-body leading-relaxed mb-10 max-w-lg mr-0 ml-auto lg:ml-0 lg:mr-0">
+        <p className="text-base md:text-lg text-muted-foreground font-body leading-relaxed mb-10 max-w-lg">
           מלווה נשים וגברים בתהליכי ירידה במשקל, איזון מטבולי ושיפור אורח חיים, תוך התייחסות להיבטים רגשיים והתנהגותיים של האכילה.
         </p>
+        <motion.a
+          href="https://wa.me/972559272658"
+          target="_blank"
+          rel="noopener noreferrer"
+          whileHover={{ scale: 1.04 }}
+          whileTap={{ scale: 0.97 }}
+          className="inline-flex items-center gap-2 rounded-full bg-accent text-accent-foreground px-8 py-4 text-lg font-display font-bold shadow-lg transition-shadow hover:shadow-xl"
+        >
+          <CalendarDays className="h-5 w-5" />
+          לתיאום פגישת ייעוץ
+        </motion.a>
       </motion.div>
     </div>
   </section>
