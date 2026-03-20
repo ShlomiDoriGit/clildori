@@ -1,12 +1,13 @@
 import { useState } from "react";
 import { motion, AnimatePresence } from "framer-motion";
-import { Menu, X, CalendarDays } from "lucide-react";
-import logoFull from "@/assets/logo-full.png";
+import { Menu, X } from "lucide-react";
+import logoIcon from "@/assets/logo-icon.png";
+import headerBg from "@/assets/header-bg.jpeg";
 
 const navItems = [
-  { label: "מי אני", target: "about" },
-  { label: "מוצרים", target: "products" },
   { label: "התהליך בקליניקה", target: "program" },
+  { label: "מוצרים", target: "products" },
+  { label: "מי אני", target: "about" },
 ];
 
 const LogoBanner = () => {
@@ -23,29 +24,49 @@ const LogoBanner = () => {
       initial={{ opacity: 0 }}
       animate={{ opacity: 1 }}
       transition={{ duration: 0.6 }}
-      className="sticky top-0 z-50 w-full bg-background/95 backdrop-blur-sm border-b border-border/50"
+      className="sticky top-0 z-50 w-full"
+      style={{
+        backgroundImage: `url(${headerBg})`,
+        backgroundSize: "cover",
+        backgroundPosition: "center",
+      }}
     >
-      <div className="container mx-auto px-4 md:px-6 flex items-center justify-between h-16 md:h-20">
-        {/* CTA button - left side in RTL */}
-        <a
-          href="https://wa.me/972559272658"
-          target="_blank"
-          rel="noopener noreferrer"
-          className="hidden md:inline-flex items-center gap-2 rounded-full bg-accent text-accent-foreground px-5 py-2.5 text-sm font-display font-bold transition-all hover:shadow-lg hover:scale-[1.03] active:scale-[0.97]"
-        >
-          <CalendarDays className="h-4 w-4" />
-          לתיאום פגישת ייעוץ
-        </a>
+      <div className="container mx-auto px-4 md:px-6 flex items-center justify-between h-20 md:h-24">
+        {/* Logo + brand text - right side in RTL */}
+        <div className="flex items-center gap-3">
+          <motion.img
+            src={logoIcon}
+            alt="כליל דורי"
+            className="h-14 md:h-18 w-auto object-contain"
+            initial={{ scale: 0.9, opacity: 0 }}
+            animate={{ scale: 1, opacity: 1 }}
+            transition={{ duration: 0.5, delay: 0.15 }}
+          />
+          <div className="hidden sm:flex flex-col text-right leading-tight">
+            <span className="font-display text-lg md:text-xl font-extrabold text-primary">
+              כליל דורי
+            </span>
+            <span className="font-body text-xs md:text-sm text-primary/70">
+              תזונאית קלינית
+            </span>
+            <span className="font-body text-[10px] md:text-xs text-primary/60">
+              תזונה מותאמת <span className="font-bold">גוף ונפש</span>
+            </span>
+          </div>
+        </div>
 
         {/* Nav - Desktop */}
         <nav className="hidden md:flex items-center gap-1">
-          {navItems.map((item) => (
+          {navItems.map((item, i) => (
             <button
               key={item.label}
               onClick={() => scrollTo(item.target)}
-              className="px-4 py-2 rounded-full text-sm font-display font-semibold text-muted-foreground hover:text-primary hover:bg-primary/5 transition-all"
+              className="px-4 py-2 rounded-full text-sm font-display font-semibold text-primary/80 hover:text-primary hover:bg-white/30 transition-all"
             >
               {item.label}
+              {i < navItems.length - 1 && (
+                <span className="mr-3 text-primary/30">|</span>
+              )}
             </button>
           ))}
         </nav>
@@ -53,21 +74,11 @@ const LogoBanner = () => {
         {/* Mobile menu button */}
         <button
           onClick={() => setMenuOpen(!menuOpen)}
-          className="md:hidden text-foreground p-1"
+          className="md:hidden text-primary p-1"
           aria-label="תפריט"
         >
           {menuOpen ? <X className="h-6 w-6" /> : <Menu className="h-6 w-6" />}
         </button>
-
-        {/* Logo */}
-        <motion.img
-          src={logoFull}
-          alt="כליל דורי - תזונאית קלינית"
-          className="h-12 md:h-16 w-auto object-contain"
-          initial={{ scale: 0.9, opacity: 0 }}
-          animate={{ scale: 1, opacity: 1 }}
-          transition={{ duration: 0.5, delay: 0.15 }}
-        />
       </div>
 
       {/* Mobile nav */}
@@ -78,26 +89,17 @@ const LogoBanner = () => {
             animate={{ opacity: 1, height: "auto" }}
             exit={{ opacity: 0, height: 0 }}
             transition={{ duration: 0.25 }}
-            className="md:hidden bg-background border-t border-border/50 px-6 py-4 flex flex-col gap-1 overflow-hidden"
+            className="md:hidden bg-white/90 backdrop-blur-md border-t border-primary/10 px-6 py-4 flex flex-col gap-1 overflow-hidden"
           >
             {navItems.map((item) => (
               <button
                 key={item.label}
                 onClick={() => scrollTo(item.target)}
-                className="text-right px-4 py-3 rounded-xl text-sm font-display font-semibold text-muted-foreground hover:text-primary hover:bg-primary/5 transition-all"
+                className="text-right px-4 py-3 rounded-xl text-sm font-display font-semibold text-primary/80 hover:text-primary hover:bg-primary/5 transition-all"
               >
                 {item.label}
               </button>
             ))}
-            <a
-              href="https://wa.me/972559272658"
-              target="_blank"
-              rel="noopener noreferrer"
-              className="flex items-center justify-center gap-2 rounded-full bg-accent text-accent-foreground px-5 py-3 text-sm font-display font-bold mt-2 transition-all active:scale-[0.97]"
-            >
-              <CalendarDays className="h-4 w-4" />
-              לתיאום פגישת ייעוץ
-            </a>
           </motion.nav>
         )}
       </AnimatePresence>

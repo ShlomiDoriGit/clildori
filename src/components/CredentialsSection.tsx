@@ -1,6 +1,4 @@
-import { useState } from "react";
-import { motion, AnimatePresence } from "framer-motion";
-import { ChevronRight, ChevronLeft } from "lucide-react";
+import { motion } from "framer-motion";
 import certDietitian from "@/assets/cert-dietitian.jpeg";
 import certUniversity from "@/assets/cert-university.jpeg";
 import certGroups from "@/assets/cert-groups.jpeg";
@@ -12,11 +10,6 @@ const certs = [
 ];
 
 const CredentialsSection = () => {
-  const [current, setCurrent] = useState(0);
-
-  const go = (dir: number) =>
-    setCurrent((prev) => (prev + dir + certs.length) % certs.length);
-
   return (
     <section id="about" className="py-24 bg-background">
       <div className="container mx-auto px-6">
@@ -38,6 +31,24 @@ const CredentialsSection = () => {
         >
           אני כליל דורי, תזונאית קלינית בוגרת האוניברסיטה העברית בירושלים. מלווה נשים וגברים בתהליכי ירידה במשקל, איזון מטבולי ושיפור אורח חיים, תוך התייחסות להיבטים רגשיים והתנהגותיים של האכילה.
         </motion.p>
+        <motion.p
+          initial={{ opacity: 0 }}
+          whileInView={{ opacity: 1 }}
+          viewport={{ once: true, amount: 0.2 }}
+          transition={{ delay: 0.2, duration: 0.5 }}
+          className="text-center text-muted-foreground font-body text-base mb-6 max-w-2xl mx-auto leading-relaxed"
+        >
+          בעלת ניסיון קליני מגוון בתחומי תזונה קלינית, ספורטיבית ובריאותית. מאמינה בגישה הוליסטית המשלבת ידע מדעי מבוסס ראיות עם הקשבה עמוקה לצרכים הרגשיים והפיזיים של כל מטופל ומטופלת.
+        </motion.p>
+        <motion.p
+          initial={{ opacity: 0 }}
+          whileInView={{ opacity: 1 }}
+          viewport={{ once: true, amount: 0.2 }}
+          transition={{ delay: 0.25, duration: 0.5 }}
+          className="text-center text-muted-foreground font-body text-base mb-16 max-w-2xl mx-auto leading-relaxed"
+        >
+          המטרה שלי היא לעזור לך לבנות מערכת יחסים בריאה ומאוזנת עם אוכל, עם הגוף שלך ועם עצמך — בקצב שלך, בדרך שלך.
+        </motion.p>
 
         <motion.h3
           initial={{ opacity: 0, y: 16 }}
@@ -49,56 +60,32 @@ const CredentialsSection = () => {
           הסמכות מקצועיות
         </motion.h3>
 
-        <div className="relative max-w-lg mx-auto">
-          <button
-            onClick={() => go(-1)}
-            className="absolute top-1/2 -translate-y-1/2 -right-4 md:-right-14 z-10 w-10 h-10 rounded-full bg-card shadow-md flex items-center justify-center text-muted-foreground hover:text-foreground transition-colors active:scale-95"
-            aria-label="הקודם"
-          >
-            <ChevronRight className="h-5 w-5" />
-          </button>
-          <button
-            onClick={() => go(1)}
-            className="absolute top-1/2 -translate-y-1/2 -left-4 md:-left-14 z-10 w-10 h-10 rounded-full bg-card shadow-md flex items-center justify-center text-muted-foreground hover:text-foreground transition-colors active:scale-95"
-            aria-label="הבא"
-          >
-            <ChevronLeft className="h-5 w-5" />
-          </button>
-
-          <AnimatePresence mode="wait">
+        {/* Static 2-per-row grid */}
+        <div className="max-w-3xl mx-auto grid grid-cols-1 sm:grid-cols-2 gap-6">
+          {certs.map((cert, i) => (
             <motion.div
-              key={current}
-              initial={{ opacity: 0, x: 60 }}
-              animate={{ opacity: 1, x: 0 }}
-              exit={{ opacity: 0, x: -60 }}
-              transition={{ duration: 0.4, ease: "easeInOut" }}
-              className="rounded-2xl overflow-hidden shadow-lg bg-card"
+              key={i}
+              initial={{ opacity: 0, y: 20 }}
+              whileInView={{ opacity: 1, y: 0 }}
+              viewport={{ once: true, amount: 0.2 }}
+              transition={{ delay: i * 0.1, duration: 0.5 }}
+              className={`rounded-xl border-2 border-border/60 bg-card shadow-sm overflow-hidden p-3 ${
+                certs.length % 2 !== 0 && i === certs.length - 1
+                  ? "sm:col-span-2 sm:max-w-[50%] sm:mx-auto"
+                  : ""
+              }`}
             >
               <img
-                src={certs[current].image}
-                alt={certs[current].alt}
-                className="w-full h-auto object-contain"
+                src={cert.image}
+                alt={cert.alt}
+                className="w-full h-auto object-contain rounded-lg"
                 loading="lazy"
               />
+              <p className="text-center font-body text-xs text-muted-foreground mt-2">
+                {cert.alt}
+              </p>
             </motion.div>
-          </AnimatePresence>
-
-          <p className="text-center font-body text-sm text-muted-foreground mt-4 mb-2">
-            {certs[current].alt}
-          </p>
-
-          <div className="flex justify-center gap-2 mt-2">
-            {certs.map((_, i) => (
-              <button
-                key={i}
-                onClick={() => setCurrent(i)}
-                className={`h-2.5 rounded-full transition-all duration-300 ${
-                  i === current ? "bg-primary w-6" : "bg-muted-foreground/30 w-2.5"
-                }`}
-                aria-label={`תעודה ${i + 1}`}
-              />
-            ))}
-          </div>
+          ))}
         </div>
       </div>
     </section>

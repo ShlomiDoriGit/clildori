@@ -1,6 +1,7 @@
 import { useState, useEffect } from "react";
 import { motion, AnimatePresence } from "framer-motion";
 import { ChevronRight, ChevronLeft } from "lucide-react";
+import successThumbnail from "@/assets/success-thumbnail.jpeg";
 import testimonial1 from "@/assets/testimonial-1.jpg";
 import testimonial2 from "@/assets/testimonial-2.jpg";
 import testimonial3 from "@/assets/testimonial-3.jpg";
@@ -54,7 +55,7 @@ const TestimonialsSection = () => {
           whileInView={{ opacity: 1, y: 0 }}
           viewport={{ once: true, amount: 0.2 }}
           transition={{ delay: 0.2, duration: 0.6 }}
-          className="max-w-2xl mx-auto mb-24 rounded-3xl overflow-hidden shadow-xl bg-card"
+          className="max-w-2xl mx-auto mb-24 rounded-3xl overflow-hidden shadow-xl"
         >
           <a
             href="https://rb.gy/vfpdqu"
@@ -62,14 +63,21 @@ const TestimonialsSection = () => {
             rel="noopener noreferrer"
             className="block relative group"
           >
-            <div className="aspect-video bg-primary/5 flex items-center justify-center">
-              <div className="w-20 h-20 rounded-full bg-primary/90 flex items-center justify-center group-hover:scale-110 transition-transform duration-300 shadow-lg">
-                <svg className="w-8 h-8 text-primary-foreground mr-[-2px]" fill="currentColor" viewBox="0 0 24 24">
-                  <path d="M8 5v14l11-7z" />
-                </svg>
+            <div className="relative aspect-video">
+              <img
+                src={successThumbnail}
+                alt="סיפורי הצלחה - לפני ואחרי"
+                className="w-full h-full object-cover"
+              />
+              <div className="absolute inset-0 bg-black/20 group-hover:bg-black/30 transition-colors flex items-center justify-center">
+                <div className="w-20 h-20 rounded-full bg-primary/90 flex items-center justify-center group-hover:scale-110 transition-transform duration-300 shadow-lg">
+                  <svg className="w-8 h-8 text-primary-foreground mr-[-2px]" fill="currentColor" viewBox="0 0 24 24">
+                    <path d="M8 5v14l11-7z" />
+                  </svg>
+                </div>
               </div>
             </div>
-            <div className="p-6 text-center">
+            <div className="bg-card p-6 text-center">
               <p className="font-display text-xl font-bold text-foreground">צפו בסיפורי ההצלחה שלנו</p>
               <p className="text-muted-foreground font-body text-sm mt-1">לחצו לצפייה בווידאו</p>
             </div>
@@ -143,23 +151,6 @@ const TestimonialsSection = () => {
             ))}
           </div>
         </div>
-
-        <motion.div
-          initial={{ opacity: 0, y: 16 }}
-          whileInView={{ opacity: 1, y: 0 }}
-          viewport={{ once: true, amount: 0.2 }}
-          transition={{ delay: 0.3 }}
-          className="text-center mt-14"
-        >
-          <a
-            href="https://wa.me/972559272658"
-            target="_blank"
-            rel="noopener noreferrer"
-            className="inline-flex items-center gap-3 rounded-full bg-primary px-8 py-4 text-lg font-bold text-primary-foreground shadow-lg transition-all hover:shadow-xl hover:scale-[1.03] active:scale-[0.97]"
-          >
-            גם אני רוצה להתחיל
-          </a>
-        </motion.div>
       </div>
     </section>
   );
