@@ -2,6 +2,7 @@ import { useState } from "react";
 import { motion, AnimatePresence } from "framer-motion";
 import { Menu, X, CalendarDays } from "lucide-react";
 import logoIcon from "@/assets/logo-icon.png";
+import heroBg from "@/assets/hero-footer-bg.jpeg";
 
 const navItems = [
   { label: "מי אני", target: "about" },
@@ -22,10 +23,16 @@ const LogoBanner = () => {
       initial={{ opacity: 0 }}
       animate={{ opacity: 1 }}
       transition={{ duration: 0.5 }}
-      className="sticky top-0 z-50 w-full bg-cream border-b border-border/40 backdrop-blur-sm"
+      className="sticky top-0 z-50 w-full border-b border-white/20 backdrop-blur-sm"
+      style={{
+        backgroundImage: `url(${heroBg})`,
+        backgroundSize: "cover",
+        backgroundPosition: "center top",
+        backgroundRepeat: "no-repeat",
+      }}
     >
       <div className="container mx-auto px-4 md:px-6 flex items-center justify-between h-18 md:h-20">
-        {/* Right side: Logo + brand */}
+        {/* Right side: Logo */}
         <div className="flex items-center gap-3">
           <img
             src={logoIcon}
@@ -36,9 +43,6 @@ const LogoBanner = () => {
           <div className="hidden sm:flex flex-col text-right leading-tight">
             <span className="font-display text-lg font-extrabold text-primary">כליל דורי</span>
             <span className="font-body text-xs text-muted-foreground">תזונאית קלינית</span>
-            <span className="font-body text-[10px] text-muted-foreground">
-              תזונה מותאמת <span className="font-semibold">גוף ונפש</span>
-            </span>
           </div>
         </div>
 
@@ -81,7 +85,7 @@ const LogoBanner = () => {
             animate={{ opacity: 1, height: "auto" }}
             exit={{ opacity: 0, height: 0 }}
             transition={{ duration: 0.25 }}
-            className="md:hidden bg-cream border-t border-border/40 px-6 py-4 flex flex-col gap-1 overflow-hidden"
+            className="md:hidden bg-white/80 backdrop-blur-md border-t border-border/40 px-6 py-4 flex flex-col gap-1 overflow-hidden"
           >
             {navItems.map((item) => (
               <button
