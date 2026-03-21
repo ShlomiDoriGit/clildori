@@ -60,6 +60,10 @@ const TestimonialsSection = () => {
               </div>
             </a>
           </motion.div>
+
+          <p className="text-center text-muted-foreground font-body text-base mt-6">
+            צפו בסיפורי ההצלחה
+          </p>
         </div>
       </section>
 
