@@ -1,39 +1,38 @@
 import { motion } from "framer-motion";
-import heroImage from "@/assets/clil-hero.png";
+import profilePhoto from "@/assets/profile-photo.jpeg";
 
 const HeroSection = () => (
-  <section id="hero" className="relative min-h-[85vh] flex items-center overflow-hidden bg-gradient-to-b from-secondary to-background">
-    <div className="container mx-auto flex flex-col-reverse lg:flex-row items-center gap-12 px-6 py-20 lg:py-0">
-      {/* Image */}
+  <section id="hero" className="relative bg-cream overflow-hidden">
+    <div className="container mx-auto flex flex-col-reverse lg:flex-row items-center gap-10 lg:gap-16 px-6 py-16 lg:py-24">
+      {/* Left: Image */}
       <motion.div
-        initial={{ opacity: 0, x: -30, filter: "blur(6px)" }}
-        animate={{ opacity: 1, x: 0, filter: "blur(0px)" }}
-        transition={{ duration: 0.8, delay: 0.25, ease: [0.16, 1, 0.3, 1] }}
-        className="w-full lg:w-1/2 flex justify-center"
+        initial={{ opacity: 0, x: -30 }}
+        animate={{ opacity: 1, x: 0 }}
+        transition={{ duration: 0.7, delay: 0.2, ease: [0.16, 1, 0.3, 1] }}
+        className="w-full lg:w-5/12 flex justify-center"
       >
         <img
+          src={profilePhoto}
           alt="כליל דורי - תזונאית קלינית"
-          className="w-72 lg:w-[420px] rounded-3xl object-cover shadow-[0_20px_60px_-10px_hsl(262_88%_51%/0.18)]"
-          src={heroImage}
+          className="w-64 md:w-72 lg:w-80 rounded-3xl object-cover shadow-xl"
+          style={{ aspectRatio: "3/4" }}
         />
       </motion.div>
 
-      {/* Text */}
+      {/* Right: Text */}
       <motion.div
-        initial={{ opacity: 0, y: 24, filter: "blur(4px)" }}
-        animate={{ opacity: 1, y: 0, filter: "blur(0px)" }}
-        transition={{ duration: 0.7, ease: [0.16, 1, 0.3, 1] }}
-        className="w-full lg:w-1/2 text-right"
+        initial={{ opacity: 0, y: 20 }}
+        animate={{ opacity: 1, y: 0 }}
+        transition={{ duration: 0.6, ease: [0.16, 1, 0.3, 1] }}
+        className="w-full lg:w-7/12 text-right"
       >
-        <h1 className="font-display text-4xl md:text-5xl lg:text-6xl font-extrabold text-foreground leading-[1.1] mb-6">
+        <h1 className="font-display text-4xl md:text-5xl lg:text-6xl font-extrabold text-foreground leading-[1.15] mb-3">
           כליל דורי
-          <br />
-          <span className="text-primary">תזונאית קלינית</span>
         </h1>
-        <p className="text-lg md:text-xl text-foreground/80 font-display font-bold leading-relaxed mb-4">
-          תזונה מותאמת <span className="text-primary">גוף ונפש</span>
+        <p className="font-display text-xl md:text-2xl font-bold text-primary mb-6">
+          תזונאית קלינית
         </p>
-        <p className="text-base md:text-lg text-muted-foreground font-body leading-relaxed max-w-lg">
+        <p className="text-base md:text-lg text-muted-foreground font-body leading-relaxed max-w-xl">
           מלווה נשים וגברים בתהליכי ירידה במשקל, איזון מטבולי ושיפור אורח חיים, תוך התייחסות להיבטים רגשיים והתנהגותיים של האכילה.
         </p>
       </motion.div>

@@ -3,62 +3,38 @@ import { motion, AnimatePresence } from "framer-motion";
 import { Check, ChevronDown } from "lucide-react";
 
 const points = [
-  {
-    title: "ייעוץ תזונתי אונליין",
-    details: "סדרת פגישות ייעוץ תזונתי אונליין המותאמות אליך אישית.",
-  },
-  {
-    title: "בניית תפריט מותאם אישית",
-    details: "בניית תפריט תזונתי בהתאם למצב הבריאותי, בדיקות הדם, ההעדפות ואורח החיים שלך.",
-  },
-  {
-    title: "פרוטוקול תוספי תזונה",
-    details: "התאמת פרוטוקול תוספי תזונה מותאם מטרות ומבוסס ספרות עדכנית.",
-  },
-  {
-    title: "ליווי ותמיכה שוטפת",
-    details: "ליווי ותמיכה שוטפת בין המפגשים, כולל מענה לשאלות והתאמות לפי הצורך.",
-  },
-  {
-    title: "כלים לשינוי הרגלים",
-    details: "מתן כלים פרקטיים לשינוי הרגלים, ויסות אכילה, ניהול סטרס ושמירה על התוצאות לאורך זמן.",
-  },
+  { title: "ייעוץ תזונתי אונליין", details: "סדרת פגישות ייעוץ תזונתי אונליין המותאמות אליך אישית." },
+  { title: "בניית תפריט מותאם אישית", details: "בניית תפריט תזונתי בהתאם למצב הבריאותי, בדיקות הדם, ההעדפות ואורח החיים שלך." },
+  { title: "פרוטוקול תוספי תזונה", details: "התאמת פרוטוקול תוספי תזונה מותאם מטרות ומבוסס ספרות עדכנית." },
+  { title: "ליווי ותמיכה שוטפת", details: "ליווי ותמיכה שוטפת בין המפגשים, כולל מענה לשאלות והתאמות לפי הצורך." },
+  { title: "כלים לשינוי הרגלים", details: "מתן כלים פרקטיים לשינוי הרגלים, ויסות אכילה, ניהול סטרס ושמירה על התוצאות לאורך זמן." },
 ];
 
 const ProgramSection = () => {
   const [openIndex, setOpenIndex] = useState<number | null>(null);
 
   return (
-    <section id="program" className="py-24 bg-secondary/50">
+    <section id="program" className="py-20 md:py-28 bg-muted">
       <div className="container mx-auto px-6 max-w-3xl">
         <motion.h2
-          initial={{ opacity: 0, y: 20, filter: "blur(4px)" }}
-          whileInView={{ opacity: 1, y: 0, filter: "blur(0px)" }}
+          initial={{ opacity: 0, y: 20 }}
+          whileInView={{ opacity: 1, y: 0 }}
           viewport={{ once: true, amount: 0.2 }}
-          transition={{ duration: 0.6, ease: [0.16, 1, 0.3, 1] }}
-          className="font-display text-3xl md:text-4xl font-bold text-foreground text-center mb-4"
+          transition={{ duration: 0.6 }}
+          className="font-display text-3xl md:text-4xl font-bold text-foreground text-center mb-14"
         >
           התהליך בקליניקה
         </motion.h2>
-        <motion.p
-          initial={{ opacity: 0 }}
-          whileInView={{ opacity: 1 }}
-          viewport={{ once: true, amount: 0.2 }}
-          transition={{ delay: 0.15, duration: 0.5 }}
-          className="text-center text-muted-foreground font-body text-lg mb-12"
-        >
-          מה כוללת תוכנית הליווי התזונתי:
-        </motion.p>
 
-        <ul className="space-y-3 mb-12">
+        <ul className="space-y-3">
           {points.map((point, i) => (
             <motion.li
               key={i}
               initial={{ opacity: 0, x: 16 }}
               whileInView={{ opacity: 1, x: 0 }}
               viewport={{ once: true, amount: 0.2 }}
-              transition={{ delay: i * 0.08, duration: 0.5, ease: [0.16, 1, 0.3, 1] }}
-              className="rounded-2xl bg-background border border-border/60 overflow-hidden shadow-sm hover:shadow-md transition-shadow"
+              transition={{ delay: i * 0.07, duration: 0.5 }}
+              className="rounded-2xl bg-background border border-border overflow-hidden shadow-sm hover:shadow-md transition-shadow"
             >
               <button
                 onClick={() => setOpenIndex(openIndex === i ? null : i)}
@@ -71,9 +47,7 @@ const ProgramSection = () => {
                   {point.title}
                 </span>
                 <ChevronDown
-                  className={`h-5 w-5 text-muted-foreground shrink-0 transition-transform duration-300 ${
-                    openIndex === i ? "rotate-180" : ""
-                  }`}
+                  className={`h-5 w-5 text-muted-foreground shrink-0 transition-transform duration-300 ${openIndex === i ? "rotate-180" : ""}`}
                 />
               </button>
               <AnimatePresence>
@@ -94,20 +68,6 @@ const ProgramSection = () => {
             </motion.li>
           ))}
         </ul>
-
-        <motion.div
-          initial={{ opacity: 0, y: 16 }}
-          whileInView={{ opacity: 1, y: 0 }}
-          viewport={{ once: true, amount: 0.2 }}
-          transition={{ delay: 0.3, duration: 0.5 }}
-          className="rounded-2xl bg-background border border-primary/20 p-6 text-center"
-        >
-          <p className="text-lg font-body text-foreground">
-            ידעת? ניתן לקבל החזר של עד{" "}
-            <span className="font-bold text-primary text-xl">80%</span>{" "}
-            מהביטוחים הפרטיים!
-          </p>
-        </motion.div>
       </div>
     </section>
   );
