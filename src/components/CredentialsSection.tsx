@@ -1,4 +1,5 @@
 import { motion } from "framer-motion";
+import aboutMePhoto from "@/assets/about-me-photo.jpeg";
 import certDietitian from "@/assets/cert-dietitian.jpeg";
 import certUniversity from "@/assets/cert-university.jpeg";
 import certGroups from "@/assets/cert-groups.jpeg";
@@ -20,23 +21,39 @@ const CredentialsSection = () => (
         whileInView={{ opacity: 1, y: 0 }}
         viewport={{ once: true, amount: 0.2 }}
         transition={{ duration: 0.6 }}
-        className="font-display text-3xl md:text-4xl font-bold text-foreground text-center mb-8"
+        className="font-display text-3xl md:text-4xl font-bold text-foreground text-center mb-10"
       >
         מי אני
       </motion.h2>
+
+      {/* Side-by-side: text + photo — always row on all screens */}
       <motion.div
         initial={{ opacity: 0 }}
         whileInView={{ opacity: 1 }}
         viewport={{ once: true, amount: 0.2 }}
         transition={{ delay: 0.15, duration: 0.5 }}
-        className="max-w-3xl mx-auto text-right mb-16"
+        className="max-w-4xl mx-auto mb-16 flex items-center gap-5 md:gap-10"
+        style={{ flexDirection: "row", flexWrap: "nowrap" }}
       >
-        <p className="text-muted-foreground font-body text-base md:text-lg leading-relaxed mb-4">
-          אני כליל דורי, תזונאית קלינית, בוגרת תואר ראשון B.Sc בתזונה קלינית מהאוניברסיטה העברית, עם כ 8 שנות ניסיון בליווי אנשים לשיפור הבריאות והטמעת אורח חיים מיטבי. אני מלווה נשים וגברים בתהליכי ירידה במשקל, איזון מטבולי ושינוי הרגלים, תוך הסתכלות רחבה שמחברת בין הגוף, התזונה והעולם הרגשי. בעבודתי אני משלבת כלים מעולמות התזונה הקלינית, הלונג'ביטי וההתנהגות, במטרה לייצר תהליך מדויק, פרקטי ובר קיימא לאורך זמן.
-        </p>
-        <p className="text-muted-foreground font-body text-base md:text-lg leading-relaxed">
-          לאורך השנים ליוויתי מאות נשים וגברים בתהליכים עמוקים של שינוי, ואני רואה שוב ושוב שהתוצאה האמיתית לא מגיעה מדיאטה, אלא מהבנה, הקשבה והתאמה אישית. לכן, אני שמה דגש משמעותי גם על ההיבטים הרגשיים וההתנהגותיים של האכילה, במיוחד בעבודה עם הפרעות אכילה ודפוסים מורכבים סביב אוכל. אני מאמינה שתזונה נכונה היא לא מגבלה, אלא כלי עוצמתי ליצירת גוף מאוזן, בריא וחזק, כזה שאפשר להתמיד בו ולהרגיש בו טוב באמת.
-        </p>
+        {/* Text — right side (RTL) */}
+        <div className="flex-1 min-w-0 text-right">
+          <p className="text-muted-foreground font-body text-sm sm:text-base md:text-lg leading-relaxed mb-4">
+            אני כליל דורי, תזונאית קלינית, בוגרת תואר ראשון B.Sc בתזונה קלינית מהאוניברסיטה העברית, עם כ 8 שנות ניסיון בליווי אנשים לשיפור הבריאות והטמעת אורח חיים מיטבי. אני מלווה נשים וגברים בתהליכי ירידה במשקל, איזון מטבולי ושינוי הרגלים, תוך הסתכלות רחבה שמחברת בין הגוף, התזונה והעולם הרגשי. בעבודתי אני משלבת כלים מעולמות התזונה הקלינית, הלונג'ביטי וההתנהגות, במטרה לייצר תהליך מדויק, פרקטי ובר קיימא לאורך זמן.
+          </p>
+          <p className="text-muted-foreground font-body text-sm sm:text-base md:text-lg leading-relaxed">
+            לאורך השנים ליוויתי מאות נשים וגברים בתהליכים עמוקים של שינוי, ואני רואה שוב ושוב שהתוצאה האמיתית לא מגיעה מדיאטה, אלא מהבנה, הקשבה והתאמה אישית. לכן, אני שמה דגש משמעותי גם על ההיבטים הרגשיים וההתנהגותיים של האכילה, במיוחד בעבודה עם הפרעות אכילה ודפוסים מורכבים סביב אוכל. אני מאמינה שתזונה נכונה היא לא מגבלה, אלא כלי עוצמתי ליצירת גוף מאוזן, בריא וחזק, כזה שאפשר להתמיד בו ולהרגיש בו טוב באמת.
+          </p>
+        </div>
+
+        {/* Photo — left side, always visible side-by-side */}
+        <div className="shrink-0">
+          <img
+            src={aboutMePhoto}
+            alt="כליל דורי - תזונאית קלינית"
+            className="w-[100px] sm:w-[140px] md:w-52 lg:w-60 rounded-2xl object-cover shadow-lg"
+            style={{ aspectRatio: "3/4" }}
+          />
+        </div>
       </motion.div>
 
       {/* Certificates */}

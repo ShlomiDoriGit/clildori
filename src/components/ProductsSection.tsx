@@ -2,6 +2,7 @@ import { useState } from "react";
 import { motion, AnimatePresence } from "framer-motion";
 import { ChevronRight, ChevronLeft, ChevronDown } from "lucide-react";
 import recipeBook from "@/assets/recipe-cover.png";
+import cardsCover from "@/assets/cards-cover.png";
 import cardExample1 from "@/assets/card-example-1.jpg";
 import cardExample2 from "@/assets/card-example-2.jpg";
 import cardExample3 from "@/assets/card-example-3.jpg";
@@ -113,6 +114,15 @@ const ProductsSection = () => {
           className="max-w-4xl mx-auto"
         >
           <div className="rounded-3xl bg-muted shadow-lg overflow-hidden p-8 md:p-12">
+            {/* Cover image */}
+            <div className="flex justify-center mb-8">
+              <img
+                src={cardsCover}
+                alt="כריכת קלפי חיזוק"
+                className="w-full max-w-md h-auto object-contain rounded-2xl shadow-md"
+              />
+            </div>
+
             <div className="text-right mb-8">
               <h3 className="font-display text-2xl md:text-3xl font-bold text-foreground mb-2">קלפי חיזוק</h3>
               <p className="text-muted-foreground font-body text-sm mb-4">ליצירת קשר רגוע ובריא יותר עם אוכל</p>
@@ -150,7 +160,7 @@ const ProductsSection = () => {
               </div>
             </div>
 
-            {/* Card slider */}
+            {/* Card examples slider */}
             <div className="relative max-w-xs mx-auto">
               <button onClick={() => goCard(-1)} className="absolute top-1/2 -translate-y-1/2 -right-4 md:-right-12 z-10 w-9 h-9 rounded-full bg-background shadow-md flex items-center justify-center text-muted-foreground hover:text-foreground transition-colors active:scale-95" aria-label="הקודם">
                 <ChevronRight className="h-4 w-4" />
