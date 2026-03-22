@@ -1,5 +1,5 @@
 import { motion } from "framer-motion";
-import profilePhoto from "@/assets/profile-photo.jpeg";
+import successHero from "@/assets/success-stories-hero.png";
 import heroBg from "@/assets/hero-footer-bg.jpeg";
 
 const HeroSection = () => (
@@ -13,7 +13,10 @@ const HeroSection = () => (
       backgroundRepeat: "no-repeat",
     }}
   >
-    <div className="container mx-auto flex flex-row items-center gap-6 md:gap-16 px-6 py-12 md:py-16 lg:py-24" style={{ flexWrap: "nowrap" }}>
+    <div
+      className="container mx-auto px-6 py-12 md:py-16 lg:py-24 flex items-center gap-6 md:gap-16"
+      style={{ flexDirection: "row", flexWrap: "nowrap" }}
+    >
       {/* Right: Text (RTL so this appears first) */}
       <motion.div
         initial={{ opacity: 0, y: 20 }}
@@ -32,7 +35,7 @@ const HeroSection = () => (
         </p>
       </motion.div>
 
-      {/* Left: Image — always side-by-side, scales down on mobile */}
+      {/* Left: New success stories image — always side-by-side */}
       <motion.div
         initial={{ opacity: 0, x: -30 }}
         animate={{ opacity: 1, x: 0 }}
@@ -40,8 +43,8 @@ const HeroSection = () => (
         className="shrink-0"
       >
         <img
-          src={profilePhoto}
-          alt="כליל דורי - תזונאית קלינית"
+          src={successHero}
+          alt="סיפורי הצלחה - לפני ואחרי"
           className="w-[120px] sm:w-[180px] md:w-64 lg:w-72 rounded-3xl object-cover shadow-xl"
           style={{ aspectRatio: "3/4" }}
         />

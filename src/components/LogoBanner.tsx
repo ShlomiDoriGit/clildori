@@ -5,9 +5,9 @@ import logoIcon from "@/assets/logo-icon.png";
 import heroBg from "@/assets/hero-footer-bg.jpeg";
 
 const navItems = [
-  { label: "מי אני", target: "about" },
-  { label: "מוצרים", target: "products" },
   { label: "התהליך בקליניקה", target: "program" },
+  { label: "מוצרים", target: "products" },
+  { label: "מי אני", target: "about" },
 ];
 
 const LogoBanner = () => {
@@ -46,7 +46,7 @@ const LogoBanner = () => {
           </div>
         </div>
 
-        {/* Center: Nav links (desktop) */}
+        {/* Center: Nav links (desktop) - RTL order */}
         <nav className="hidden md:flex items-center gap-1">
           {navItems.map((item, i) => (
             <button
