@@ -3,29 +3,28 @@
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>כליל דורי | תזונאית קלינית</title>
-    <!-- Fonts & Icons -->
+    <title>כליל דורי | תזונאית קלינית B.Sc</title>
     <link href="https://fonts.googleapis.com/css2?family=Assistant:wght@300;400;600;700&display=swap" rel="stylesheet">
     <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.0.0/css/all.min.css">
     
     <style>
         :root {
             --primary: #9b6dff;
-            --text: #333;
-            --white: #ffffff;
+            --soft-purple: #f3efff;
+            --text-dark: #333;
         }
 
         body {
             margin: 0;
             font-family: 'Assistant', sans-serif;
             background-color: #fcfaff;
-            color: var(--text);
+            color: var(--text-dark);
             overflow-x: hidden;
         }
 
-        /* --- 1. NAVIGATION (Bug Fixes) --- */
+        /* 1. NAV BAR */
         header {
-            background-color: var(--white);
+            background-color: #ffffff;
             position: fixed;
             top: 0; width: 100%; z-index: 1000;
             box-shadow: 0 2px 10px rgba(0,0,0,0.1);
@@ -49,11 +48,11 @@
 
         .nav-links a {
             text-decoration: none;
-            color: var(--text);
+            color: var(--text-dark);
             font-weight: 600;
         }
 
-        .cta-nav {
+        .cta-btn {
             background: var(--primary);
             color: white !important;
             padding: 10px 20px;
@@ -75,7 +74,7 @@
             .hamburger { display: block; }
         }
 
-        /* --- 2. HERO SECTION --- */
+        /* 2. HERO SECTION */
         .hero {
             margin-top: 60px;
             background-image: url('assets/header-bg.jpeg');
@@ -86,7 +85,7 @@
 
         .hero-container {
             max-width: 1100px;
-            display: flex; align-items: center; gap: 50px;
+            display: flex; align-items: center; gap: 40px;
         }
 
         .hero-img {
@@ -102,13 +101,12 @@
             .hero-img { order: -1; width: 250px; height: 250px; }
         }
 
-        /* --- 3. VIDEO SECTION --- */
+        /* 3. VIDEO SUCCESS */
         .video-sec { padding: 60px 20px; text-align: center; background: white; }
         .video-box { max-width: 700px; margin: 0 auto; cursor: pointer; }
         .video-box img { width: 100%; border-radius: 15px; box-shadow: 0 5px 15px rgba(0,0,0,0.1); }
-        .video-label { margin-top: 15px; font-weight: bold; color: var(--primary); font-size: 1.2rem; }
 
-        /* --- 4. PRODUCTS --- */
+        /* 4. PRODUCTS */
         .products { padding: 60px 20px; max-width: 1000px; margin: 0 auto; }
         .card { background: white; padding: 30px; border-radius: 20px; margin-bottom: 40px; box-shadow: 0 5px 15px rgba(0,0,0,0.05); }
         
@@ -116,117 +114,127 @@
             display: flex; gap: 15px; overflow-x: auto; padding: 20px 0;
             scroll-snap-type: x mandatory;
         }
-        .carousel img { flex: 0 0 250px; height: 350px; object-fit: contain; border-radius: 10px; scroll-snap-align: center; background: #f9f9f9; }
+        .carousel img { flex: 0 0 250px; height: 350px; object-fit: contain; border-radius: 10px; background: #f9f9f9; }
 
-        /* --- 5. ABOUT ME (Side by Side Always) --- */
-        .about-me { padding: 60px 20px; background: #f3efff; }
+        /* 5. ABOUT ME (SIDE BY SIDE ALWAYS) */
+        .about-me { padding: 60px 20px; background: var(--soft-purple); }
         .about-container {
             max-width: 1000px; margin: 0 auto;
-            display: flex; align-items: center; gap: 20px;
-            flex-wrap: nowrap; /* Forces side-by-side */
+            display: flex; align-items: center; gap: 30px;
+            flex-direction: row; flex-wrap: nowrap; /* Forces side-by-side even on mobile */
         }
-        .about-text { flex: 2; font-size: 1rem; line-height: 1.6; }
+        .about-text { flex: 2; line-height: 1.6; }
         .about-img { flex: 1; min-width: 130px; }
         .about-img img { width: 100%; border-radius: 15px; display: block; }
 
-        @media (max-width: 500px) { .about-text { font-size: 0.85rem; } }
-
-        /* --- 6. REVIEWS --- */
-        .reviews { padding: 50px 20px; text-align: center; }
-        .btn-blue {
-            background: #4285F4; color: white; padding: 15px 30px;
-            border-radius: 8px; text-decoration: none; font-weight: bold; display: inline-block;
+        @media (max-width: 600px) {
+            .about-text { font-size: 0.85rem; }
         }
 
-        /* --- 7. FOOTER --- */
+        /* 6. CERTIFICATES SECTION (NEW) */
+        .certs { padding: 60px 20px; text-align: center; }
+        .certs-grid {
+            display: grid; grid-template-columns: repeat(auto-fit, minmax(200px, 1fr));
+            gap: 20px; max-width: 1100px; margin: 20px auto;
+        }
+        .certs-grid img { width: 100%; border: 1px solid #ddd; border-radius: 5px; box-shadow: 0 2px 5px rgba(0,0,0,0.1); }
+
+        /* 7. FOOTER */
         footer {
             background-image: url('assets/footer-bg.jpeg');
             background-size: cover; background-position: center;
             padding: 100px 20px 40px; text-align: center;
         }
         .social-icons { display: flex; justify-content: center; gap: 35px; margin-top: 30px; }
-        .social-icons a { font-size: 40px; color: var(--primary); transition: transform 0.2s; }
-        .social-icons a:hover { transform: translateY(-5px); }
+        .social-icons a { font-size: 40px; color: var(--primary); }
 
     </style>
 </head>
 <body>
 
-    <!-- 1. NAVIGATION -->
     <header>
         <nav>
-            <a href="https://wa.me/972545551151" class="cta-nav">לתיאום פגישת ייעוץ</a>
+            <a href="https://wa.me/972545551151" class="cta-btn">לתיאום פגישת ייעוץ</a>
             <div class="hamburger" onclick="toggleMenu()"><i class="fas fa-bars"></i></div>
             <ul class="nav-links" id="menu">
-                <li><a href="#process">התהליך בקליניקה</a></li>
-                <li><a href="#products">מוצרים</a></li>
                 <li><a href="#about">מי אני</a></li>
+                <li><a href="#products">מוצרים</a></li>
+                <li><a href="#process">התהליך בקליניקה</a></li>
             </ul>
         </nav>
     </header>
 
-    <!-- 2. HERO -->
+    <!-- Hero -->
     <section class="hero">
         <div class="hero-container">
             <div class="hero-text">
-                <h1 style="font-size: 3.2rem; margin:0;">כליל דורי</h1>
+                <h1 style="font-size: 3rem; margin:0;">כליל דורי</h1>
                 <h3 style="color: var(--primary);">תזונאית קלינית B.Sc</h3>
                 <p>מותאמת גוף ונפש. הדרך שלך לאיזון מתחילה כאן.</p>
             </div>
-            <img src="assets/profile-photo.jpeg" alt="כליל דורי" class="hero-img">
+            <img src="assets/profile-photo.jpeg" class="hero-img">
         </div>
     </section>
 
-    <!-- 3. VIDEO -->
+    <!-- Success Video -->
     <section class="video-sec">
         <div class="video-box">
             <img src="assets/success-thumbnail.jpeg" alt="סיפורי הצלחה">
-            <div class="video-label">לחצו על מנת לצפות בוידאו</div>
+            <h3 style="color: var(--primary);">לחצו על מנת לצפות בוידאו</h3>
         </div>
     </section>
 
-    <!-- 4. PRODUCTS -->
+    <!-- Products -->
     <section id="products" class="products">
         <div class="card">
             <h2>חוברת מתכונים: אתחול לבטן</h2>
             <p>חוברת מתכונים דיגיטלית שנבנתה במיוחד עבור אנשים עם רגישות לגלוטן וללקטוז, וגם עבור מי שמסתובב יום יום עם נפיחות, גזים או יציאות לא סדירות ולא מצליח להבין למה.</p>
-            <p>החוברת כוללת מגוון מתכונים קלים להכנה, המבוססים על חומרי גלם איכותיים וידידותיים למערכת העיכול, ללא גלוטן, דל לקטוז, ללא סוכר וללא ממתיקים מלאכותיים, כך שתוכלו ליהנות מאוכל טעים, מזין ומשביע מבלי להכביד על הגוף.</p>
-            <p>מעבר לרעיונות לארוחות יומיומיות, החוברת מאפשרת לבצע סוג של ריסט תזונתי לגוף, להפחית עומס ממערכת העיכול, להרגיע את הבטן ולהתחיל להרגיש קלילים יותר. זו דרך פשוטה להתחיל לאכול בצורה שמיטיבה עם הגוף, תומכת בהרגעת מערכת העיכול ומסייעת להפחית נפיחות ואי נוחות, תוך שמירה על תזונה מגוונת, טעימה ומאוזנת ביומיום. 🥗✨</p>
+            <p>החוברת כוללת מגוון מתכונים קלים להכנה, המבוססים על חומרי גלם איכותיים וידידותיים למערכת העיכול...</p>
         </div>
 
         <div class="card">
             <h2>קלפי חיזוק</h2>
-            <p>סט קלפים שנוצר במיוחד עבורך, כדי להעניק השראה וכלים לחיזוק הקשר עם הגוף וליצירת מערכת יחסים בריאה ורגועה יותר עם אוכל.</p>
+            <p>סט קלפים שנוצר במיוחד עבורך, כדי להעניק השראה וכלים לחיזוק הקשר עם הגוף.</p>
             <div class="carousel">
-                <img src="assets/cards-cover.png" alt="כריכה">
-                <img src="assets/card-1.jpg" alt="קלף 1">
-                <img src="assets/card-2.jpg" alt="קלף 2">
+                <img src="assets/cards-cover.png">
+                <img src="assets/card-example-1.jpg">
+                <img src="assets/card-example-2.jpg">
             </div>
         </div>
     </section>
 
-    <!-- 5. ABOUT ME -->
+    <!-- About Me -->
     <section id="about" class="about-me">
         <div class="about-container">
             <div class="about-text">
-                <h2 style="color: var(--primary);">מי אני</h2>
-                <p>אני כליל דורי, תזונאית קלינית, בוגרת תואר ראשון B.Sc בתזונה קלינית מהאוניברסיטה העברית, עם כ- 8 שנות ניסיון בליווי אנשים לשיפור הבריאות והטמעת אורח חיים מיטבי. אני מלווה נשים וגברים בתהליכי ירידה במשקל, איזון מטבולי ושינוי הרגלים, תוך הסתכלות רחבה שמחברת בין הגוף, התזונה והעולם הרגשי. בעבודתי אני משלבת כלים מעולמות התזונה הקלינית, ה- Longevity וההתנהגות, במטרה לייצר תהליך מדויק ופרקטי, שיחזיק לאורך זמן.<br><br>לאורך השנים ליוויתי מאות אנשים בתהליכים עמוקים של שינוי, ונוכחתי להבין שהתוצאה האמיתית לא מגיעה מדיאטה, אלא מהבנה, הקשבה והתאמה אישית. לכן, אני שמה דגש משמעותי גם על ההיבטים הרגשיים וההתנהגותיים של האכילה, במיוחד בעבודה עם הפרעות אכילה ודפוסים מורכבים סביב אוכל. אני מאמינה שתזונה נכונה היא לא מגבלה, אלא כלי עוצמתי ליצירת גוף מאוזן, בריא וחזק, כזה שאפשר להתמיד בו ולהרגיש טוב באמת.</p>
+                <h2>מי אני</h2>
+                <p>אני כליל דורי, תזונאית קלינית, בוגרת תואר ראשון B.Sc בתזונה קלינית מהאוניברסיטה העברית... אני מלווה נשים וגברים בתהליכי ירידה במשקל, איזון מטבולי ושינוי הרגלים, תוך הסתכלות רחבה שמחברת בין הגוף, התזונה והעולם הרגשי.</p>
             </div>
             <div class="about-img">
-                <img src="assets/about-me-photo.jpeg" alt="כליל דורי">
+                <img src="assets/about-me-photo.jpeg">
             </div>
         </div>
     </section>
 
-    <!-- 6. GOOGLE REVIEWS -->
-    <section class="reviews">
-        <h2>מה המטופלים אומרים?</h2>
-        <a href="https://share.google/ZNUa767hxjoUiRSkQ" target="_blank" class="btn-blue">לחצו לצפייה בכל הביקורות <i class="fab fa-google"></i></a>
+    <!-- Certificates -->
+    <section class="certs">
+        <h2>הכשרה מקצועית</h2>
+        <div class="certs-grid">
+            <img src="assets/cert-university.jpeg" alt="תואר אוניברסיטה">
+            <img src="assets/cert-dietitian.jpeg" alt="תעודת תזונאית">
+            <img src="assets/cert-eating-disorders.jpeg" alt="הפרעות אכילה">
+            <img src="assets/cert-groups.jpeg" alt="הנחיית קבוצות">
+        </div>
     </section>
 
-    <!-- 7. FOOTER -->
+    <!-- Reviews -->
+    <section style="text-align: center; padding: 40px;">
+        <a href="https://share.google/ZNUa767hxjoUiRSkQ" target="_blank" class="cta-btn" style="background:#4285F4; border-radius: 8px;">לחצו לצפייה בכל הביקורות <i class="fab fa-google"></i></a>
+    </section>
+
+    <!-- Footer -->
     <footer>
-        <a href="https://wa.me/972545551151" class="cta-nav" style="padding: 15px 35px; font-size: 1.1rem;">בואו נתחיל את התהליך שלך</a>
+        <a href="https://wa.me/972545551151" class="cta-btn" style="padding: 15px 35px;">בואו נתחיל את התהליך שלך</a>
         <div class="social-icons">
             <a href="https://www.instagram.com/clildori/" target="_blank"><i class="fab fa-instagram"></i></a>
             <a href="mailto:clildori@gmail.com"><i class="far fa-envelope"></i></a>
