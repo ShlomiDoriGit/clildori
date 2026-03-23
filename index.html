@@ -1,32 +1,388 @@
-<!doctype html>
-<html lang="en">
-  <head>
-    <meta charset="UTF-8" />
-    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
-    <title>כליל דורי | תזונאית קלינית - תזונה מותאמת גוף ונפש</title>
-    <meta name="description" content="כליל דורי - תזונאית קלינית. ליווי נשים וגברים בתהליכי ירידה במשקל ואיזון מטבולי עם דגש על הפן הרגשי.">
-    <!-- TODO: Set the document title to the name of your application -->
-    <title>Lovable App</title>
-    <meta name="description" content="Lovable Generated Project" />
-    <meta name="author" content="Lovable" />
-
-    <!-- TODO: Update og:title to match your application name -->
+<!DOCTYPE html>
+<html lang="he" dir="rtl">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>כליל דורי - תזונאית קלינית</title>
+    <!-- Google Fonts -->
+    <link href="https://fonts.googleapis.com/css2?family=Assistant:wght@300;400;700&display=swap" rel="stylesheet">
+    <!-- Font Awesome for Icons -->
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.0.0/css/all.min.css">
     
-    
-    <meta property="og:type" content="website" />
-    <meta property="og:image" content="https://storage.googleapis.com/gpt-engineer-file-uploads/rhXni8Cj8FfbeeipMHGul8tQoRT2/social-images/social-1773512693635-לוגו_מעודכן.webp">
+    <style>
+        :root {
+            --primary-purple: #9b6dff;
+            --soft-purple: #f3efff;
+            --text-dark: #333;
+            --white: #ffffff;
+        }
 
-    <meta name="twitter:card" content="summary_large_image" />
-    <meta name="twitter:site" content="@Lovable" />
-    <meta name="twitter:image" content="https://storage.googleapis.com/gpt-engineer-file-uploads/rhXni8Cj8FfbeeipMHGul8tQoRT2/social-images/social-1773512693635-לוגו_מעודכן.webp">
-    <meta property="og:title" content="כליל דורי | תזונאית קלינית - תזונה מותאמת גוף ונפש">
-  <meta name="twitter:title" content="כליל דורי | תזונאית קלינית - תזונה מותאמת גוף ונפש">
-  <meta property="og:description" content="כליל דורי - תזונאית קלינית. ליווי נשים וגברים בתהליכי ירידה במשקל ואיזון מטבולי עם דגש על הפן הרגשי.">
-  <meta name="twitter:description" content="כליל דורי - תזונאית קלינית. ליווי נשים וגברים בתהליכי ירידה במשקל ואיזון מטבולי עם דגש על הפן הרגשי.">
+        body {
+            margin: 0;
+            padding: 0;
+            font-family: 'Assistant', sans-serif;
+            background-color: #fcfaff;
+            color: var(--text-dark);
+            overflow-x: hidden;
+        }
+
+        /* 1. TOP NAVIGATION BAR */
+        header {
+            background-color: var(--white);
+            box-shadow: 0 2px 10px rgba(0,0,0,0.1);
+            position: fixed;
+            top: 0;
+            width: 100%;
+            z-index: 1000;
+        }
+
+        nav {
+            max-width: 1200px;
+            margin: 0 auto;
+            display: flex;
+            justify-content: space-between;
+            align-items: center;
+            padding: 15px 20px;
+        }
+
+        .nav-links {
+            display: flex;
+            gap: 30px;
+            list-style: none;
+            padding: 0;
+            margin: 0;
+        }
+
+        .nav-links li a {
+            text-decoration: none;
+            color: var(--text-dark);
+            font-weight: 600;
+            transition: color 0.3s;
+        }
+
+        .nav-links li a:hover {
+            color: var(--primary-purple);
+        }
+
+        .cta-button {
+            background-color: var(--primary-purple);
+            color: white !important;
+            padding: 10px 20px;
+            border-radius: 50px;
+            text-decoration: none;
+            font-weight: bold;
+            font-size: 0.9rem;
+            transition: transform 0.2s;
+        }
+
+        .cta-button:hover {
+            transform: scale(1.05);
+        }
+
+        /* Mobile Menu Bug Fix */
+        .hamburger {
+            display: none;
+            cursor: pointer;
+            font-size: 24px;
+        }
+
+        @media (max-width: 768px) {
+            .nav-links {
+                display: none;
+                flex-direction: column;
+                position: absolute;
+                top: 100%;
+                left: 0;
+                right: 0;
+                background: white;
+                padding: 20px;
+                text-align: center;
+                box-shadow: 0 5px 10px rgba(0,0,0,0.1);
+            }
+            .nav-links.active {
+                display: flex;
+            }
+            .hamburger {
+                display: block;
+            }
+        }
+
+        /* 2. HERO SECTION */
+        .hero {
+            margin-top: 70px;
+            background-image: url('רקע תחילת אתר.jpeg');
+            background-size: cover;
+            background-position: center;
+            background-repeat: no-repeat;
+            padding: 80px 20px;
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            min-height: 500px;
+        }
+
+        .hero-container {
+            max-width: 1100px;
+            display: flex;
+            align-items: center;
+            gap: 50px;
+        }
+
+        .hero-image {
+            width: 350px;
+            height: 350px;
+            border-radius: 50%;
+            object-fit: cover;
+            border: 8px solid white;
+            box-shadow: 0 10px 30px rgba(0,0,0,0.15);
+        }
+
+        .hero-text {
+            max-width: 600px;
+            text-align: right;
+        }
+
+        @media (max-width: 768px) {
+            .hero-container {
+                flex-direction: column; /* Stack vertically on mobile */
+                text-align: center;
+            }
+            .hero-text { text-align: center; }
+            .hero-image {
+                width: 280px;
+                height: 280px;
+                order: -1; /* Image ABOVE text */
+            }
+        }
+
+        /* 3. VIDEO SUCCESS STORIES */
+        .video-section {
+            padding: 60px 20px;
+            text-align: center;
+            background: #fff;
+        }
+
+        .video-placeholder {
+            width: 100%;
+            max-width: 800px;
+            margin: 0 auto;
+            position: relative;
+            cursor: pointer;
+        }
+
+        .video-placeholder img {
+            width: 100%;
+            border-radius: 15px;
+            box-shadow: 0 5px 20px rgba(0,0,0,0.2);
+        }
+
+        .video-caption {
+            margin-top: 15px;
+            font-weight: bold;
+            font-size: 1.2rem;
+            color: var(--primary-purple);
+        }
+
+        /* 4. PRODUCTS */
+        .products { padding: 60px 20px; max-width: 1200px; margin: 0 auto; }
+        .product-card {
+            background: white;
+            border-radius: 20px;
+            padding: 30px;
+            margin-bottom: 40px;
+            box-shadow: 0 5px 15px rgba(0,0,0,0.05);
+        }
+
+        /* Product B Carousel */
+        .carousel-container {
+            display: flex;
+            overflow-x: auto;
+            gap: 15px;
+            padding: 20px 0;
+            scroll-snap-type: x mandatory;
+            scrollbar-width: thin;
+        }
+        .carousel-container img {
+            flex: 0 0 300px;
+            height: 400px;
+            object-fit: contain;
+            border-radius: 10px;
+            scroll-snap-align: center;
+            background: #f9f9f9;
+        }
+
+        /* 5. ABOUT ME SECTION */
+        .about-me {
+            padding: 60px 20px;
+            background: var(--soft-purple);
+        }
+
+        .about-container {
+            max-width: 1000px;
+            margin: 0 auto;
+            display: flex; /* Always side-by-side */
+            align-items: center;
+            gap: 30px;
+        }
+
+        .about-text { flex: 2; line-height: 1.8; }
+        .about-img-box { flex: 1; }
+        .about-img-box img {
+            width: 100%;
+            border-radius: 15px;
+            display: block;
+        }
+
+        /* 6. GOOGLE REVIEWS */
+        .google-reviews { padding: 60px 20px; text-align: center; }
+        .reviews-btn {
+            display: inline-block;
+            background: #4285F4;
+            color: white;
+            padding: 15px 30px;
+            border-radius: 8px;
+            text-decoration: none;
+            font-weight: bold;
+            margin-top: 20px;
+        }
+
+        /* 7. FOOTER */
+        footer {
+            background-image: url('עיצוב ללא שם.jpg');
+            background-size: cover;
+            background-position: center;
+            background-repeat: no-repeat;
+            padding: 80px 20px 40px;
+            text-align: center;
+            color: var(--text-dark);
+        }
+
+        .footer-icons {
+            margin-top: 30px;
+            display: flex;
+            justify-content: center;
+            gap: 25px;
+        }
+
+        .footer-icons a {
+            color: var(--primary-purple);
+            font-size: 35px;
+            transition: transform 0.2s;
+        }
+
+        .footer-icons a:hover { transform: translateY(-5px); }
+
+    </style>
 </head>
+<body>
 
-  <body>
-    <div id="root"></div>
-    <script type="module" src="/src/main.tsx"></script>
-  </body>
+    <!-- 1. NAVIGATION -->
+    <header>
+        <nav>
+            <a href="#" class="cta-button">לתיאום פגישת ייעוץ</a>
+            
+            <div class="hamburger" onclick="toggleMenu()">
+                <i class="fas fa-bars"></i>
+            </div>
+
+            <ul class="nav-links" id="navLinks">
+                <li><a href="#about">מי אני</a></li>
+                <li><a href="#products">מוצרים</a></li>
+                <li><a href="#process">התהליך בקליניקה</a></li>
+            </ul>
+        </nav>
+    </header>
+
+    <!-- 2. HERO -->
+    <section class="hero">
+        <div class="hero-container">
+            <div class="hero-text">
+                <h1>כליל דורי</h1>
+                <h3>תזונאית קלינית - מותאמת גוף ונפש</h3>
+                <p>ליווי מקצועי ואישי בדרך לשינוי אמיתי ואיזון פנימי.</p>
+            </div>
+            <img src="כליל דורי תמונת פרופיל.jpeg" alt="כליל דורי" class="hero-image">
+        </div>
+    </section>
+
+    <!-- 3. VIDEO SUCCESS -->
+    <section class="video-section">
+        <div class="video-placeholder">
+            <img src="תמונת סיפורי הצלחה אתר כליל דורי.jpg" alt="סיפורי הצלחה">
+            <div class="video-caption">לחצו על מנת לצפות בוידאו</div>
+        </div>
+    </section>
+
+    <!-- 4. PRODUCTS -->
+    <section id="products" class="products">
+        <!-- Product A -->
+        <div class="product-card">
+            <h2>חוברת מתכונים: אתחול לבטן</h2>
+            <p>חוברת מתכונים דיגיטלית שנבנתה במיוחד עבור אנשים עם רגישות לגלוטן וללקטוז, וגם עבור מי שמסתובב יום יום עם נפיחות, גזים או יציאות לא סדירות ולא מצליח להבין למה.</p>
+            <p>החוברת כוללת מגוון מתכונים קלים להכנה, המבוססים על חומרי גלם איכותיים וידידותיים למערכת העיכול, ללא גלוטן, דל לקטוז, ללא סוכר וללא ממתיקים מלאכותיים, כך שתוכלו ליהנות מאוכל טעים, מזין ומשביע מבלי להכביד על הגוף.</p>
+            <p>מעבר לרעיונות לארוחות יומיומיות, החוברת מאפשרת לבצע סוג של ריסט תזונתי לגוף, להפחית עומס ממערכת העיכול, להרגיע את הבטן ולהתחיל להרגיש קלילים יותר. זו דרך פשוטה להתחיל לאכול בצורה שמיטיבה עם הגוף, תומכת בהרגעת מערכת העיכול ומסייעת להפחית נפיחות ואי נוחות, תוך שמירה על תזונה מגוונת, טעימה ומאוזנת ביומיום. 🥗✨</p>
+        </div>
+
+        <!-- Product B -->
+        <div class="product-card">
+            <h2>קלפי חיזוק</h2>
+            <p>סט קלפים שנוצר במיוחד עבורך, כדי להעניק השראה וכלים לחיזוק הקשר עם הגוף וליצירת מערכת יחסים בריאה ורגועה יותר עם אוכל. הקלפים משלבים מסרים מעולמות התזונה והנפש.</p>
+            
+            <!-- Carousel Below Text -->
+            <div class="carousel-container">
+                <img src="כריכה לקלפי חיזוק.jpg" alt="כריכה">
+                <img src="13.png" alt="קלף 13">
+                <img src="17.png" alt="קלף 17">
+            </div>
+        </div>
+    </section>
+
+    <!-- 5. ABOUT ME -->
+    <section id="about" class="about-me">
+        <div class="about-container">
+            <div class="about-text">
+                <h2>מי אני?</h2>
+                <p>אני כליל דורי, תזונאית קלינית, בוגרת תואר ראשון B.Sc בתזונה קלינית מהאוניברסיטה העברית, עם כ- 8 שנות ניסיון בליווי אנשים לשיפור הבריאות והטמעת אורח חיים מיטבי. אני מלווה נשים וגברים בתהליכי ירידה במשקל, איזון מטבולי ושינוי הרגלים, תוך הסתכלות רחבה שמחברת בין הגוף, התזונה והעולם הרגשי. בעבודתי אני משלבת כלים מעולמות התזונה הקלינית, ה- Longevity וההתנהגות, במטרה לייצר תהליך מדויק ופרקטי, שיחזיק לאורך זמן.</p>
+                <p>לאורך השנים ליוויתי מאות אנשים בתהליכים עמוקים של שינוי, ונוכחתי להבין שהתוצאה האמיתית לא מגיעה מדיאטה, אלא מהבנה, הקשבה והתאמה אישית. לכן, אני שמה דגש משמעותי גם על ההיבטים הרגשיים וההתנהגותיים של האכילה, במיוחד בעבודה עם הפרעות אכילה ודפוסים מורכבים סביו אוכל. אני מאמינה שתזונה נכונה היא לא מגבלה, אלא כלי עוצמתי ליצירת גוף מאוזן, בריא וחזק, כזה שאפשר להתמיד בו ולהרגיש טוב באמת.</p>
+            </div>
+            <div class="about-img-box">
+                <img src="תמונת מי אני לאתר.jpeg" alt="כליל דורי">
+            </div>
+        </div>
+    </section>
+
+    <!-- 6. GOOGLE REVIEWS -->
+    <section class="google-reviews">
+        <h2>מה המטופלים אומרים?</h2>
+        <a href="https://share.google/ZNUa767hxjoUiRSkQ" target="_blank" class="reviews-btn">
+            לחצו לצפייה בכל הביקורות <i class="fab fa-google"></i>
+        </a>
+    </section>
+
+    <!-- 7. FOOTER -->
+    <footer>
+        <a href="#" class="cta-button">בואו נתחיל את התהליך שלך</a>
+        <div class="footer-icons">
+            <a href="https://www.instagram.com/clildori/" target="_blank"><i class="fab fa-instagram"></i></a>
+            <a href="mailto:clildori@gmail.com"><i class="far fa-envelope"></i></a>
+        </div>
+        <p style="margin-top: 40px; font-size: 0.8rem;">© 2024 כליל דורי - כל הזכויות שמורות</p>
+    </footer>
+
+    <script>
+        // Mobile Menu Logic
+        function toggleMenu() {
+            const links = document.getElementById('navLinks');
+            links.classList.toggle('active');
+        }
+
+        // Close menu when clicking a link
+        document.querySelectorAll('.nav-links a').forEach(link => {
+            link.addEventListener('click', () => {
+                document.getElementById('navLinks').classList.remove('active');
+            });
+        });
+    </script>
+
+</body>
 </html>
