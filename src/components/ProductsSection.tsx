@@ -1,23 +1,21 @@
 import { useState } from "react";
 import { motion, AnimatePresence } from "framer-motion";
 import { ChevronRight, ChevronLeft, ChevronDown } from "lucide-react";
-import recipeBook from "@/assets/recipe-cover.png";
-import cardsCover from "@/assets/cards-cover.png";
-import cardExample1 from "@/assets/card-example-1.jpg";
-import cardExample2 from "@/assets/card-example-2.jpg";
-import cardExample3 from "@/assets/card-example-3.jpg";
+import recipeBook from "@/assets/recipe-book.png";
+import cardsCoverNew from "@/assets/cards-cover-new.png";
+import cardSlide13 from "@/assets/card-slide-13.png";
+import cardSlide17 from "@/assets/card-slide-17.png";
 
-const cardExamples = [cardExample1, cardExample2, cardExample3];
+const cardExamples = [cardsCoverNew, cardSlide13, cardSlide17];
 
 const recipeParas = [
-  'המוצר "אתחול לבטן" - ספר המתכונים הדיגיטלי למערכת עיכול רגועה ללא גלוטן, דל לקטוז, ללא סוכר וללא ממתיקים מלאכותיים.',
-  'חוברת מתכונים דיגיטלית שנבנתה במיוחד עבור אנשים עם רגישות לגלוטן וללקטוז, וגם עבור מי שמסתובב יום יום עם נפיחות, גזים או יציאות לא סדירות ולא מצליח להבין למה. החוברת כוללת מגוון מתכונים קלים להכנה, המבוססים על חומרי גלם איכותיים וידידותיים למערכת העיכול, ללא גלוטן, דל לקטוז, ללא סוכר וללא ממתיקים מלאכותיים, כך שתוכלו ליהנות מאוכל טעים, מזין ומשביע מבלי להכביד על הגוף.',
-  'מעבר לרעיונות לארוחות יומיומיות, החוברת מאפשרת לבצע סוג של ריסט תזונתי לגוף, להפחית עומס ממערכת העיכול, להרגיע את הבטן ולהתחיל להרגיש קלילים יותר.',
-  'זו דרך פשוטה להתחיל לאכול בצורה שמיטיבה עם הגוף, תומכת בהרגעת מערכת העיכול ומסייעת להפחית נפיחות ואי נוחות, תוך שמירה על תזונה מגוונת, טעימה ומאוזנת ביומיום. 🥗✨',
+  'חוברת מתכונים דיגיטלית שנבנתה במיוחד עבור אנשים עם רגישות לגלוטן וללקטוז, וגם עבור מי שמסתובב יום יום עם נפיחות, גזים או יציאות לא סדירות ולא מצליח להבין למה.',
+  'החוברת כוללת מגוון מתכונים קלים להכנה, המבוססים על חומרי גלם איכותיים וידידותיים למערכת העיכול, ללא גלוטן, דל לקטוז, ללא סוכר וללא ממתיקים מלאכותיים, כך שתוכלו ליהנות מאוכל טעים, מזין ומשביע מבלי להכביד על הגוף.',
+  'מעבר לרעיונות לארוחות יומיומיות, החוברת מאפשרת לבצע סוג של ריסט תזונתי לגוף, להפחית עומס ממערכת העיכול, להרגיע את הבטן ולהתחיל להרגיש קלילים יותר. זו דרך פשוטה להתחיל לאכול בצורה שמיטיבה עם הגוף, תומכת בהרגעת מערכת העיכול ומסייעת להפחית נפיחות ואי נוחות, תוך שמירה על תזונה מגוונת, טעימה ומאוזנת ביומיום. 🥗✨',
 ];
 
 const cardsParas = [
-  'קלפי חיזוק - ליצירת קשר רגוע ובריא יותר עם אוכל: סט קלפים שנוצר במיוחד עבור נשים המתמודדות עם מערכת יחסים מורכבת עם אוכל, מחשבות סביב אכילה, או תחושות של אשמה ושליטה. הקלפים נועדו להעניק רגע של עצירה, התבוננות וחיזוק פנימי בתוך היום יום.',
+  'סט קלפים שנוצר במיוחד עבור נשים המתמודדות עם מערכת יחסים מורכבת עם אוכל, מחשבות סביב אכילה, או תחושות של אשמה ושליטה. הקלפים נועדו להעניק רגע של עצירה, התבוננות וחיזוק פנימי בתוך היום יום.',
   'כל קלף כולל מסר מעודד, נקודת מבט חדשה או שאלה להתבוננות, המסייעים להתחבר מחדש לגוף, לרגשות ולצרכים האמיתיים. השימוש בקלפים מאפשר ליצור מרחב קטן של מודעות וחמלה עצמית, שמזכיר שאפשר לפתח מערכת יחסים רגועה ומיטיבה יותר עם אוכל.',
   'הקלפים יכולים לשמש ככלי אישי לרגעי התבוננות במהלך היום, כחלק מתהליך אישי, או ככלי תומך בתוך תהליך טיפולי. הם מזמינים לעצור לרגע, לנשום, ולהיזכר שהדרך לשינוי מתחילה ביחס עדין יותר כלפי עצמך 🩷',
 ];
@@ -114,15 +112,6 @@ const ProductsSection = () => {
           className="max-w-4xl mx-auto"
         >
           <div className="rounded-3xl bg-muted shadow-lg overflow-hidden p-8 md:p-12">
-            {/* Cover image */}
-            <div className="flex justify-center mb-8">
-              <img
-                src={cardsCover}
-                alt="כריכת קלפי חיזוק"
-                className="w-full max-w-md h-auto object-contain rounded-2xl shadow-md"
-              />
-            </div>
-
             <div className="text-right mb-8">
               <h3 className="font-display text-2xl md:text-3xl font-bold text-foreground mb-2">קלפי חיזוק</h3>
               <p className="text-muted-foreground font-body text-sm mb-4">ליצירת קשר רגוע ובריא יותר עם אוכל</p>
@@ -160,7 +149,7 @@ const ProductsSection = () => {
               </div>
             </div>
 
-            {/* Card examples slider */}
+            {/* Card examples slider — BELOW text */}
             <div className="relative max-w-xs mx-auto">
               <button onClick={() => goCard(-1)} className="absolute top-1/2 -translate-y-1/2 -right-4 md:-right-12 z-10 w-9 h-9 rounded-full bg-background shadow-md flex items-center justify-center text-muted-foreground hover:text-foreground transition-colors active:scale-95" aria-label="הקודם">
                 <ChevronRight className="h-4 w-4" />

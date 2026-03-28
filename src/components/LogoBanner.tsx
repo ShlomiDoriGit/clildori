@@ -1,8 +1,7 @@
-import { useState } from "react";
+import { useState, useCallback } from "react";
 import { motion, AnimatePresence } from "framer-motion";
 import { Menu, X, CalendarDays } from "lucide-react";
 import logoIcon from "@/assets/logo-icon.png";
-import heroBg from "@/assets/hero-footer-bg.jpeg";
 
 const navItems = [
   { label: "התהליך בקליניקה", target: "program" },
@@ -13,23 +12,20 @@ const navItems = [
 const LogoBanner = () => {
   const [menuOpen, setMenuOpen] = useState(false);
 
-  const scrollTo = (id: string) => {
+  const scrollTo = useCallback((id: string) => {
     setMenuOpen(false);
-    document.getElementById(id)?.scrollIntoView({ behavior: "smooth" });
-  };
+    // Small delay to allow menu close animation before scrolling
+    setTimeout(() => {
+      document.getElementById(id)?.scrollIntoView({ behavior: "smooth" });
+    }, 100);
+  }, []);
 
   return (
     <motion.header
       initial={{ opacity: 0 }}
       animate={{ opacity: 1 }}
       transition={{ duration: 0.5 }}
-      className="sticky top-0 z-50 w-full border-b border-white/20 backdrop-blur-sm"
-      style={{
-        backgroundImage: `url(${heroBg})`,
-        backgroundSize: "cover",
-        backgroundPosition: "center top",
-        backgroundRepeat: "no-repeat",
-      }}
+      className="sticky top-0 z-50 w-full bg-white shadow-sm border-b border-gray-100"
     >
       <div className="container mx-auto px-4 md:px-6 flex items-center justify-between h-18 md:h-20">
         {/* Right side: Logo */}
@@ -72,7 +68,11 @@ const LogoBanner = () => {
         </motion.button>
 
         {/* Mobile menu button */}
-        <button onClick={() => setMenuOpen(!menuOpen)} className="md:hidden text-foreground p-1" aria-label="תפריט">
+        <button
+          onClick={() => setMenuOpen(!menuOpen)}
+          className="md:hidden text-foreground p-2 min-w-[44px] min-h-[44px] flex items-center justify-center"
+          aria-label="תפריט"
+        >
           {menuOpen ? <X className="h-6 w-6" /> : <Menu className="h-6 w-6" />}
         </button>
       </div>
@@ -84,21 +84,22 @@ const LogoBanner = () => {
             initial={{ opacity: 0, height: 0 }}
             animate={{ opacity: 1, height: "auto" }}
             exit={{ opacity: 0, height: 0 }}
-            transition={{ duration: 0.25 }}
-            className="md:hidden bg-white/80 backdrop-blur-md border-t border-border/40 px-6 py-4 flex flex-col gap-1 overflow-hidden"
+            transition={{ duration: 0.3, ease: "easeInOut" }}
+            className="md:hidden bg-white border-t border-gray-100 px-6 py-4 flex flex-col gap-1"
+            style={{ willChange: "height, opacity" }}
           >
             {navItems.map((item) => (
               <button
                 key={item.label}
                 onClick={() => scrollTo(item.target)}
-                className="text-right px-4 py-3 rounded-xl text-sm font-display font-semibold text-foreground/70 hover:text-primary hover:bg-muted transition-all"
+                className="text-right px-4 py-3 rounded-xl text-sm font-display font-semibold text-foreground/70 hover:text-primary hover:bg-muted transition-all active:bg-muted"
               >
                 {item.label}
               </button>
             ))}
             <button
               onClick={() => { setMenuOpen(false); window.open("https://wa.me/972559272658", "_blank"); }}
-              className="mt-2 flex items-center justify-center gap-2 rounded-full bg-secondary text-secondary-foreground px-6 py-3 text-sm font-display font-bold"
+              className="mt-2 flex items-center justify-center gap-2 rounded-full bg-secondary text-secondary-foreground px-6 py-3 text-sm font-display font-bold active:scale-95 transition-transform"
             >
               <CalendarDays className="h-4 w-4" />
               לתיאום פגישת ייעוץ
