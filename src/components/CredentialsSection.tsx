@@ -1,4 +1,5 @@
 import { motion } from "framer-motion";
+import { Award } from "lucide-react";
 import aboutMePhoto from "@/assets/about-me-new.jpeg";
 import certDietitian from "@/assets/cert-dietitian.jpeg";
 import certUniversity from "@/assets/cert-university.jpeg";
@@ -13,26 +14,34 @@ const certs = [
 ];
 
 const CredentialsSection = () => (
-  <section id="about" className="py-20 md:py-28 bg-muted">
-    <div className="container mx-auto px-6">
+  <section id="about" className="section-padding bg-muted relative overflow-hidden">
+    {/* Decorative blob */}
+    <div className="absolute top-0 left-0 w-96 h-96 bg-purple-200/20 rounded-full blur-3xl -translate-x-1/2 -translate-y-1/2 pointer-events-none" />
+
+    <div className="container mx-auto px-6 md:px-8 relative z-10">
       {/* About me */}
-      <motion.h2
+      <motion.div
         initial={{ opacity: 0, y: 20 }}
         whileInView={{ opacity: 1, y: 0 }}
         viewport={{ once: true, amount: 0.2 }}
         transition={{ duration: 0.6 }}
-        className="font-display text-3xl md:text-4xl font-bold text-foreground text-center mb-10"
+        className="text-center mb-12"
       >
-        מי אני
-      </motion.h2>
+        <span className="inline-block font-body text-sm font-semibold text-primary bg-primary/10 rounded-full px-4 py-1.5 mb-4">
+          הכירו אותי
+        </span>
+        <h2 className="font-display text-3xl md:text-5xl font-bold text-foreground">
+          מי אני
+        </h2>
+      </motion.div>
 
-      {/* Side-by-side: text + photo — always row on all screens */}
+      {/* Card with side-by-side: text + photo — always row on all screens */}
       <motion.div
-        initial={{ opacity: 0 }}
-        whileInView={{ opacity: 1 }}
-        viewport={{ once: true, amount: 0.2 }}
-        transition={{ delay: 0.15, duration: 0.5 }}
-        className="max-w-4xl mx-auto mb-16 flex items-center gap-5 md:gap-10"
+        initial={{ opacity: 0, y: 20 }}
+        whileInView={{ opacity: 1, y: 0 }}
+        viewport={{ once: true, amount: 0.15 }}
+        transition={{ delay: 0.15, duration: 0.6 }}
+        className="max-w-5xl mx-auto mb-20 bg-white rounded-3xl shadow-xl border border-gray-100 p-6 md:p-10 flex items-center gap-5 md:gap-10"
         style={{ flexDirection: "row", flexWrap: "nowrap" }}
       >
         {/* Text — right side (RTL) */}
@@ -50,24 +59,29 @@ const CredentialsSection = () => (
           <img
             src={aboutMePhoto}
             alt="כליל דורי - תזונאית קלינית"
-            className="w-[100px] sm:w-[140px] md:w-52 lg:w-60 rounded-2xl object-cover shadow-lg"
+            className="w-[90px] sm:w-[130px] md:w-48 lg:w-56 rounded-2xl object-cover shadow-lg ring-4 ring-purple-100"
             style={{ aspectRatio: "3/4" }}
           />
         </div>
       </motion.div>
 
       {/* Certificates */}
-      <motion.h3
-        initial={{ opacity: 0, y: 16 }}
+      <motion.div
+        initial={{ opacity: 0, y: 20 }}
         whileInView={{ opacity: 1, y: 0 }}
         viewport={{ once: true, amount: 0.2 }}
         transition={{ delay: 0.2, duration: 0.5 }}
-        className="font-display text-xl md:text-2xl font-bold text-foreground text-center mb-10"
+        className="text-center mb-10"
       >
-        הסמכות מקצועיות
-      </motion.h3>
+        <div className="inline-flex items-center gap-2 mb-3">
+          <Award className="h-6 w-6 text-primary" />
+          <h3 className="font-display text-xl md:text-2xl font-bold text-foreground">
+            הסמכות מקצועיות
+          </h3>
+        </div>
+      </motion.div>
 
-      <div className="max-w-xl mx-auto grid grid-cols-2 gap-5">
+      <div className="max-w-2xl mx-auto grid grid-cols-2 gap-5">
         {certs.map((cert, i) => (
           <motion.div
             key={i}
@@ -75,15 +89,16 @@ const CredentialsSection = () => (
             whileInView={{ opacity: 1, y: 0 }}
             viewport={{ once: true, amount: 0.2 }}
             transition={{ delay: i * 0.1, duration: 0.5 }}
-            className="rounded-xl border-2 border-border bg-background shadow-sm overflow-hidden p-2"
+            whileHover={{ y: -4, boxShadow: "0 12px 30px rgba(0,0,0,0.1)" }}
+            className="rounded-2xl bg-white border border-gray-100 shadow-md overflow-hidden p-3 transition-all duration-300"
           >
             <img
               src={cert.image}
               alt={cert.alt}
-              className="w-full max-w-[200px] mx-auto h-auto object-contain rounded-lg"
+              className="w-full max-w-[220px] mx-auto h-auto object-contain rounded-xl"
               loading="lazy"
             />
-            <p className="text-center font-body text-[11px] text-muted-foreground mt-2 leading-tight">{cert.alt}</p>
+            <p className="text-center font-body text-[11px] text-muted-foreground mt-2.5 leading-tight px-2">{cert.alt}</p>
           </motion.div>
         ))}
       </div>

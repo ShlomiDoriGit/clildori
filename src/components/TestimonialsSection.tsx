@@ -1,6 +1,6 @@
 import { useState, useEffect } from "react";
 import { motion, AnimatePresence } from "framer-motion";
-import { ChevronRight, ChevronLeft } from "lucide-react";
+import { ChevronRight, ChevronLeft, Play, Star } from "lucide-react";
 import successThumbnail from "@/assets/success-thumbnail.jpeg";
 import testimonial1 from "@/assets/testimonial-1.jpg";
 import testimonial2 from "@/assets/testimonial-2.jpg";
@@ -28,72 +28,87 @@ const TestimonialsSection = () => {
   return (
     <>
       {/* Video Section */}
-      <section className="py-20 md:py-28 bg-background">
-        <div className="container mx-auto px-6">
-          <motion.h2
-            initial={{ opacity: 0, y: 20 }}
-            whileInView={{ opacity: 1, y: 0 }}
-            viewport={{ once: true, amount: 0.2 }}
-            transition={{ duration: 0.6 }}
-            className="font-display text-3xl md:text-4xl font-bold text-foreground text-center mb-12"
-          >
-            צפו בסיפורי ההצלחה
-          </motion.h2>
-
+      <section className="section-padding bg-muted relative">
+        <div className="container mx-auto px-6 md:px-8">
           <motion.div
             initial={{ opacity: 0, y: 20 }}
             whileInView={{ opacity: 1, y: 0 }}
             viewport={{ once: true, amount: 0.2 }}
-            transition={{ delay: 0.15, duration: 0.6 }}
-            className="max-w-2xl mx-auto rounded-3xl overflow-hidden shadow-xl"
+            transition={{ duration: 0.6 }}
+            className="text-center mb-12"
           >
-            <a href="https://rb.gy/vfpdqu" target="_blank" rel="noopener noreferrer" className="block relative group">
+            <span className="inline-block font-body text-sm font-semibold text-primary bg-primary/10 rounded-full px-4 py-1.5 mb-4">
+              הצלחות אמיתיות
+            </span>
+            <h2 className="font-display text-3xl md:text-5xl font-bold text-foreground">
+              סיפורי הצלחה
+            </h2>
+          </motion.div>
+
+          <motion.div
+            initial={{ opacity: 0, y: 30 }}
+            whileInView={{ opacity: 1, y: 0 }}
+            viewport={{ once: true, amount: 0.2 }}
+            transition={{ delay: 0.15, duration: 0.6 }}
+            className="max-w-3xl mx-auto"
+          >
+            <a
+              href="https://rb.gy/vfpdqu"
+              target="_blank"
+              rel="noopener noreferrer"
+              className="block relative group rounded-3xl overflow-hidden shadow-2xl glow-purple"
+            >
               <div className="relative aspect-video">
-                <img src={successThumbnail} alt="סיפורי הצלחה" className="w-full h-full object-cover" />
-                <div className="absolute inset-0 bg-foreground/20 group-hover:bg-foreground/30 transition-colors flex items-center justify-center">
-                  <div className="w-20 h-20 rounded-full bg-primary/90 flex items-center justify-center group-hover:scale-110 transition-transform duration-300 shadow-lg">
-                    <svg className="w-8 h-8 text-primary-foreground mr-[-2px]" fill="currentColor" viewBox="0 0 24 24">
-                      <path d="M8 5v14l11-7z" />
-                    </svg>
-                  </div>
+                <img src={successThumbnail} alt="סיפורי הצלחה" className="w-full h-full object-cover transition-transform duration-700 group-hover:scale-105" />
+                <div className="absolute inset-0 bg-gradient-to-t from-black/50 via-black/20 to-transparent group-hover:from-black/60 transition-all duration-300" />
+                <div className="absolute inset-0 flex items-center justify-center">
+                  <motion.div
+                    whileHover={{ scale: 1.15 }}
+                    className="w-20 h-20 md:w-24 md:h-24 rounded-full bg-white/95 flex items-center justify-center shadow-2xl group-hover:bg-white transition-colors"
+                  >
+                    <Play className="w-8 h-8 md:w-10 md:h-10 text-primary fill-primary mr-[-3px]" />
+                  </motion.div>
+                </div>
+                <div className="absolute bottom-6 left-0 right-0 text-center">
+                  <p className="text-white font-display font-bold text-lg drop-shadow-lg">
+                    לחצו על מנת לצפות בוידאו
+                  </p>
                 </div>
               </div>
             </a>
           </motion.div>
-
-          <p className="text-center text-muted-foreground font-body text-base mt-6 font-semibold">
-            לחצו על מנת לצפות בוידאו
-          </p>
         </div>
       </section>
 
       {/* Testimonials Slider */}
-      <section className="py-20 md:py-28 bg-muted">
-        <div className="container mx-auto px-6">
-          <motion.h2
+      <section className="section-padding bg-white">
+        <div className="container mx-auto px-6 md:px-8">
+          <motion.div
             initial={{ opacity: 0, y: 20 }}
             whileInView={{ opacity: 1, y: 0 }}
             viewport={{ once: true, amount: 0.2 }}
             transition={{ duration: 0.6 }}
-            className="font-display text-3xl md:text-4xl font-bold text-foreground text-center mb-12"
+            className="text-center mb-12"
           >
-            מטופלים מספרים
-          </motion.h2>
+            <h2 className="font-display text-3xl md:text-5xl font-bold text-foreground">
+              מטופלים מספרים
+            </h2>
+          </motion.div>
 
           <div className="relative max-w-sm mx-auto">
             <button
               onClick={() => go(-1)}
-              className="absolute top-1/2 -translate-y-1/2 -right-4 md:-right-14 z-10 w-10 h-10 rounded-full bg-background shadow-md flex items-center justify-center text-muted-foreground hover:text-foreground transition-colors active:scale-95"
+              className="absolute top-1/2 -translate-y-1/2 -right-4 md:-right-16 z-10 w-12 h-12 rounded-full bg-white shadow-lg border border-gray-100 flex items-center justify-center text-muted-foreground hover:text-primary hover:shadow-xl hover:border-primary/20 transition-all active:scale-95"
               aria-label="הקודם"
             >
-              <ChevronRight className="h-5 w-5" />
+              <ChevronRight className="h-6 w-6" />
             </button>
             <button
               onClick={() => go(1)}
-              className="absolute top-1/2 -translate-y-1/2 -left-4 md:-left-14 z-10 w-10 h-10 rounded-full bg-background shadow-md flex items-center justify-center text-muted-foreground hover:text-foreground transition-colors active:scale-95"
+              className="absolute top-1/2 -translate-y-1/2 -left-4 md:-left-16 z-10 w-12 h-12 rounded-full bg-white shadow-lg border border-gray-100 flex items-center justify-center text-muted-foreground hover:text-primary hover:shadow-xl hover:border-primary/20 transition-all active:scale-95"
               aria-label="הבא"
             >
-              <ChevronLeft className="h-5 w-5" />
+              <ChevronLeft className="h-6 w-6" />
             </button>
 
             <AnimatePresence mode="wait">
@@ -103,23 +118,27 @@ const TestimonialsSection = () => {
                 animate={{ opacity: 1, x: 0 }}
                 exit={{ opacity: 0, x: -60 }}
                 transition={{ duration: 0.4, ease: "easeInOut" }}
-                className="rounded-2xl overflow-hidden shadow-lg bg-background"
+                className="rounded-3xl overflow-hidden shadow-xl border border-gray-100"
               >
                 <img
                   src={testimonials[current].image}
                   alt={testimonials[current].alt}
-                  className="w-full h-[420px] object-contain"
+                  className="w-full h-[420px] object-contain bg-white"
                   loading="lazy"
                 />
               </motion.div>
             </AnimatePresence>
 
-            <div className="flex justify-center gap-2 mt-6">
+            <div className="flex justify-center gap-2.5 mt-8">
               {testimonials.map((_, i) => (
                 <button
                   key={i}
                   onClick={() => setCurrent(i)}
-                  className={`h-2.5 rounded-full transition-all duration-300 ${i === current ? "bg-primary w-6" : "bg-muted-foreground/30 w-2.5"}`}
+                  className={`rounded-full transition-all duration-300 ${
+                    i === current
+                      ? "bg-primary w-8 h-3"
+                      : "bg-gray-200 w-3 h-3 hover:bg-gray-300"
+                  }`}
                   aria-label={`עדות ${i + 1}`}
                 />
               ))}
@@ -129,24 +148,23 @@ const TestimonialsSection = () => {
       </section>
 
       {/* Google Reviews Section */}
-      <section className="py-16 md:py-24 bg-gradient-to-b from-background to-muted/30">
-        <div className="container mx-auto px-6">
+      <section className="py-16 md:py-20 bg-muted">
+        <div className="container mx-auto px-6 md:px-8">
           <motion.div
             initial={{ opacity: 0, y: 20 }}
             whileInView={{ opacity: 1, y: 0 }}
             viewport={{ once: true, amount: 0.2 }}
             transition={{ duration: 0.6 }}
-            className="max-w-lg mx-auto"
+            className="max-w-xl mx-auto"
           >
             <a
               href="https://share.google/ZNUa767hxjoUiRSkQ"
               target="_blank"
               rel="noopener noreferrer"
-              className="block rounded-3xl border-2 border-primary/20 bg-white shadow-lg hover:shadow-2xl transition-all duration-300 p-10 text-center group hover:border-primary/40"
+              className="block rounded-3xl bg-white shadow-lg hover:shadow-2xl transition-all duration-300 p-10 md:p-12 text-center group border border-gray-100 hover:border-primary/20"
             >
               <div className="flex items-center justify-center gap-3 mb-5">
-                {/* Google G icon */}
-                <svg className="w-12 h-12" viewBox="0 0 48 48">
+                <svg className="w-11 h-11" viewBox="0 0 48 48">
                   <path fill="#EA4335" d="M24 9.5c3.54 0 6.71 1.22 9.21 3.6l6.85-6.85C35.9 2.38 30.47 0 24 0 14.62 0 6.51 5.38 2.56 13.22l7.98 6.19C12.43 13.72 17.74 9.5 24 9.5z"/>
                   <path fill="#4285F4" d="M46.98 24.55c0-1.57-.15-3.09-.38-4.55H24v9.02h12.94c-.58 2.96-2.26 5.48-4.78 7.18l7.73 6c4.51-4.18 7.09-10.36 7.09-17.65z"/>
                   <path fill="#FBBC05" d="M10.53 28.59a14.5 14.5 0 0 1 0-9.18l-7.98-6.19a24.01 24.01 0 0 0 0 21.56l7.98-6.19z"/>
@@ -154,19 +172,17 @@ const TestimonialsSection = () => {
                 </svg>
                 <span className="font-display text-2xl font-bold text-foreground">ביקורות Google</span>
               </div>
-              <div className="flex items-center justify-center gap-1.5 mb-6">
+              <div className="flex items-center justify-center gap-1 mb-6">
                 {[1,2,3,4,5].map(s => (
-                  <svg key={s} className="w-7 h-7 text-yellow-400 drop-shadow-sm" fill="currentColor" viewBox="0 0 20 20">
-                    <path d="M9.049 2.927c.3-.921 1.603-.921 1.902 0l1.07 3.292a1 1 0 00.95.69h3.462c.969 0 1.371 1.24.588 1.81l-2.8 2.034a1 1 0 00-.364 1.118l1.07 3.292c.3.921-.755 1.688-1.54 1.118l-2.8-2.034a1 1 0 00-1.175 0l-2.8 2.034c-.784.57-1.838-.197-1.539-1.118l1.07-3.292a1 1 0 00-.364-1.118L2.98 8.72c-.783-.57-.38-1.81.588-1.81h3.461a1 1 0 00.951-.69l1.07-3.292z"/>
-                  </svg>
+                  <Star key={s} className="w-7 h-7 text-yellow-400 fill-yellow-400" />
                 ))}
               </div>
-              <motion.p
-                whileHover={{ scale: 1.02 }}
-                className="inline-block font-display text-lg font-bold text-white bg-primary rounded-full px-8 py-3 shadow-md group-hover:shadow-lg transition-all"
+              <motion.span
+                whileHover={{ scale: 1.03 }}
+                className="inline-flex items-center gap-2 font-display text-base font-bold text-white bg-gradient-purple rounded-full px-8 py-3.5 shadow-md group-hover:shadow-lg transition-all"
               >
                 לחצו לצפייה בכל הביקורות
-              </motion.p>
+              </motion.span>
             </a>
           </motion.div>
         </div>

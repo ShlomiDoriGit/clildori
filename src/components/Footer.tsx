@@ -14,34 +14,35 @@ const Footer = () => (
       backgroundRepeat: "no-repeat",
     }}
   >
-    {/* Logo watermark — single instance, positioned to the side */}
+    {/* Overlay for readability */}
+    <div className="absolute inset-0 bg-white/60 backdrop-blur-[2px]" />
+
+    {/* Logo watermark */}
     <img
       src={logoIcon}
       alt=""
-      className="absolute bottom-8 left-8 h-24 md:h-32 w-auto object-contain opacity-[0.08] pointer-events-none"
-      style={{ background: "transparent" }}
+      className="absolute bottom-8 left-8 h-28 md:h-36 w-auto object-contain opacity-[0.06] pointer-events-none"
     />
 
-    <div className="container mx-auto px-6 text-center relative z-10">
-      <motion.h3
-        initial={{ opacity: 0, y: 16 }}
+    <div className="container mx-auto px-6 md:px-8 text-center relative z-10">
+      <motion.div
+        initial={{ opacity: 0, y: 20 }}
         whileInView={{ opacity: 1, y: 0 }}
         viewport={{ once: true }}
-        transition={{ duration: 0.5 }}
-        className="font-display text-3xl md:text-4xl font-bold text-foreground mb-2"
+        transition={{ duration: 0.6 }}
       >
-        כליל דורי
-      </motion.h3>
-
-      <motion.p
-        initial={{ opacity: 0 }}
-        whileInView={{ opacity: 1 }}
-        viewport={{ once: true }}
-        transition={{ delay: 0.15 }}
-        className="text-muted-foreground font-body text-lg mb-8"
-      >
-        תהליך תזונתי מותאם אישית לגוף ולנפש
-      </motion.p>
+        <img
+          src={logoIcon}
+          alt="כליל דורי"
+          className="h-16 md:h-20 w-auto mx-auto mb-4 object-contain"
+        />
+        <h3 className="font-display text-3xl md:text-4xl font-bold text-foreground mb-2">
+          כליל דורי
+        </h3>
+        <p className="text-muted-foreground font-body text-lg mb-10 max-w-md mx-auto">
+          תהליך תזונתי מותאם אישית לגוף ולנפש
+        </p>
+      </motion.div>
 
       <motion.a
         href="https://wa.me/972559272658"
@@ -50,42 +51,44 @@ const Footer = () => (
         initial={{ opacity: 0, y: 16 }}
         whileInView={{ opacity: 1, y: 0 }}
         viewport={{ once: true }}
-        transition={{ delay: 0.25, duration: 0.5 }}
-        whileHover={{ scale: 1.04 }}
+        transition={{ delay: 0.2, duration: 0.5 }}
+        whileHover={{ scale: 1.05, boxShadow: "0 12px 40px rgba(94, 23, 235, 0.35)" }}
         whileTap={{ scale: 0.97 }}
-        className="inline-flex items-center gap-2 rounded-full bg-secondary text-secondary-foreground px-10 py-4 text-lg font-display font-bold shadow-lg hover:shadow-xl transition-shadow mb-10"
+        className="inline-flex items-center gap-3 rounded-full bg-gradient-purple text-white px-10 py-4 text-lg font-display font-bold shadow-xl transition-all mb-10"
       >
         <CalendarDays className="h-5 w-5" />
         לקביעת שיחת היכרות
       </motion.a>
 
-      {/* Social icons — icons only, no text */}
+      {/* Social icons */}
       <motion.div
         initial={{ opacity: 0 }}
         whileInView={{ opacity: 1 }}
         viewport={{ once: true }}
         transition={{ delay: 0.35 }}
-        className="flex items-center justify-center gap-6 mb-8"
+        className="flex items-center justify-center gap-5 mb-10"
       >
         <a
           href="https://www.instagram.com/clildori/"
           target="_blank"
           rel="noopener noreferrer"
-          className="w-12 h-12 rounded-full bg-white/80 shadow-md flex items-center justify-center text-muted-foreground hover:text-primary hover:shadow-lg hover:bg-white transition-all duration-300"
+          className="w-14 h-14 rounded-2xl bg-white shadow-lg border border-gray-100 flex items-center justify-center text-muted-foreground hover:text-primary hover:shadow-xl hover:border-primary/20 hover:-translate-y-1 transition-all duration-300"
           aria-label="Instagram"
         >
-          <Instagram className="h-6 w-6" />
+          <Instagram className="h-7 w-7" />
         </a>
         <a
           href="mailto:clildori@gmail.com"
-          className="w-12 h-12 rounded-full bg-white/80 shadow-md flex items-center justify-center text-muted-foreground hover:text-primary hover:shadow-lg hover:bg-white transition-all duration-300"
+          className="w-14 h-14 rounded-2xl bg-white shadow-lg border border-gray-100 flex items-center justify-center text-muted-foreground hover:text-primary hover:shadow-xl hover:border-primary/20 hover:-translate-y-1 transition-all duration-300"
           aria-label="Email"
         >
-          <Mail className="h-6 w-6" />
+          <Mail className="h-7 w-7" />
         </a>
       </motion.div>
 
-      <p className="text-xs text-muted-foreground/60 font-body mt-4">
+      <div className="h-px bg-gradient-to-r from-transparent via-gray-300 to-transparent max-w-md mx-auto mb-6" />
+
+      <p className="text-xs text-muted-foreground/60 font-body">
         © {new Date().getFullYear()} כליל דורי — כל הזכויות שמורות
       </p>
     </div>
