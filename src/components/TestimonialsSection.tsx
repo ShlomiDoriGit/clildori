@@ -1,6 +1,6 @@
 import { useState, useEffect } from "react";
 import { motion, AnimatePresence } from "framer-motion";
-import { ChevronRight, ChevronLeft, Play, Star } from "lucide-react";
+import { ChevronRight, ChevronLeft, Play, Star, ExternalLink } from "lucide-react";
 import successThumbnail from "@/assets/success-thumbnail.jpeg";
 import testimonial1 from "@/assets/testimonial-1.jpg";
 import testimonial2 from "@/assets/testimonial-2.jpg";
@@ -9,9 +9,9 @@ import testimonial4 from "@/assets/testimonial-4.jpg";
 
 const testimonials = [
   { image: testimonial1, alt: "תוצאות מדהימות - לפני ואחרי" },
-  { image: testimonial2, alt: "הכולסטרול ירד מ-400 ל-100" },
-  { image: testimonial3, alt: "את לא רק דיאטנית את גם מנטורית" },
-  { image: testimonial4, alt: "שיפור משמעותי ומשמח" },
+  { image: testimonial2, alt: "שיפור משמעותי בבריאות" },
+  { image: testimonial3, alt: "חוויה מעולה עם כליל" },
+  { image: testimonial4, alt: "שינוי אמיתי ובריא" },
 ];
 
 const TestimonialsSection = () => {
@@ -37,9 +37,6 @@ const TestimonialsSection = () => {
             transition={{ duration: 0.6 }}
             className="text-center mb-12"
           >
-            <span className="inline-block font-body text-sm font-semibold text-primary bg-primary/10 rounded-full px-4 py-1.5 mb-4">
-              הצלחות אמיתיות
-            </span>
             <h2 className="font-display text-3xl md:text-5xl font-bold text-foreground">
               סיפורי הצלחה
             </h2>
@@ -50,13 +47,13 @@ const TestimonialsSection = () => {
             whileInView={{ opacity: 1, y: 0 }}
             viewport={{ once: true, amount: 0.2 }}
             transition={{ delay: 0.15, duration: 0.6 }}
-            className="max-w-3xl mx-auto"
+            className="max-w-xl mx-auto"
           >
             <a
               href="https://rb.gy/vfpdqu"
               target="_blank"
               rel="noopener noreferrer"
-              className="block relative group rounded-3xl overflow-hidden shadow-2xl glow-purple"
+              className="block relative group rounded-3xl overflow-hidden shadow-xl glow-purple"
             >
               <div className="relative aspect-video">
                 <img src={successThumbnail} alt="סיפורי הצלחה" className="w-full h-full object-cover transition-transform duration-700 group-hover:scale-105" />
@@ -64,13 +61,13 @@ const TestimonialsSection = () => {
                 <div className="absolute inset-0 flex items-center justify-center">
                   <motion.div
                     whileHover={{ scale: 1.15 }}
-                    className="w-20 h-20 md:w-24 md:h-24 rounded-full bg-white/95 flex items-center justify-center shadow-2xl group-hover:bg-white transition-colors"
+                    className="w-16 h-16 md:w-20 md:h-20 rounded-full bg-white/95 flex items-center justify-center shadow-2xl group-hover:bg-white transition-colors"
                   >
-                    <Play className="w-8 h-8 md:w-10 md:h-10 text-primary fill-primary mr-[-3px]" />
+                    <Play className="w-6 h-6 md:w-8 md:h-8 text-primary fill-primary mr-[-2px]" />
                   </motion.div>
                 </div>
-                <div className="absolute bottom-6 left-0 right-0 text-center">
-                  <p className="text-white font-display font-bold text-lg drop-shadow-lg">
+                <div className="absolute bottom-4 left-0 right-0 text-center">
+                  <p className="text-white font-display font-bold text-sm md:text-base drop-shadow-lg">
                     לחצו על מנת לצפות בוידאו
                   </p>
                 </div>
@@ -118,12 +115,12 @@ const TestimonialsSection = () => {
                 animate={{ opacity: 1, x: 0 }}
                 exit={{ opacity: 0, x: -60 }}
                 transition={{ duration: 0.4, ease: "easeInOut" }}
-                className="rounded-3xl overflow-hidden shadow-xl border border-gray-100"
+                className="rounded-3xl overflow-hidden shadow-xl"
               >
                 <img
                   src={testimonials[current].image}
                   alt={testimonials[current].alt}
-                  className="w-full h-[420px] object-contain bg-white"
+                  className="w-full aspect-[3/4] object-cover"
                   loading="lazy"
                 />
               </motion.div>
@@ -183,6 +180,70 @@ const TestimonialsSection = () => {
               >
                 לחצו לצפייה בכל הביקורות
               </motion.span>
+            </a>
+          </motion.div>
+        </div>
+      </section>
+
+      {/* Article Section — כתבה */}
+      <section className="section-padding bg-white">
+        <div className="container mx-auto px-6 md:px-8">
+          <motion.div
+            initial={{ opacity: 0, y: 20 }}
+            whileInView={{ opacity: 1, y: 0 }}
+            viewport={{ once: true, amount: 0.2 }}
+            transition={{ duration: 0.6 }}
+            className="text-center mb-12"
+          >
+            <span className="inline-block font-body text-sm font-semibold text-primary bg-primary/10 rounded-full px-4 py-1.5 mb-4">
+              בתקשורת
+            </span>
+            <h2 className="font-display text-3xl md:text-5xl font-bold text-foreground">
+              כליל דורי בתקשורת
+            </h2>
+          </motion.div>
+
+          <motion.div
+            initial={{ opacity: 0, y: 30 }}
+            whileInView={{ opacity: 1, y: 0 }}
+            viewport={{ once: true, amount: 0.2 }}
+            transition={{ delay: 0.15, duration: 0.6 }}
+            className="max-w-2xl mx-auto"
+          >
+            <a
+              href="https://www.makorrishon.co.il/good-to-know/article/174541"
+              target="_blank"
+              rel="noopener noreferrer"
+              className="block rounded-3xl bg-muted border border-gray-100 shadow-lg hover:shadow-2xl transition-all duration-300 overflow-hidden group"
+            >
+              {/* Article image */}
+              <div className="relative h-48 md:h-64 overflow-hidden">
+                <img
+                  src={successThumbnail}
+                  alt="כתבה על כליל דורי"
+                  className="w-full h-full object-cover transition-transform duration-700 group-hover:scale-105"
+                />
+                <div className="absolute inset-0 bg-gradient-to-t from-black/60 via-transparent to-transparent" />
+                <div className="absolute bottom-4 right-6">
+                  <span className="bg-white/90 backdrop-blur-sm text-primary font-display font-bold text-xs rounded-full px-3 py-1.5">
+                    מקור ראשון
+                  </span>
+                </div>
+              </div>
+
+              {/* Article content */}
+              <div className="p-6 md:p-8 text-right">
+                <h3 className="font-display text-xl md:text-2xl font-bold text-foreground mb-2 group-hover:text-primary transition-colors">
+                  ירידה במשקל מבלי לוותר — איך תזונה מותאמת אישית משנה את החוקים
+                </h3>
+                <p className="text-sm text-muted-foreground font-body mb-4">
+                  מאת כליל דורי, תזונאית קלינית
+                </p>
+                <span className="inline-flex items-center gap-2 text-primary font-display font-semibold text-sm group-hover:underline">
+                  לצפייה בכתבה המלאה
+                  <ExternalLink className="h-4 w-4" />
+                </span>
+              </div>
             </a>
           </motion.div>
         </div>

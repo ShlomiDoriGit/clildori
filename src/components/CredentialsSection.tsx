@@ -35,33 +35,35 @@ const CredentialsSection = () => (
         </h2>
       </motion.div>
 
-      {/* Card with side-by-side: text + photo — always row on all screens */}
+      {/* Card: On mobile — image on top, text below. On desktop — side by side */}
       <motion.div
         initial={{ opacity: 0, y: 20 }}
         whileInView={{ opacity: 1, y: 0 }}
         viewport={{ once: true, amount: 0.15 }}
         transition={{ delay: 0.15, duration: 0.6 }}
-        className="max-w-5xl mx-auto mb-20 bg-white rounded-3xl shadow-xl border border-gray-100 p-6 md:p-10 flex items-center gap-5 md:gap-10"
-        style={{ flexDirection: "row", flexWrap: "nowrap" }}
+        className="max-w-5xl mx-auto mb-20 bg-white rounded-3xl shadow-xl border border-gray-100 p-6 md:p-10"
       >
-        {/* Text — right side (RTL) */}
-        <div className="flex-1 min-w-0 text-right">
-          <p className="text-muted-foreground font-body text-sm sm:text-base md:text-lg leading-relaxed mb-4">
-            אני כליל דורי, תזונאית קלינית, בוגרת תואר ראשון B.Sc בתזונה קלינית מהאוניברסיטה העברית, עם כ- 8 שנות ניסיון בליווי אנשים לשיפור הבריאות והטמעת אורח חיים מיטבי. אני מלווה נשים וגברים בתהליכי ירידה במשקל, איזון מטבולי ושינוי הרגלים, תוך הסתכלות רחבה שמחברת בין הגוף, התזונה והעולם הרגשי. בעבודתי אני משלבת כלים מעולמות התזונה הקלינית, ה- Longevity וההתנהגות, במטרה לייצר תהליך מדויק ופרקטי, שיחזיק לאורך זמן.
-          </p>
-          <p className="text-muted-foreground font-body text-sm sm:text-base md:text-lg leading-relaxed">
-            לאורך השנים ליוויתי מאות אנשים בתהליכים עמוקים של שינוי, ונוכחתי להבין שהתוצאה האמיתית לא מגיעה מדיאטה, אלא מהבנה, הקשבה והתאמה אישית. לכן, אני שמה דגש משמעותי גם על ההיבטים הרגשיים וההתנהגותיים של האכילה, במיוחד בעבודה עם הפרעות אכילה ודפוסים מורכבים סביב אוכל. אני מאמינה שתזונה נכונה היא לא מגבלה, אלא כלי עוצמתי ליצירת גוף מאוזן, בריא וחזק, כזה שאפשר להתמיד בו ולהרגיש טוב באמת.
-          </p>
-        </div>
+        {/* Mobile: column (image first), Desktop: row (text first in RTL) */}
+        <div className="flex flex-col md:flex-row items-center gap-6 md:gap-10">
+          {/* Photo — on mobile appears FIRST (top), on desktop appears on left side */}
+          <div className="shrink-0 order-first md:order-last">
+            <img
+              src={aboutMePhoto}
+              alt="כליל דורי - תזונאית קלינית"
+              className="w-[200px] sm:w-[220px] md:w-48 lg:w-56 rounded-2xl object-cover shadow-lg ring-4 ring-purple-100 mx-auto"
+              style={{ aspectRatio: "3/4" }}
+            />
+          </div>
 
-        {/* Photo — left side, always visible side-by-side */}
-        <div className="shrink-0">
-          <img
-            src={aboutMePhoto}
-            alt="כליל דורי - תזונאית קלינית"
-            className="w-[90px] sm:w-[130px] md:w-48 lg:w-56 rounded-2xl object-cover shadow-lg ring-4 ring-purple-100"
-            style={{ aspectRatio: "3/4" }}
-          />
+          {/* Text — on mobile appears SECOND (below), on desktop appears on right (RTL) */}
+          <div className="flex-1 min-w-0 text-right">
+            <p className="text-muted-foreground font-body text-sm sm:text-base md:text-lg leading-relaxed mb-4">
+              אני כליל דורי, תזונאית קלינית, בוגרת תואר ראשון B.Sc בתזונה קלינית מהאוניברסיטה העברית, עם כ- 8 שנות ניסיון בליווי אנשים לשיפור הבריאות והטמעת אורח חיים מיטבי. אני מלווה נשים וגברים בתהליכי ירידה במשקל, איזון מטבולי ושינוי הרגלים, תוך הסתכלות רחבה שמחברת בין הגוף, התזונה והעולם הרגשי. בעבודתי אני משלבת כלים מעולמות התזונה הקלינית, ה- Longevity וההתנהגות, במטרה לייצר תהליך מדויק ופרקטי, שיחזיק לאורך זמן.
+            </p>
+            <p className="text-muted-foreground font-body text-sm sm:text-base md:text-lg leading-relaxed">
+              לאורך השנים ליוויתי מאות אנשים בתהליכים עמוקים של שינוי, ונוכחתי להבין שהתוצאה האמיתית לא מגיעה מדיאטה, אלא מהבנה, הקשבה והתאמה אישית. לכן, אני שמה דגש משמעותי גם על ההיבטים הרגשיים וההתנהגותיים של האכילה, במיוחד בעבודה עם הפרעות אכילה ודפוסים מורכבים סביב אוכל. אני מאמינה שתזונה נכונה היא לא מגבלה, אלא כלי עוצמתי ליצירת גוף מאוזן, בריא וחזק, כזה שאפשר להתמיד בו ולהרגיש טוב באמת.
+            </p>
+          </div>
         </div>
       </motion.div>
 

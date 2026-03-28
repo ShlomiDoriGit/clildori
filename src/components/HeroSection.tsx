@@ -39,10 +39,8 @@ const HeroSection = () => (
             הגיע הזמן לצאת
             <br />
             <span className="text-transparent bg-clip-text bg-gradient-to-l from-purple-200 via-purple-300 to-white">
-              מחוץ לדיאטות
+              מלופ הדיאטות
             </span>
-            <br />
-            ולעבור שינוי אמיתי
           </h1>
 
           <p className="text-base sm:text-lg md:text-xl text-purple-100/90 font-body leading-relaxed max-w-lg mx-auto md:mx-0 mb-8">
