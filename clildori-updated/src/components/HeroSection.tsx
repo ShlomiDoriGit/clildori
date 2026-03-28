@@ -1,67 +1,57 @@
 import { motion } from "framer-motion";
-import heroBgNew from "@/assets/hero-bg-new.jpeg";
-import heroProfile from "@/assets/hero-profile.jpeg";
-import { CalendarDays } from "lucide-react";
+import heroBg from "@/assets/רקע תחילת אתר.jpeg";
+import profileImg from "@/assets/כליל דורי תמונת פרופיל.jpeg";
 
 const HeroSection = () => (
   <section
     id="hero"
     className="relative overflow-hidden"
     style={{
-      backgroundImage: `url(${heroBgNew})`,
+      backgroundImage: `url('${heroBg}')`,
       backgroundSize: "cover",
       backgroundPosition: "center",
       backgroundRepeat: "no-repeat",
     }}
   >
-    <div className="container mx-auto px-6 py-10 md:py-16 lg:py-24">
-      {/* Mobile: stack vertically (image above text). Desktop: side by side */}
-      <div className="flex flex-col md:flex-row md:items-center gap-6 md:gap-16">
+    <div className="container mx-auto px-6 py-12 md:py-16 lg:py-24 flex flex-col-reverse md:flex-row-reverse items-center gap-8 md:gap-16">
+      
+      {/* אזור התמונה - במובייל יופיע למעלה מעל הטקסט */}
+      <motion.div
+        initial={{ opacity: 0, scale: 0.9 }}
+        animate={{ opacity: 1, scale: 1 }}
+        transition={{ duration: 0.6 }}
+        className="w-full md:w-1/2 flex justify-center mb-8 md:mb-0"
+      >
+        <img
+          src={profileImg}
+          alt="כליל דורי - תזונאית קלינית"
+          className="w-4/5 md:w-full max-w-md rounded-2xl shadow-2xl object-cover"
+        />
+      </motion.div>
 
-        {/* Profile image — top on mobile, right on desktop (RTL) */}
-        <motion.div
-          initial={{ opacity: 0, y: -20 }}
-          animate={{ opacity: 1, y: 0 }}
-          transition={{ duration: 0.7, ease: [0.16, 1, 0.3, 1] }}
-          className="flex justify-center md:order-last md:shrink-0"
-        >
-          <img
-            src={heroProfile}
-            alt="כליל דורי - תזונאית קלינית"
-            className="w-52 sm:w-64 md:w-64 lg:w-72 rounded-3xl object-cover shadow-xl"
-            style={{ aspectRatio: "3/4" }}
-          />
-        </motion.div>
-
-        {/* Text — below image on mobile, right side on desktop */}
-        <motion.div
-          initial={{ opacity: 0, y: 20 }}
-          animate={{ opacity: 1, y: 0 }}
-          transition={{ duration: 0.6, ease: [0.16, 1, 0.3, 1] }}
-          className="flex-1 min-w-0 text-right"
-        >
-          <h1 className="font-display text-3xl sm:text-4xl md:text-5xl lg:text-6xl font-extrabold text-foreground leading-[1.15] mb-2 md:mb-3">
-            כליל דורי
-          </h1>
-          <p className="font-display text-lg sm:text-xl md:text-2xl font-bold text-primary mb-4 md:mb-6">
-            תזונאית קלינית
-          </p>
-          <p className="text-sm sm:text-base md:text-lg text-muted-foreground font-body leading-relaxed max-w-xl mb-6 md:mb-8">
-            מלווה נשים וגברים בתהליכי ירידה במשקל, איזון מטבולי ושיפור אורח חיים, תוך התייחסות להיבטים רגשיים והתנהגותיים של האכילה.
-          </p>
-          <motion.a
-            href="https://wa.me/972559272658"
-            target="_blank"
-            rel="noopener noreferrer"
-            whileHover={{ scale: 1.03 }}
-            whileTap={{ scale: 0.97 }}
-            className="inline-flex items-center gap-2 rounded-full bg-secondary text-secondary-foreground px-7 py-3 text-base font-display font-bold shadow-lg hover:shadow-xl transition-shadow"
+      {/* אזור הטקסט */}
+      <motion.div
+        initial={{ opacity: 0, y: 20 }}
+        animate={{ opacity: 1, y: 0 }}
+        transition={{ duration: 0.6, delay: 0.2 }}
+        className="w-full md:w-1/2 text-center md:text-right"
+      >
+        <h1 className="text-4xl md:text-5xl lg:text-6xl font-display font-bold text-gray-900 leading-tight mb-6">
+          הדרך לבריאות ואיזון מתחילה כאן
+        </h1>
+        <p className="text-lg md:text-xl text-gray-800 font-body mb-8 leading-relaxed">
+          ליווי תזונתי מותאם אישית לשיפור איכות החיים, ירידה במשקל ויצירת קשר בריא ורגוע יותר עם האוכל והגוף שלך.
+        </p>
+        <div className="flex justify-center md:justify-end">
+          <button
+            onClick={() => window.open("https://wa.me/972559272658", "_blank")}
+            className="bg-primary hover:bg-primary/90 text-white px-8 py-3 rounded-full text-lg font-bold shadow-lg transition-all transform hover:scale-105"
           >
-            <CalendarDays className="h-5 w-5" />
-            לתיאום פגישת ייעוץ
-          </motion.a>
-        </motion.div>
-      </div>
+            בואו נדבר
+          </button>
+        </div>
+      </motion.div>
+
     </div>
   </section>
 );
