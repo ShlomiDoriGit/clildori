@@ -41,6 +41,10 @@ const HeroSection = () => (
             <span className="text-transparent bg-clip-text bg-gradient-to-l from-purple-200 via-purple-300 to-white">
               מלופ הדיאטות
             </span>
+            <br />
+            <span className="text-transparent bg-clip-text bg-gradient-to-l from-white via-purple-200 to-purple-300">
+              ולעבור שינוי אמיתי
+            </span>
           </h1>
 
           <p className="text-base sm:text-lg md:text-xl text-purple-100/90 font-body leading-relaxed max-w-lg mx-auto md:mx-0 mb-8">
@@ -73,23 +77,6 @@ const HeroSection = () => (
             className="relative w-[260px] sm:w-[300px] md:w-[340px] lg:w-[400px] rounded-[2rem] object-cover shadow-2xl ring-4 ring-white/10"
             style={{ aspectRatio: "3/4" }}
           />
-          {/* Floating badge */}
-          <motion.div
-            initial={{ opacity: 0, y: 20 }}
-            animate={{ opacity: 1, y: 0 }}
-            transition={{ delay: 1, duration: 0.5 }}
-            className="absolute -bottom-4 -right-4 md:-right-6 bg-white rounded-2xl shadow-xl px-4 py-3 flex items-center gap-2"
-          >
-            <div className="w-8 h-8 rounded-full bg-green-500 flex items-center justify-center">
-              <svg className="w-4 h-4 text-white" fill="none" stroke="currentColor" viewBox="0 0 24 24">
-                <path strokeLinecap="round" strokeLinejoin="round" strokeWidth={3} d="M5 13l4 4L19 7" />
-              </svg>
-            </div>
-            <div className="text-right">
-              <p className="text-xs font-body text-muted-foreground">ניסיון של</p>
-              <p className="text-sm font-display font-bold text-foreground">+8 שנים</p>
-            </div>
-          </motion.div>
         </motion.div>
       </div>
     </div>

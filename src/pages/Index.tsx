@@ -5,8 +5,6 @@ import TestimonialsSection from "@/components/TestimonialsSection";
 import ProductsSection from "@/components/ProductsSection";
 import CredentialsSection from "@/components/CredentialsSection";
 import Footer from "@/components/Footer";
-import WhatsAppButton from "@/components/WhatsAppButton";
-
 const Index = () => (
   <>
     <LogoBanner />
@@ -16,7 +14,6 @@ const Index = () => (
     <ProductsSection />
     <CredentialsSection />
     <Footer />
-    <WhatsAppButton />
   </>
 );
 

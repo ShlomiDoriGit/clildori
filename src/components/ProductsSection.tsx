@@ -122,7 +122,7 @@ const ProductsSection = () => {
           >
             <div className="rounded-3xl bg-muted border border-gray-100 shadow-lg overflow-hidden h-full flex flex-col hover:shadow-xl transition-shadow duration-300">
               <div className="p-6 md:p-8 flex-1">
-                <h3 className="font-display text-2xl md:text-3xl font-bold text-foreground mb-2 text-center">קלפי חיזוק</h3>
+                <h3 className="font-display text-2xl md:text-3xl font-bold text-foreground mb-2 text-center">קלפי העצמה ושינוי</h3>
                 <p className="text-muted-foreground font-body text-sm mb-5 text-center">ליצירת קשר רגוע ובריא יותר עם אוכל</p>
 
                 <AnimatePresence>

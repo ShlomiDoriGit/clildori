@@ -87,15 +87,19 @@ const ProgramSection = () => {
         </AnimatePresence>
 
         {/* Insurance note */}
-        <motion.p
-          initial={{ opacity: 0 }}
-          whileInView={{ opacity: 1 }}
+        <motion.div
+          initial={{ opacity: 0, y: 10 }}
+          whileInView={{ opacity: 1, y: 0 }}
           viewport={{ once: true }}
-          transition={{ delay: 0.5 }}
-          className="text-center text-xs sm:text-sm text-muted-foreground font-body mt-8 bg-green-50 text-green-700 rounded-full px-4 sm:px-6 py-2.5 max-w-max mx-auto"
+          transition={{ delay: 0.5, duration: 0.5 }}
+          className="mt-10 max-w-2xl mx-auto"
         >
-          💡 ביטוחים פרטיים רבים מכסים עד 80% מעלות ייעוץ תזונתי
-        </motion.p>
+          <div className="bg-gradient-to-r from-green-50 to-emerald-50 border-2 border-green-200 rounded-2xl px-6 sm:px-8 py-5 text-center shadow-md">
+            <p className="font-display text-base sm:text-lg md:text-xl font-bold text-green-800">
+              💡 ביטוחים פרטיים רבים מכסים עד 80% מעלות ייעוץ תזונתי
+            </p>
+          </div>
+        </motion.div>
       </div>
     </section>
   );
