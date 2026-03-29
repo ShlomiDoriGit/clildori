@@ -2,6 +2,7 @@ import { useState, useEffect } from "react";
 import { motion, AnimatePresence } from "framer-motion";
 import { ChevronRight, ChevronLeft, Play, Star, ExternalLink } from "lucide-react";
 import successThumbnail from "@/assets/success-thumbnail.jpeg";
+import articleScreenshot from "@/assets/article-screenshot.png";
 import testimonial1 from "@/assets/testimonial-1.jpg";
 import testimonial2 from "@/assets/testimonial-2.jpg";
 import testimonial3 from "@/assets/testimonial-3.jpg";
@@ -120,7 +121,7 @@ const TestimonialsSection = () => {
                 <img
                   src={testimonials[current].image}
                   alt={testimonials[current].alt}
-                  className="w-full aspect-[3/4] object-cover"
+                  className="w-full aspect-[3/4] object-contain bg-white"
                   loading="lazy"
                 />
               </motion.div>
@@ -219,8 +220,8 @@ const TestimonialsSection = () => {
               {/* Article image */}
               <div className="relative h-48 md:h-64 overflow-hidden">
                 <img
-                  src={successThumbnail}
-                  alt="כתבה על כליל דורי"
+                  src={articleScreenshot}
+                  alt="כתבה על כליל דורי במקור ראשון"
                   className="w-full h-full object-cover transition-transform duration-700 group-hover:scale-105"
                 />
                 <div className="absolute inset-0 bg-gradient-to-t from-black/60 via-transparent to-transparent" />
@@ -234,7 +235,7 @@ const TestimonialsSection = () => {
               {/* Article content */}
               <div className="p-6 md:p-8 text-right">
                 <h3 className="font-display text-xl md:text-2xl font-bold text-foreground mb-2 group-hover:text-primary transition-colors">
-                  ירידה במשקל מבלי לוותר — איך תזונה מותאמת אישית משנה את החוקים
+                  אכילה רגשית בזמנים סוערים: למה זה קורה ואיך מתמודדים?
                 </h3>
                 <p className="text-sm text-muted-foreground font-body mb-4">
                   מאת כליל דורי, תזונאית קלינית
