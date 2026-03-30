@@ -31,7 +31,7 @@ const TestimonialsSection = () => {
 
   return (
     <>
-      {/* Video Section */}
+      {/* Video Section — Before/After with video overlay */}
       <section className="section-padding bg-white relative">
         <div className="container mx-auto px-6 md:px-8">
           <motion.div
@@ -51,17 +51,37 @@ const TestimonialsSection = () => {
             whileInView={{ opacity: 1, y: 0 }}
             viewport={{ once: true, amount: 0.2 }}
             transition={{ delay: 0.15, duration: 0.6 }}
-            className="max-w-xl mx-auto"
+            className="max-w-2xl mx-auto"
           >
             <a
               href="https://rb.gy/vfpdqu"
               target="_blank"
               rel="noopener noreferrer"
-              className="block relative group rounded-3xl overflow-hidden shadow-xl glow-purple"
+              className="block relative group rounded-3xl overflow-hidden shadow-2xl"
             >
-              <div className="relative aspect-video">
-                <img src={successThumbnail} alt="סיפורי הצלחה" className="w-full h-full object-cover transition-transform duration-700 group-hover:scale-105" />
-                <div className="absolute inset-0 bg-gradient-to-t from-black/50 via-black/20 to-transparent group-hover:from-black/60 transition-all duration-300" />
+              {/* Before/After Image with gradient divider */}
+              <div className="relative">
+                <img src={successThumbnail} alt="סיפורי הצלחה - לפני ואחרי" className="w-full h-auto object-cover transition-transform duration-700 group-hover:scale-[1.02]" />
+
+                {/* Dark overlay for video feel */}
+                <div className="absolute inset-0 bg-gradient-to-t from-black/60 via-black/10 to-black/20 group-hover:from-black/70 transition-all duration-300" />
+
+                {/* Before / After labels */}
+                <div className="absolute top-4 right-4 md:top-6 md:right-6">
+                  <span className="bg-white/90 backdrop-blur-sm text-foreground font-display font-bold text-xs md:text-sm rounded-full px-3 py-1.5 shadow-md">
+                    לפני
+                  </span>
+                </div>
+                <div className="absolute top-4 left-4 md:top-6 md:left-6">
+                  <span className="bg-primary/90 backdrop-blur-sm text-white font-display font-bold text-xs md:text-sm rounded-full px-3 py-1.5 shadow-md">
+                    אחרי ✨
+                  </span>
+                </div>
+
+                {/* Center divider line */}
+                <div className="absolute top-0 bottom-0 left-1/2 -translate-x-1/2 w-[2px] bg-white/40" />
+
+                {/* Play button */}
                 <div className="absolute inset-0 flex items-center justify-center">
                   <motion.div
                     whileHover={{ scale: 1.15 }}
@@ -70,9 +90,11 @@ const TestimonialsSection = () => {
                     <Play className="w-6 h-6 md:w-8 md:h-8 text-primary fill-primary mr-[-2px]" />
                   </motion.div>
                 </div>
-                <div className="absolute bottom-4 left-0 right-0 text-center">
+
+                {/* Bottom text */}
+                <div className="absolute bottom-4 md:bottom-6 left-0 right-0 text-center">
                   <p className="text-white font-display font-bold text-sm md:text-base drop-shadow-lg">
-                    לחצו על מנת לצפות בוידאו
+                    לחצו לצפייה בסיפורי ההצלחה
                   </p>
                 </div>
               </div>

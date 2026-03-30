@@ -1,13 +1,13 @@
 import { useState } from "react";
 import { motion, AnimatePresence } from "framer-motion";
-import { ChevronDown, Video, ClipboardList, Pill, HeartHandshake, Wrench } from "lucide-react";
+import { Video, ClipboardList, Pill, HeartHandshake, Wrench, ChevronDown } from "lucide-react";
 
 const points = [
-  { title: "ייעוץ תזונתי אונליין", details: "סדרת פגישות ייעוץ תזונתי אונליין המותאמות אליך אישית.", icon: Video },
-  { title: "בניית תפריט מותאם אישית", details: "בניית תפריט תזונתי בהתאם למצב הבריאותי, בדיקות הדם, ההעדפות ואורח החיים שלך.", icon: ClipboardList },
-  { title: "פרוטוקול תוספי תזונה", details: "התאמת פרוטוקול תוספי תזונה מותאם מטרות ומבוסס ספרות עדכנית.", icon: Pill },
-  { title: "ליווי ותמיכה שוטפת", details: "ליווי ותמיכה שוטפת בין המפגשים, כולל מענה לשאלות והתאמות לפי הצורך.", icon: HeartHandshake },
-  { title: "כלים לשינוי הרגלים", details: "מתן כלים פרקטיים לשינוי הרגלים, ויסות אכילה, ניהול סטרס ושמירה על התוצאות לאורך זמן.", icon: Wrench },
+  { title: "ייעוץ תזונתי אונליין", details: "סדרת פגישות ייעוץ תזונתי אונליין המותאמות אליך אישית.", icon: Video, num: "01" },
+  { title: "בניית תפריט מותאם אישית", details: "בניית תפריט תזונתי בהתאם למצב הבריאותי, בדיקות הדם, ההעדפות ואורח החיים שלך.", icon: ClipboardList, num: "02" },
+  { title: "פרוטוקול תוספי תזונה", details: "התאמת פרוטוקול תוספי תזונה מותאם מטרות ומבוסס ספרות עדכנית.", icon: Pill, num: "03" },
+  { title: "ליווי ותמיכה שוטפת", details: "ליווי ותמיכה שוטפת בין המפגשים, כולל מענה לשאלות והתאמות לפי הצורך.", icon: HeartHandshake, num: "04" },
+  { title: "כלים לשינוי הרגלים", details: "מתן כלים פרקטיים לשינוי הרגלים, ויסות אכילה, ניהול סטרס ושמירה על התוצאות לאורך זמן.", icon: Wrench, num: "05" },
 ];
 
 const ProgramSection = () => {
@@ -31,10 +31,11 @@ const ProgramSection = () => {
           </h2>
         </motion.div>
 
-        {/* Icon cards: Mobile 2+2+1, Desktop 5 in a row */}
-        <div className="max-w-5xl mx-auto mb-4">
-          {/* First row: 2 cards */}
-          <div className="grid grid-cols-2 md:grid-cols-5 gap-3 sm:gap-4 md:gap-6">
+        {/* Elegant cards — Mobile: vertical list, Desktop: 5 columns */}
+        <div className="max-w-5xl mx-auto">
+
+          {/* Desktop: 5-column horizontal */}
+          <div className="hidden md:grid md:grid-cols-5 gap-5 mb-4">
             {points.map((point, i) => {
               const Icon = point.icon;
               return (
@@ -44,49 +45,126 @@ const ProgramSection = () => {
                   whileInView={{ opacity: 1, y: 0 }}
                   viewport={{ once: true }}
                   transition={{ delay: i * 0.1, duration: 0.5 }}
-                  whileHover={{ y: -8, boxShadow: "0 16px 40px rgba(94, 23, 235, 0.15)" }}
+                  whileHover={{ y: -8, boxShadow: "0 20px 40px rgba(94, 23, 235, 0.12)" }}
                   onClick={() => setOpenIndex(openIndex === i ? null : i)}
-                  className={`flex flex-col items-center text-center p-3 sm:p-4 md:p-6 rounded-2xl md:rounded-3xl border-2 transition-all duration-300 cursor-pointer ${
-                    i === 4 ? "col-span-2 md:col-span-1 max-w-[200px] mx-auto w-full" : ""
-                  } ${
+                  className={`group flex flex-col items-center text-center p-6 rounded-3xl border-2 transition-all duration-300 cursor-pointer relative overflow-hidden ${
                     openIndex === i
-                      ? "border-primary bg-primary/5 shadow-lg"
-                      : "border-transparent bg-muted hover:border-primary/20"
+                      ? "border-primary bg-white shadow-xl"
+                      : "border-gray-100 bg-white hover:border-primary/30 shadow-md"
                   }`}
                 >
-                  <div className={`w-12 h-12 sm:w-14 sm:h-14 md:w-16 md:h-16 rounded-2xl flex items-center justify-center mb-2 sm:mb-3 md:mb-4 transition-colors duration-300 ${
-                    openIndex === i ? "bg-gradient-purple text-white" : "bg-primary/10 text-primary"
+                  {/* Number badge */}
+                  <span className={`absolute top-3 left-3 font-display text-[10px] font-bold rounded-full w-6 h-6 flex items-center justify-center transition-colors ${
+                    openIndex === i ? "bg-primary text-white" : "bg-gray-100 text-gray-400"
                   }`}>
-                    <Icon className="h-6 w-6 sm:h-6 sm:w-6 md:h-7 md:w-7" />
+                    {point.num}
+                  </span>
+                  <div className={`w-16 h-16 rounded-2xl flex items-center justify-center mb-4 transition-all duration-300 ${
+                    openIndex === i
+                      ? "bg-gradient-purple text-white shadow-lg shadow-primary/25"
+                      : "bg-purple-50 text-primary group-hover:bg-purple-100"
+                  }`}>
+                    <Icon className="h-7 w-7" />
                   </div>
-                  <span className="font-display text-xs sm:text-sm md:text-sm font-bold text-foreground leading-tight">
+                  <span className="font-display text-sm font-bold text-foreground leading-tight mb-1">
                     {point.title}
                   </span>
-                  <ChevronDown className={`h-4 w-4 text-primary mt-2 transition-transform duration-300 ${openIndex === i ? "rotate-180" : ""}`} />
+                  <ChevronDown className={`h-4 w-4 text-primary/50 mt-2 transition-transform duration-300 ${openIndex === i ? "rotate-180 text-primary" : ""}`} />
                 </motion.button>
               );
             })}
           </div>
-        </div>
 
-        {/* Expanded detail */}
-        <AnimatePresence>
-          {openIndex !== null && (
-            <motion.div
-              initial={{ height: 0, opacity: 0 }}
-              animate={{ height: "auto", opacity: 1 }}
-              exit={{ height: 0, opacity: 0 }}
-              transition={{ duration: 0.4, ease: [0.16, 1, 0.3, 1] }}
-              className="overflow-hidden max-w-3xl mx-auto"
-            >
-              <div className="bg-muted rounded-2xl p-4 sm:p-6 text-center mb-6">
-                <p className="text-muted-foreground font-body text-sm sm:text-base leading-relaxed">
-                  {points[openIndex].details}
-                </p>
-              </div>
-            </motion.div>
-          )}
-        </AnimatePresence>
+          {/* Mobile: Elegant stacked cards */}
+          <div className="md:hidden space-y-3 mb-4">
+            {points.map((point, i) => {
+              const Icon = point.icon;
+              const isOpen = openIndex === i;
+              return (
+                <motion.div
+                  key={i}
+                  initial={{ opacity: 0, x: i % 2 === 0 ? -20 : 20 }}
+                  whileInView={{ opacity: 1, x: 0 }}
+                  viewport={{ once: true }}
+                  transition={{ delay: i * 0.08, duration: 0.4 }}
+                >
+                  <button
+                    onClick={() => setOpenIndex(isOpen ? null : i)}
+                    className={`w-full flex items-center gap-4 p-4 rounded-2xl border-2 transition-all duration-300 text-right ${
+                      isOpen
+                        ? "border-primary bg-white shadow-lg"
+                        : "border-gray-100 bg-white shadow-sm hover:shadow-md hover:border-primary/20"
+                    }`}
+                  >
+                    {/* Number + Icon */}
+                    <div className="flex items-center gap-3 shrink-0">
+                      <span className={`font-display text-2xl font-extrabold transition-colors ${
+                        isOpen ? "text-primary" : "text-gray-200"
+                      }`}>
+                        {point.num}
+                      </span>
+                      <div className={`w-12 h-12 rounded-xl flex items-center justify-center transition-all duration-300 ${
+                        isOpen
+                          ? "bg-gradient-purple text-white shadow-md shadow-primary/20"
+                          : "bg-purple-50 text-primary"
+                      }`}>
+                        <Icon className="h-5 w-5" />
+                      </div>
+                    </div>
+
+                    {/* Title */}
+                    <span className="flex-1 font-display text-sm font-bold text-foreground leading-tight">
+                      {point.title}
+                    </span>
+
+                    {/* Chevron */}
+                    <ChevronDown className={`h-5 w-5 text-primary/40 shrink-0 transition-transform duration-300 ${isOpen ? "rotate-180 text-primary" : ""}`} />
+                  </button>
+
+                  {/* Expandable detail */}
+                  <AnimatePresence>
+                    {isOpen && (
+                      <motion.div
+                        initial={{ height: 0, opacity: 0 }}
+                        animate={{ height: "auto", opacity: 1 }}
+                        exit={{ height: 0, opacity: 0 }}
+                        transition={{ duration: 0.3 }}
+                        className="overflow-hidden"
+                      >
+                        <div className="bg-purple-50/50 rounded-xl p-4 mt-2 mr-[76px]">
+                          <p className="text-muted-foreground font-body text-sm leading-relaxed">
+                            {point.details}
+                          </p>
+                        </div>
+                      </motion.div>
+                    )}
+                  </AnimatePresence>
+                </motion.div>
+              );
+            })}
+          </div>
+
+          {/* Desktop expanded detail */}
+          <div className="hidden md:block">
+            <AnimatePresence>
+              {openIndex !== null && (
+                <motion.div
+                  initial={{ height: 0, opacity: 0 }}
+                  animate={{ height: "auto", opacity: 1 }}
+                  exit={{ height: 0, opacity: 0 }}
+                  transition={{ duration: 0.4, ease: [0.16, 1, 0.3, 1] }}
+                  className="overflow-hidden max-w-3xl mx-auto"
+                >
+                  <div className="bg-purple-50/50 rounded-2xl p-6 text-center mb-6 border border-purple-100">
+                    <p className="text-muted-foreground font-body text-base leading-relaxed">
+                      {points[openIndex].details}
+                    </p>
+                  </div>
+                </motion.div>
+              )}
+            </AnimatePresence>
+          </div>
+        </div>
 
         {/* Insurance note */}
         <motion.div
