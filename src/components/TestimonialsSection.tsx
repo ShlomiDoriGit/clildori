@@ -26,10 +26,13 @@ const TestimonialsSection = () => {
   const go = (dir: number) =>
     setCurrent((p) => (p + dir + testimonials.length) % testimonials.length);
 
+  // Get 3 visible testimonials (current, next, next+1)
+  const getIdx = (offset: number) => (current + offset) % testimonials.length;
+
   return (
     <>
       {/* Video Section */}
-      <section className="section-padding bg-muted relative">
+      <section className="section-padding bg-white relative">
         <div className="container mx-auto px-6 md:px-8">
           <motion.div
             initial={{ opacity: 0, y: 20 }}
@@ -78,7 +81,7 @@ const TestimonialsSection = () => {
         </div>
       </section>
 
-      {/* Testimonials Slider */}
+      {/* Testimonials — Multi-card display */}
       <section className="section-padding bg-white">
         <div className="container mx-auto px-6 md:px-8">
           <motion.div
@@ -93,40 +96,49 @@ const TestimonialsSection = () => {
             </h2>
           </motion.div>
 
-          <div className="relative max-w-sm mx-auto">
+          <div className="relative max-w-4xl mx-auto">
+            {/* Navigation arrows */}
             <button
               onClick={() => go(-1)}
-              className="absolute top-1/2 -translate-y-1/2 -right-4 md:-right-16 z-10 w-12 h-12 rounded-full bg-white shadow-lg border border-gray-100 flex items-center justify-center text-muted-foreground hover:text-primary hover:shadow-xl hover:border-primary/20 transition-all active:scale-95"
+              className="absolute top-1/2 -translate-y-1/2 -right-2 md:-right-14 z-10 w-10 h-10 md:w-12 md:h-12 rounded-full bg-white shadow-lg border border-gray-100 flex items-center justify-center text-muted-foreground hover:text-primary hover:shadow-xl hover:border-primary/20 transition-all active:scale-95"
               aria-label="הקודם"
             >
-              <ChevronRight className="h-6 w-6" />
+              <ChevronRight className="h-5 w-5 md:h-6 md:w-6" />
             </button>
             <button
               onClick={() => go(1)}
-              className="absolute top-1/2 -translate-y-1/2 -left-4 md:-left-16 z-10 w-12 h-12 rounded-full bg-white shadow-lg border border-gray-100 flex items-center justify-center text-muted-foreground hover:text-primary hover:shadow-xl hover:border-primary/20 transition-all active:scale-95"
+              className="absolute top-1/2 -translate-y-1/2 -left-2 md:-left-14 z-10 w-10 h-10 md:w-12 md:h-12 rounded-full bg-white shadow-lg border border-gray-100 flex items-center justify-center text-muted-foreground hover:text-primary hover:shadow-xl hover:border-primary/20 transition-all active:scale-95"
               aria-label="הבא"
             >
-              <ChevronLeft className="h-6 w-6" />
+              <ChevronLeft className="h-5 w-5 md:h-6 md:w-6" />
             </button>
 
-            <AnimatePresence mode="wait">
-              <motion.div
-                key={current}
-                initial={{ opacity: 0, x: 60 }}
-                animate={{ opacity: 1, x: 0 }}
-                exit={{ opacity: 0, x: -60 }}
-                transition={{ duration: 0.4, ease: "easeInOut" }}
-                className="rounded-3xl overflow-hidden shadow-xl"
-              >
-                <img
-                  src={testimonials[current].image}
-                  alt={testimonials[current].alt}
-                  className="w-full aspect-[3/4] object-contain bg-white"
-                  loading="lazy"
-                />
-              </motion.div>
-            </AnimatePresence>
+            {/* Cards grid — 3 visible on desktop, 1 on mobile */}
+            <div className="grid grid-cols-1 md:grid-cols-3 gap-4 md:gap-6 px-8 md:px-0">
+              {[0, 1, 2].map((offset) => {
+                const idx = getIdx(offset);
+                return (
+                  <motion.div
+                    key={`${current}-${offset}`}
+                    initial={{ opacity: 0, scale: 0.9 }}
+                    animate={{ opacity: 1, scale: 1 }}
+                    transition={{ duration: 0.4, delay: offset * 0.1 }}
+                    className={`rounded-2xl overflow-hidden shadow-lg border border-gray-100 bg-white ${
+                      offset === 0 ? "" : "hidden md:block"
+                    }`}
+                  >
+                    <img
+                      src={testimonials[idx].image}
+                      alt={testimonials[idx].alt}
+                      className="w-full aspect-[3/4] object-contain bg-white"
+                      loading="lazy"
+                    />
+                  </motion.div>
+                );
+              })}
+            </div>
 
+            {/* Dots */}
             <div className="flex justify-center gap-2.5 mt-8">
               {testimonials.map((_, i) => (
                 <button
@@ -146,7 +158,7 @@ const TestimonialsSection = () => {
       </section>
 
       {/* Google Reviews Section */}
-      <section className="py-16 md:py-20 bg-muted">
+      <section className="py-16 md:py-20 bg-white">
         <div className="container mx-auto px-6 md:px-8">
           <motion.div
             initial={{ opacity: 0, y: 20 }}
@@ -186,7 +198,7 @@ const TestimonialsSection = () => {
         </div>
       </section>
 
-      {/* Article Section — כתבה */}
+      {/* Article Section */}
       <section className="section-padding bg-white">
         <div className="container mx-auto px-6 md:px-8">
           <motion.div
@@ -215,9 +227,8 @@ const TestimonialsSection = () => {
               href="https://www.makorrishon.co.il/good-to-know/article/174541"
               target="_blank"
               rel="noopener noreferrer"
-              className="block rounded-3xl bg-muted border border-gray-100 shadow-lg hover:shadow-2xl transition-all duration-300 overflow-hidden group"
+              className="block rounded-3xl bg-white border border-gray-100 shadow-lg hover:shadow-2xl transition-all duration-300 overflow-hidden group"
             >
-              {/* Article image */}
               <div className="relative h-48 md:h-64 overflow-hidden">
                 <img
                   src={articleScreenshot}
@@ -232,7 +243,6 @@ const TestimonialsSection = () => {
                 </div>
               </div>
 
-              {/* Article content */}
               <div className="p-6 md:p-8 text-right">
                 <h3 className="font-display text-xl md:text-2xl font-bold text-foreground mb-2 group-hover:text-primary transition-colors">
                   אכילה רגשית בזמנים סוערים: למה זה קורה ואיך מתמודדים?

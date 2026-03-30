@@ -43,27 +43,40 @@ const CredentialsSection = () => (
         transition={{ delay: 0.15, duration: 0.6 }}
         className="max-w-5xl mx-auto mb-20 bg-white rounded-3xl shadow-xl border border-gray-100 p-6 md:p-10"
       >
-        {/* Mobile: column (image first), Desktop: row (text first in RTL) */}
-        <div className="flex flex-col md:flex-row items-center gap-6 md:gap-10">
-          {/* Photo — on mobile appears FIRST (top), on desktop appears on left side */}
-          <div className="shrink-0 order-first md:order-last">
+        {/* Desktop: side by side. Mobile: image floats with text */}
+        <div className="hidden md:flex flex-row items-center gap-10">
+          <div className="shrink-0 order-last">
             <img
               src={aboutMePhoto}
               alt="כליל דורי - תזונאית קלינית"
-              className="w-[200px] sm:w-[220px] md:w-48 lg:w-56 rounded-2xl object-cover shadow-lg ring-4 ring-purple-100 mx-auto"
+              className="w-48 lg:w-56 rounded-2xl object-cover shadow-lg ring-4 ring-purple-100"
               style={{ aspectRatio: "3/4" }}
             />
           </div>
-
-          {/* Text — on mobile appears SECOND (below), on desktop appears on right (RTL) */}
           <div className="flex-1 min-w-0 text-right">
-            <p className="text-muted-foreground font-body text-sm sm:text-base md:text-lg leading-relaxed mb-4">
+            <p className="text-muted-foreground font-body text-base md:text-lg leading-relaxed mb-4">
               אני כליל דורי, תזונאית קלינית, בוגרת תואר ראשון B.Sc בתזונה קלינית מהאוניברסיטה העברית, עם כ- 8 שנות ניסיון בליווי אנשים לשיפור הבריאות והטמעת אורח חיים מיטבי. אני מלווה נשים וגברים בתהליכי ירידה במשקל, איזון מטבולי ושינוי הרגלים, תוך הסתכלות רחבה שמחברת בין הגוף, התזונה והעולם הרגשי. בעבודתי אני משלבת כלים מעולמות התזונה הקלינית, ה- Longevity וההתנהגות, במטרה לייצר תהליך מדויק ופרקטי, שיחזיק לאורך זמן.
             </p>
-            <p className="text-muted-foreground font-body text-sm sm:text-base md:text-lg leading-relaxed">
+            <p className="text-muted-foreground font-body text-base md:text-lg leading-relaxed">
               לאורך השנים ליוויתי מאות אנשים בתהליכים עמוקים של שינוי, ונוכחתי להבין שהתוצאה האמיתית לא מגיעה מדיאטה, אלא מהבנה, הקשבה והתאמה אישית. לכן, אני שמה דגש משמעותי גם על ההיבטים הרגשיים וההתנהגותיים של האכילה, במיוחד בעבודה עם הפרעות אכילה ודפוסים מורכבים סביב אוכל. אני מאמינה שתזונה נכונה היא לא מגבלה, אלא כלי עוצמתי ליצירת גוף מאוזן, בריא וחזק, כזה שאפשר להתמיד בו ולהרגיש טוב באמת.
             </p>
           </div>
+        </div>
+
+        {/* Mobile only: image floats inside text */}
+        <div className="md:hidden text-right">
+          <img
+            src={aboutMePhoto}
+            alt="כליל דורי - תזונאית קלינית"
+            className="float-left ml-5 mb-4 mt-1 w-[130px] sm:w-[155px] rounded-2xl object-cover shadow-lg ring-4 ring-purple-100"
+            style={{ aspectRatio: "3/4", shapeOutside: "margin-box", shapeMargin: "12px" }}
+          />
+          <p className="text-muted-foreground font-body text-sm sm:text-base leading-relaxed mb-4">
+            אני כליל דורי, תזונאית קלינית, בוגרת תואר ראשון B.Sc בתזונה קלינית מהאוניברסיטה העברית, עם כ- 8 שנות ניסיון בליווי אנשים לשיפור הבריאות והטמעת אורח חיים מיטבי. אני מלווה נשים וגברים בתהליכי ירידה במשקל, איזון מטבולי ושינוי הרגלים, תוך הסתכלות רחבה שמחברת בין הגוף, התזונה והעולם הרגשי. בעבודתי אני משלבת כלים מעולמות התזונה הקלינית, ה- Longevity וההתנהגות, במטרה לייצר תהליך מדויק ופרקטי, שיחזיק לאורך זמן.
+          </p>
+          <p className="text-muted-foreground font-body text-sm sm:text-base leading-relaxed">
+            לאורך השנים ליוויתי מאות אנשים בתהליכים עמוקים של שינוי, ונוכחתי להבין שהתוצאה האמיתית לא מגיעה מדיאטה, אלא מהבנה, הקשבה והתאמה אישית. לכן, אני שמה דגש משמעותי גם על ההיבטים הרגשיים וההתנהגותיים של האכילה, במיוחד בעבודה עם הפרעות אכילה ודפוסים מורכבים סביב אוכל. אני מאמינה שתזונה נכונה היא לא מגבלה, אלא כלי עוצמתי ליצירת גוף מאוזן, בריא וחזק, כזה שאפשר להתמיד בו ולהרגיש טוב באמת.
+          </p>
         </div>
       </motion.div>
 
