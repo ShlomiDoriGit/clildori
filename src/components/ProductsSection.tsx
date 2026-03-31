@@ -1,5 +1,5 @@
 import { useState } from "react";
-import { motion } from "framer-motion";
+import { motion, AnimatePresence } from "framer-motion";
 import { ChevronRight, ChevronLeft, ChevronDown, ChevronUp, ShoppingBag } from "lucide-react";
 import recipeBook from "@/assets/recipe-book.png";
 import cardsCoverNew from "@/assets/cards-cover-new.png";
@@ -165,31 +165,26 @@ const ProductsSection = () => {
                 </motion.button>
               </div>
 
-              {/* Cards side by side with navigation */}
-              <div className="shrink-0 order-2 md:order-1 relative w-full md:w-[300px]">
-                <button onClick={() => goCard(-1)} className="absolute top-1/2 -translate-y-1/2 -right-2 md:-right-4 z-10 w-8 h-8 rounded-full bg-white shadow-lg border border-gray-100 flex items-center justify-center text-muted-foreground hover:text-primary transition-all active:scale-95" aria-label="הקודם">
+              {/* Card carousel — one large card at a time */}
+              <div className="shrink-0 order-2 md:order-1 relative w-[200px] sm:w-[240px] md:w-[260px]">
+                <button onClick={() => goCard(-1)} className="absolute top-1/2 -translate-y-1/2 -right-5 z-10 w-8 h-8 rounded-full bg-white shadow-lg border border-gray-100 flex items-center justify-center text-muted-foreground hover:text-primary transition-all active:scale-95" aria-label="הקודם">
                   <ChevronRight className="h-4 w-4" />
                 </button>
-                <button onClick={() => goCard(1)} className="absolute top-1/2 -translate-y-1/2 -left-2 md:-left-4 z-10 w-8 h-8 rounded-full bg-white shadow-lg border border-gray-100 flex items-center justify-center text-muted-foreground hover:text-primary transition-all active:scale-95" aria-label="הבא">
+                <button onClick={() => goCard(1)} className="absolute top-1/2 -translate-y-1/2 -left-5 z-10 w-8 h-8 rounded-full bg-white shadow-lg border border-gray-100 flex items-center justify-center text-muted-foreground hover:text-primary transition-all active:scale-95" aria-label="הבא">
                   <ChevronLeft className="h-4 w-4" />
                 </button>
-                {/* 3 cards side by side */}
-                <div className="flex items-center justify-center gap-2 px-6">
-                  {cardExamples.map((card, i) => (
-                    <motion.img
-                      key={i}
-                      src={card}
-                      alt={`דוגמה לקלף ${i + 1}`}
-                      className={`rounded-xl shadow-md object-contain transition-all duration-300 cursor-pointer ${
-                        i === cardSlide
-                          ? "w-[100px] sm:w-[120px] md:w-[110px] opacity-100 scale-105 ring-2 ring-primary/30"
-                          : "w-[80px] sm:w-[100px] md:w-[90px] opacity-70 scale-95"
-                      }`}
-                      onClick={() => setCardSlide(i)}
-                      whileHover={{ scale: i === cardSlide ? 1.08 : 1.0 }}
-                    />
-                  ))}
-                </div>
+                <AnimatePresence mode="wait">
+                  <motion.img
+                    key={cardSlide}
+                    src={cardExamples[cardSlide]}
+                    alt={`דוגמה לקלף ${cardSlide + 1}`}
+                    className="w-full h-64 md:h-80 object-contain rounded-2xl"
+                    initial={{ opacity: 0, scale: 0.95 }}
+                    animate={{ opacity: 1, scale: 1 }}
+                    exit={{ opacity: 0, scale: 0.95 }}
+                    transition={{ duration: 0.3 }}
+                  />
+                </AnimatePresence>
                 <div className="flex justify-center gap-2 mt-3">
                   {cardExamples.map((_, i) => (
                     <button
