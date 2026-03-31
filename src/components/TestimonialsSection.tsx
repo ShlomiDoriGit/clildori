@@ -51,7 +51,7 @@ const TestimonialsSection = () => {
             whileInView={{ opacity: 1, y: 0 }}
             viewport={{ once: true, amount: 0.2 }}
             transition={{ delay: 0.15, duration: 0.6 }}
-            className="max-w-2xl mx-auto"
+            className="max-w-lg md:max-w-2xl mx-auto"
           >
             <a
               href="https://rb.gy/vfpdqu"
@@ -67,12 +67,12 @@ const TestimonialsSection = () => {
                 <div className="absolute inset-0 bg-gradient-to-t from-black/60 via-black/10 to-black/20 group-hover:from-black/70 transition-all duration-300" />
 
                 {/* Before / After labels */}
-                <div className="absolute top-4 right-4 md:top-6 md:right-6">
+                <div className="absolute top-4 left-4 md:top-6 md:left-6">
                   <span className="bg-white/90 backdrop-blur-sm text-foreground font-display font-bold text-xs md:text-sm rounded-full px-3 py-1.5 shadow-md">
                     לפני
                   </span>
                 </div>
-                <div className="absolute top-4 left-4 md:top-6 md:left-6">
+                <div className="absolute top-4 right-4 md:top-6 md:right-6">
                   <span className="bg-primary/90 backdrop-blur-sm text-white font-display font-bold text-xs md:text-sm rounded-full px-3 py-1.5 shadow-md">
                     אחרי ✨
                   </span>

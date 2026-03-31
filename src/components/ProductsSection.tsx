@@ -1,6 +1,6 @@
 import { useState } from "react";
-import { motion, AnimatePresence } from "framer-motion";
-import { ChevronRight, ChevronLeft, ChevronDown, ShoppingBag } from "lucide-react";
+import { motion } from "framer-motion";
+import { ChevronRight, ChevronLeft, ChevronDown, ChevronUp, ShoppingBag } from "lucide-react";
 import recipeBook from "@/assets/recipe-book.png";
 import cardsCoverNew from "@/assets/cards-cover-new.png";
 import cardSlide13 from "@/assets/card-slide-13.png";
@@ -8,12 +8,24 @@ import cardSlide17 from "@/assets/card-slide-17.png";
 
 const cardExamples = [cardsCoverNew, cardSlide13, cardSlide17];
 
-const recipeDetails = 'חוברת מתכונים דיגיטלית שנבנתה במיוחד עבור אנשים עם רגישות לגלוטן וללקטוז. כוללת מגוון מתכונים קלים להכנה, ללא גלוטן, דל לקטוז, ללא סוכר וללא ממתיקים מלאכותיים. מאפשרת לבצע ריסט תזונתי לגוף, להפחית עומס ממערכת העיכול ולהרגיש קלילים יותר.';
+const recipeShort = 'חוברת מתכונים דיגיטלית שנבנתה במיוחד עבור אנשים עם רגישות לגלוטן וללקטוז, וגם עבור מי שמסתובב יום יום עם נפיחות, גזים או יציאות לא סדירות ולא מצליח להבין למה.';
 
-const cardsDetails = 'סט קלפים שנוצר במיוחד עבור נשים המתמודדות עם מערכת יחסים מורכבת עם אוכל. כל קלף כולל מסר מעודד, נקודת מבט חדשה או שאלה להתבוננות, המסייעים להתחבר מחדש לגוף ולרגשות. כלי ליצירת מרחב של מודעות וחמלה עצמית.';
+const recipeFull = `החוברת כוללת מגוון מתכונים קלים להכנה, המבוססים על חומרי גלם איכותיים וידידותיים למערכת העיכול, ללא גלוטן, ללא לקטוז, ללא סוכר וללא ממתיקים מלאכותיים, כך שתוכלו ליהנות מאוכל טעים, מזין ומשביע מבלי להכביד על הגוף.
+
+מעבר לרעיונות לארוחות יומיומיות, החוברת מאפשרת לבצע סוג של ריסט תזונתי לגוף, להפחית עומס ממערכת העיכול, להרגיע את הבטן ולהתחיל להרגיש קלילים יותר.
+
+זו דרך פשוטה להתחיל לאכול בצורה שמיטיבה עם הגוף, תומכת בהרגעת מערכת העיכול ומסייעת להפחית נפיחות ואי נוחות, תוך שמירה על תזונה מגוונת, טעימה ומאוזנת ביומיום.`;
+
+const cardsShort = 'סט קלפים שנוצר במיוחד עבור נשים המתמודדות עם מערכת יחסים מורכבת עם אוכל, מחשבות סביב אכילה, או תחושות של אשמה ושליטה. הקלפים נועדו להעניק רגע של עצירה, התבוננות וחיזוק פנימי בתוך היום יום.';
+
+const cardsFull = `כל קלף כולל מסר מעודד, נקודת מבט חדשה או שאלה להתבוננות, המסייעים להתחבר מחדש לגוף, לרגשות ולצרכים האמיתיים. השימוש בקלפים מאפשר ליצור מרחב קטן של מודעות וחמלה עצמית, שמזכיר שאפשר לפתח מערכת יחסים רגועה ומיטיבה יותר עם אוכל.
+
+הקלפים יכולים לשמש ככלי אישי לרגעי התבוננות במהלך היום, כחלק מתהליך אישי, או ככלי תומך בתוך תהליך טיפולי. הם מזמינים לעצור לרגע, לנשום, ולהיזכר שהדרך לשינוי מתחילה ביחס עדין יותר כלפי עצמך`;
 
 const ProductsSection = () => {
   const [cardSlide, setCardSlide] = useState(0);
+  const [recipeExpanded, setRecipeExpanded] = useState(false);
+  const [cardsExpanded, setCardsExpanded] = useState(false);
 
   const goCard = (dir: number) =>
     setCardSlide((p) => (p + dir + cardExamples.length) % cardExamples.length);
@@ -37,10 +49,9 @@ const ProductsSection = () => {
           </h2>
         </motion.div>
 
-        {/* Products — stacked cards matching design */}
         <div className="max-w-5xl mx-auto space-y-8">
 
-          {/* Product A: Recipe Book — Image left, text right (RTL) */}
+          {/* Product A: Recipe Book */}
           <motion.div
             initial={{ opacity: 0, y: 30 }}
             whileInView={{ opacity: 1, y: 0 }}
@@ -49,13 +60,31 @@ const ProductsSection = () => {
             className="rounded-3xl bg-gradient-to-br from-purple-50 via-white to-purple-50/50 border border-purple-100 shadow-lg overflow-hidden hover:shadow-xl transition-shadow duration-300"
           >
             <div className="flex flex-col md:flex-row-reverse items-center gap-6 p-6 md:p-10">
-              {/* Text */}
               <div className="flex-1 text-right">
-                <h3 className="font-display text-2xl md:text-3xl font-bold text-foreground mb-2">אתחול לבטן</h3>
-                <p className="text-muted-foreground font-body text-sm mb-4">ספר המתכונים הדיגיטלי למערכת עיכול רגועה</p>
-                <p className="text-muted-foreground font-body text-sm leading-relaxed mb-5">
-                  {recipeDetails}
+                <h3 className="font-display text-2xl md:text-3xl font-bold text-foreground mb-1">ריסט לבטן</h3>
+                <p className="text-muted-foreground font-body text-sm mb-3">ספר המתכונים הדיגיטלי למערכת עיכול רגועה</p>
+                <p className="text-xs text-primary/80 font-body font-semibold mb-4">ללא גלוטן, ללא לקטוז, ללא סוכר וללא ממתיקים מלאכותיים</p>
+                <p className="text-muted-foreground font-body text-sm leading-relaxed mb-1">
+                  {recipeShort}
                 </p>
+                {recipeExpanded && (
+                  <motion.div
+                    initial={{ opacity: 0, height: 0 }}
+                    animate={{ opacity: 1, height: "auto" }}
+                    transition={{ duration: 0.3 }}
+                  >
+                    <p className="text-muted-foreground font-body text-sm leading-relaxed whitespace-pre-line mb-1">
+                      {recipeFull}
+                    </p>
+                  </motion.div>
+                )}
+                <button
+                  onClick={() => setRecipeExpanded(!recipeExpanded)}
+                  className="flex items-center gap-1 text-primary font-body text-xs font-semibold mb-5 hover:underline transition-all mr-auto"
+                >
+                  {recipeExpanded ? "הצג פחות" : "המשך קריאה"}
+                  {recipeExpanded ? <ChevronUp className="h-3.5 w-3.5" /> : <ChevronDown className="h-3.5 w-3.5" />}
+                </button>
                 <div className="flex items-baseline gap-3 mb-3 justify-end">
                   <span className="text-sm text-muted-foreground line-through font-body">120 ש״ח</span>
                   <span className="text-sm text-muted-foreground font-body">מחיר השקה:</span>
@@ -66,17 +95,16 @@ const ProductsSection = () => {
                   whileTap={{ scale: 0.97 }}
                   className="inline-flex items-center gap-2 bg-gradient-purple text-white font-display font-bold text-sm rounded-full px-6 py-3 shadow-md hover:shadow-lg transition-all"
                 >
-                  ליצירת קשר לרכישה
+                  לרכישה לחצו
                 </motion.button>
               </div>
 
-              {/* Image */}
               <div className="shrink-0">
                 <motion.img
                   whileHover={{ scale: 1.03, rotate: 1 }}
                   transition={{ duration: 0.3 }}
                   src={recipeBook}
-                  alt="אתחול לבטן - חוברת מתכונים"
+                  alt="ריסט לבטן - חוברת מתכונים"
                   className="w-[180px] sm:w-[220px] md:w-[240px] h-auto object-contain rounded-2xl shadow-lg"
                 />
               </div>
@@ -89,7 +117,7 @@ const ProductsSection = () => {
             </div>
           </motion.div>
 
-          {/* Product B: Cards — Image right, text left (RTL) */}
+          {/* Product B: Cards — side by side display */}
           <motion.div
             initial={{ opacity: 0, y: 30 }}
             whileInView={{ opacity: 1, y: 0 }}
@@ -100,11 +128,29 @@ const ProductsSection = () => {
             <div className="flex flex-col md:flex-row items-center gap-6 p-6 md:p-10">
               {/* Text */}
               <div className="flex-1 text-right order-1 md:order-2">
-                <h3 className="font-display text-2xl md:text-3xl font-bold text-foreground mb-2">קלפי העצמה ושינוי</h3>
-                <p className="text-muted-foreground font-body text-sm mb-4">ליצירת קשר רגוע ובריא יותר עם אוכל</p>
-                <p className="text-muted-foreground font-body text-sm leading-relaxed mb-5">
-                  {cardsDetails}
+                <h3 className="font-display text-2xl md:text-3xl font-bold text-foreground mb-1">קלפי העצמה ושינוי</h3>
+                <p className="text-muted-foreground font-body text-sm mb-4">לקשר רגוע ובריא יותר עם אוכל</p>
+                <p className="text-muted-foreground font-body text-sm leading-relaxed mb-1">
+                  {cardsShort}
                 </p>
+                {cardsExpanded && (
+                  <motion.div
+                    initial={{ opacity: 0, height: 0 }}
+                    animate={{ opacity: 1, height: "auto" }}
+                    transition={{ duration: 0.3 }}
+                  >
+                    <p className="text-muted-foreground font-body text-sm leading-relaxed whitespace-pre-line mb-1">
+                      {cardsFull}
+                    </p>
+                  </motion.div>
+                )}
+                <button
+                  onClick={() => setCardsExpanded(!cardsExpanded)}
+                  className="flex items-center gap-1 text-primary font-body text-xs font-semibold mb-5 hover:underline transition-all mr-auto"
+                >
+                  {cardsExpanded ? "הצג פחות" : "המשך קריאה"}
+                  {cardsExpanded ? <ChevronUp className="h-3.5 w-3.5" /> : <ChevronDown className="h-3.5 w-3.5" />}
+                </button>
                 <div className="flex items-baseline gap-3 mb-3 justify-end">
                   <span className="text-sm text-muted-foreground line-through font-body">149 ש״ח</span>
                   <span className="text-sm text-muted-foreground font-body">מחיר השקה:</span>
@@ -115,30 +161,35 @@ const ProductsSection = () => {
                   whileTap={{ scale: 0.97 }}
                   className="inline-flex items-center gap-2 bg-gradient-purple text-white font-display font-bold text-sm rounded-full px-6 py-3 shadow-md hover:shadow-lg transition-all"
                 >
-                  לרכישת הסט בקליק
+                  לרכישה לחצו
                 </motion.button>
               </div>
 
-              {/* Card carousel */}
-              <div className="shrink-0 order-2 md:order-1 relative w-[200px] sm:w-[240px] md:w-[260px]">
-                <button onClick={() => goCard(-1)} className="absolute top-1/2 -translate-y-1/2 -right-5 z-10 w-8 h-8 rounded-full bg-white shadow-lg border border-gray-100 flex items-center justify-center text-muted-foreground hover:text-primary transition-all active:scale-95" aria-label="הקודם">
+              {/* Cards side by side with navigation */}
+              <div className="shrink-0 order-2 md:order-1 relative w-full md:w-[300px]">
+                <button onClick={() => goCard(-1)} className="absolute top-1/2 -translate-y-1/2 -right-2 md:-right-4 z-10 w-8 h-8 rounded-full bg-white shadow-lg border border-gray-100 flex items-center justify-center text-muted-foreground hover:text-primary transition-all active:scale-95" aria-label="הקודם">
                   <ChevronRight className="h-4 w-4" />
                 </button>
-                <button onClick={() => goCard(1)} className="absolute top-1/2 -translate-y-1/2 -left-5 z-10 w-8 h-8 rounded-full bg-white shadow-lg border border-gray-100 flex items-center justify-center text-muted-foreground hover:text-primary transition-all active:scale-95" aria-label="הבא">
+                <button onClick={() => goCard(1)} className="absolute top-1/2 -translate-y-1/2 -left-2 md:-left-4 z-10 w-8 h-8 rounded-full bg-white shadow-lg border border-gray-100 flex items-center justify-center text-muted-foreground hover:text-primary transition-all active:scale-95" aria-label="הבא">
                   <ChevronLeft className="h-4 w-4" />
                 </button>
-                <AnimatePresence mode="wait">
-                  <motion.img
-                    key={cardSlide}
-                    src={cardExamples[cardSlide]}
-                    alt={`דוגמה לקלף ${cardSlide + 1}`}
-                    className="w-full h-64 md:h-80 object-contain rounded-2xl"
-                    initial={{ opacity: 0, scale: 0.95 }}
-                    animate={{ opacity: 1, scale: 1 }}
-                    exit={{ opacity: 0, scale: 0.95 }}
-                    transition={{ duration: 0.3 }}
-                  />
-                </AnimatePresence>
+                {/* 3 cards side by side */}
+                <div className="flex items-center justify-center gap-2 px-6">
+                  {cardExamples.map((card, i) => (
+                    <motion.img
+                      key={i}
+                      src={card}
+                      alt={`דוגמה לקלף ${i + 1}`}
+                      className={`rounded-xl shadow-md object-contain transition-all duration-300 cursor-pointer ${
+                        i === cardSlide
+                          ? "w-[100px] sm:w-[120px] md:w-[110px] opacity-100 scale-105 ring-2 ring-primary/30"
+                          : "w-[80px] sm:w-[100px] md:w-[90px] opacity-70 scale-95"
+                      }`}
+                      onClick={() => setCardSlide(i)}
+                      whileHover={{ scale: i === cardSlide ? 1.08 : 1.0 }}
+                    />
+                  ))}
+                </div>
                 <div className="flex justify-center gap-2 mt-3">
                   {cardExamples.map((_, i) => (
                     <button

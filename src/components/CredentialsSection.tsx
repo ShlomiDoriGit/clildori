@@ -68,8 +68,8 @@ const CredentialsSection = () => (
           <img
             src={aboutMePhoto}
             alt="כליל דורי - תזונאית קלינית"
-            className="float-left ml-5 mb-4 mt-1 w-[130px] sm:w-[155px] rounded-2xl object-cover shadow-lg ring-4 ring-purple-100"
-            style={{ aspectRatio: "3/4", shapeOutside: "margin-box", shapeMargin: "12px" }}
+            className="float-left ml-6 mb-4 mt-1 w-[120px] sm:w-[145px] rounded-2xl object-cover shadow-lg ring-4 ring-purple-100"
+            style={{ aspectRatio: "3/4", shapeOutside: "margin-box", shapeMargin: "16px" }}
           />
           <p className="text-muted-foreground font-body text-sm sm:text-base leading-relaxed mb-4">
             אני כליל דורי, תזונאית קלינית, בוגרת תואר ראשון B.Sc בתזונה קלינית מהאוניברסיטה העברית, עם כ- 8 שנות ניסיון בליווי אנשים לשיפור הבריאות והטמעת אורח חיים מיטבי. אני מלווה נשים וגברים בתהליכי ירידה במשקל, איזון מטבולי ושינוי הרגלים, תוך הסתכלות רחבה שמחברת בין הגוף, התזונה והעולם הרגשי. בעבודתי אני משלבת כלים מעולמות התזונה הקלינית, ה- Longevity וההתנהגות, במטרה לייצר תהליך מדויק ופרקטי, שיחזיק לאורך זמן.
