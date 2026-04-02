@@ -20,7 +20,7 @@ const cardsShort = 'סט קלפים שנוצר במיוחד עבור נשים ה
 
 const cardsFull = `כל קלף כולל מסר מעודד, נקודת מבט חדשה או שאלה להתבוננות, המסייעים להתחבר מחדש לגוף, לרגשות ולצרכים האמיתיים. השימוש בקלפים מאפשר ליצור מרחב קטן של מודעות וחמלה עצמית, שמזכיר שאפשר לפתח מערכת יחסים רגועה ומיטיבה יותר עם אוכל.
 
-הקלפים יכולים לשמש ככלי אישי לרגעי התבוננות במהלך היום, כחלק מתהליך אישי, או ככלי תומך בתוך תהליך טיפולי. הם מזמינים לעצור לרגע, לנשום, ולהיזכר שהדרך לשינוי מתחילה ביחס עדין יותר כלפי עצמך`;
+הקלפים יכולים לשמש ככלי אישי לרגעי התבוננות במהלך היום, כחלק מתהליך אישי, או ככלי תומך בתוך תהליך טיפולי. הם מזמינים לעצור לרגע, לנשום, ולהיזכר שהדרך לשינוי מתחילה ביחס עדין יותר כלפי עצמך.`;
 
 const ProductsSection = () => {
   const [cardSlide, setCardSlide] = useState(0);
@@ -96,14 +96,17 @@ const ProductsSection = () => {
                     <span className="font-display text-3xl font-bold text-primary">79 ש״ח</span>
                   </div>
                 </div>
-                <div className="text-center">
-                  <motion.button
+                <div className="flex justify-center mt-2">
+                  <motion.a
+                    href="https://wa.me/972559272658"
+                    target="_blank"
+                    rel="noopener noreferrer"
                     whileHover={{ scale: 1.03 }}
                     whileTap={{ scale: 0.97 }}
                     className="inline-flex items-center gap-2 bg-gradient-purple text-white font-display font-bold text-sm rounded-full px-8 py-3 shadow-md hover:shadow-lg transition-all"
                   >
                     לרכישה לחצו
-                  </motion.button>
+                  </motion.a>
                 </div>
               </div>
 
@@ -170,14 +173,17 @@ const ProductsSection = () => {
                     <span className="font-display text-3xl font-bold text-primary">119 ש״ח</span>
                   </div>
                 </div>
-                <div className="text-center">
-                  <motion.button
+                <div className="flex justify-center mt-2">
+                  <motion.a
+                    href="https://wa.me/972559272658"
+                    target="_blank"
+                    rel="noopener noreferrer"
                     whileHover={{ scale: 1.03 }}
                     whileTap={{ scale: 0.97 }}
                     className="inline-flex items-center gap-2 bg-gradient-purple text-white font-display font-bold text-sm rounded-full px-8 py-3 shadow-md hover:shadow-lg transition-all"
                   >
                     לרכישה לחצו
-                  </motion.button>
+                  </motion.a>
                 </div>
               </div>
 
