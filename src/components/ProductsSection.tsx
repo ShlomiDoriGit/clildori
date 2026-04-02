@@ -96,7 +96,7 @@ const ProductsSection = () => {
                     <span className="font-display text-3xl font-bold text-primary">79 ש״ח</span>
                   </div>
                 </div>
-                <div className="flex justify-center mt-2">
+                <div className="flex justify-end mt-2">
                   <motion.a
                     href="https://wa.me/972559272658"
                     target="_blank"
@@ -173,7 +173,7 @@ const ProductsSection = () => {
                     <span className="font-display text-3xl font-bold text-primary">119 ש״ח</span>
                   </div>
                 </div>
-                <div className="flex justify-center mt-2">
+                <div className="flex justify-end mt-2">
                   <motion.a
                     href="https://wa.me/972559272658"
                     target="_blank"
