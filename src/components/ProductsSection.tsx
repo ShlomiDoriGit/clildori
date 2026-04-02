@@ -61,10 +61,10 @@ const ProductsSection = () => {
           >
             <div className="flex flex-col md:flex-row-reverse items-center gap-6 p-6 md:p-10">
               <div className="flex-1 text-right">
-                <h3 className="font-display text-2xl md:text-3xl font-bold text-foreground mb-1">ריסט לבטן</h3>
+                <h3 className="font-display text-2xl md:text-3xl font-bold text-foreground mb-1">אתחול לבטן</h3>
                 <p className="text-muted-foreground font-body text-sm mb-3">ספר המתכונים הדיגיטלי למערכת עיכול רגועה</p>
                 <p className="text-xs text-primary/80 font-body font-semibold mb-4">ללא גלוטן, ללא לקטוז, ללא סוכר וללא ממתיקים מלאכותיים</p>
-                <p className="text-muted-foreground font-body text-sm leading-relaxed mb-1">
+                <p className="text-muted-foreground font-body text-sm leading-[1.75] mb-4">
                   {recipeShort}
                 </p>
                 {recipeExpanded && (
@@ -73,7 +73,7 @@ const ProductsSection = () => {
                     animate={{ opacity: 1, height: "auto" }}
                     transition={{ duration: 0.3 }}
                   >
-                    <p className="text-muted-foreground font-body text-sm leading-relaxed whitespace-pre-line mb-1">
+                    <p className="text-muted-foreground font-body text-sm leading-[1.75] whitespace-pre-line mb-4">
                       {recipeFull}
                     </p>
                   </motion.div>
@@ -81,22 +81,30 @@ const ProductsSection = () => {
                 <button
                   onClick={() => setRecipeExpanded(!recipeExpanded)}
                   className="flex items-center gap-1 text-primary font-body text-xs font-semibold mb-5 hover:underline transition-all mr-auto"
+                  style={{ direction: "ltr" }}
                 >
-                  {recipeExpanded ? "הצג פחות" : "המשך קריאה"}
                   {recipeExpanded ? <ChevronUp className="h-3.5 w-3.5" /> : <ChevronDown className="h-3.5 w-3.5" />}
+                  {recipeExpanded ? "הצג פחות" : "המשך קריאה"}
                 </button>
-                <div className="flex items-baseline gap-3 mb-3 justify-end">
-                  <span className="text-sm text-muted-foreground line-through font-body">120 ש״ח</span>
-                  <span className="text-sm text-muted-foreground font-body">מחיר השקה:</span>
-                  <span className="font-display text-3xl font-bold text-primary">79 ש״ח</span>
+                <div className="flex flex-col items-end gap-1 mb-4">
+                  <div className="flex items-baseline gap-2">
+                    <span className="text-sm text-muted-foreground font-body">מחיר מלא:</span>
+                    <span className="text-base text-muted-foreground line-through font-body">120 ש״ח</span>
+                  </div>
+                  <div className="flex items-baseline gap-2">
+                    <span className="text-sm text-muted-foreground font-body">מחיר השקה:</span>
+                    <span className="font-display text-3xl font-bold text-primary">79 ש״ח</span>
+                  </div>
                 </div>
-                <motion.button
-                  whileHover={{ scale: 1.03 }}
-                  whileTap={{ scale: 0.97 }}
-                  className="inline-flex items-center gap-2 bg-gradient-purple text-white font-display font-bold text-sm rounded-full px-6 py-3 shadow-md hover:shadow-lg transition-all"
-                >
-                  לרכישה לחצו
-                </motion.button>
+                <div className="text-center">
+                  <motion.button
+                    whileHover={{ scale: 1.03 }}
+                    whileTap={{ scale: 0.97 }}
+                    className="inline-flex items-center gap-2 bg-gradient-purple text-white font-display font-bold text-sm rounded-full px-8 py-3 shadow-md hover:shadow-lg transition-all"
+                  >
+                    לרכישה לחצו
+                  </motion.button>
+                </div>
               </div>
 
               <div className="shrink-0">
@@ -104,7 +112,7 @@ const ProductsSection = () => {
                   whileHover={{ scale: 1.03, rotate: 1 }}
                   transition={{ duration: 0.3 }}
                   src={recipeBook}
-                  alt="ריסט לבטן - חוברת מתכונים"
+                  alt="אתחול לבטן - חוברת מתכונים"
                   className="w-[180px] sm:w-[220px] md:w-[240px] h-auto object-contain rounded-2xl shadow-lg"
                 />
               </div>
@@ -117,7 +125,7 @@ const ProductsSection = () => {
             </div>
           </motion.div>
 
-          {/* Product B: Cards — side by side display */}
+          {/* Product B: Cards */}
           <motion.div
             initial={{ opacity: 0, y: 30 }}
             whileInView={{ opacity: 1, y: 0 }}
@@ -130,7 +138,7 @@ const ProductsSection = () => {
               <div className="flex-1 text-right order-1 md:order-2">
                 <h3 className="font-display text-2xl md:text-3xl font-bold text-foreground mb-1">קלפי העצמה ושינוי</h3>
                 <p className="text-muted-foreground font-body text-sm mb-4">לקשר רגוע ובריא יותר עם אוכל</p>
-                <p className="text-muted-foreground font-body text-sm leading-relaxed mb-1">
+                <p className="text-muted-foreground font-body text-sm leading-[1.75] mb-4">
                   {cardsShort}
                 </p>
                 {cardsExpanded && (
@@ -139,7 +147,7 @@ const ProductsSection = () => {
                     animate={{ opacity: 1, height: "auto" }}
                     transition={{ duration: 0.3 }}
                   >
-                    <p className="text-muted-foreground font-body text-sm leading-relaxed whitespace-pre-line mb-1">
+                    <p className="text-muted-foreground font-body text-sm leading-[1.75] whitespace-pre-line mb-4">
                       {cardsFull}
                     </p>
                   </motion.div>
@@ -147,26 +155,34 @@ const ProductsSection = () => {
                 <button
                   onClick={() => setCardsExpanded(!cardsExpanded)}
                   className="flex items-center gap-1 text-primary font-body text-xs font-semibold mb-5 hover:underline transition-all mr-auto"
+                  style={{ direction: "ltr" }}
                 >
-                  {cardsExpanded ? "הצג פחות" : "המשך קריאה"}
                   {cardsExpanded ? <ChevronUp className="h-3.5 w-3.5" /> : <ChevronDown className="h-3.5 w-3.5" />}
+                  {cardsExpanded ? "הצג פחות" : "המשך קריאה"}
                 </button>
-                <div className="flex items-baseline gap-3 mb-3 justify-end">
-                  <span className="text-sm text-muted-foreground line-through font-body">149 ש״ח</span>
-                  <span className="text-sm text-muted-foreground font-body">מחיר השקה:</span>
-                  <span className="font-display text-3xl font-bold text-primary">119 ש״ח</span>
+                <div className="flex flex-col items-end gap-1 mb-4">
+                  <div className="flex items-baseline gap-2">
+                    <span className="text-sm text-muted-foreground font-body">מחיר מלא:</span>
+                    <span className="text-base text-muted-foreground line-through font-body">149 ש״ח</span>
+                  </div>
+                  <div className="flex items-baseline gap-2">
+                    <span className="text-sm text-muted-foreground font-body">מחיר השקה:</span>
+                    <span className="font-display text-3xl font-bold text-primary">119 ש״ח</span>
+                  </div>
                 </div>
-                <motion.button
-                  whileHover={{ scale: 1.03 }}
-                  whileTap={{ scale: 0.97 }}
-                  className="inline-flex items-center gap-2 bg-gradient-purple text-white font-display font-bold text-sm rounded-full px-6 py-3 shadow-md hover:shadow-lg transition-all"
-                >
-                  לרכישה לחצו
-                </motion.button>
+                <div className="text-center">
+                  <motion.button
+                    whileHover={{ scale: 1.03 }}
+                    whileTap={{ scale: 0.97 }}
+                    className="inline-flex items-center gap-2 bg-gradient-purple text-white font-display font-bold text-sm rounded-full px-8 py-3 shadow-md hover:shadow-lg transition-all"
+                  >
+                    לרכישה לחצו
+                  </motion.button>
+                </div>
               </div>
 
               {/* Card carousel — one large card at a time */}
-              <div className="shrink-0 order-2 md:order-1 relative w-[200px] sm:w-[240px] md:w-[260px]">
+              <div className="shrink-0 order-2 md:order-1 relative w-[260px] sm:w-[300px] md:w-[260px]">
                 <button onClick={() => goCard(-1)} className="absolute top-1/2 -translate-y-1/2 -right-5 z-10 w-8 h-8 rounded-full bg-white shadow-lg border border-gray-100 flex items-center justify-center text-muted-foreground hover:text-primary transition-all active:scale-95" aria-label="הקודם">
                   <ChevronRight className="h-4 w-4" />
                 </button>
@@ -178,7 +194,7 @@ const ProductsSection = () => {
                     key={cardSlide}
                     src={cardExamples[cardSlide]}
                     alt={`דוגמה לקלף ${cardSlide + 1}`}
-                    className="w-full h-64 md:h-80 object-contain rounded-2xl"
+                    className="w-full h-72 sm:h-80 md:h-80 object-contain rounded-2xl"
                     initial={{ opacity: 0, scale: 0.95 }}
                     animate={{ opacity: 1, scale: 1 }}
                     exit={{ opacity: 0, scale: 0.95 }}
