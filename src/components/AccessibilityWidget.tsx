@@ -42,6 +42,13 @@ const A11yIcon = ({ className }: { className?: string }) => (
 
 const AccessibilityWidget = () => {
   const [open, setOpen] = useState(false);
+  const [hidden, setHidden] = useState(() => {
+    try {
+      return localStorage.getItem("a11y-hidden") === "true";
+    } catch {
+      return false;
+    }
+  });
   const [state, setState] = useState<AccessibilityState>(() => {
     try {
       const saved = localStorage.getItem("a11y");
@@ -88,6 +95,12 @@ const AccessibilityWidget = () => {
     }));
   };
 
+  const hideWidget = () => {
+    setHidden(true);
+    setOpen(false);
+    localStorage.setItem("a11y-hidden", "true");
+  };
+
   const isModified = JSON.stringify(state) !== JSON.stringify(defaultState);
 
   // Close on Escape key
@@ -99,20 +112,51 @@ const AccessibilityWidget = () => {
     return () => window.removeEventListener("keydown", onKey);
   }, [open]);
 
+  // If hidden, show a tiny restore button at bottom-left corner
+  if (hidden) {
+    return (
+      <button
+        onClick={() => {
+          setHidden(false);
+          localStorage.removeItem("a11y-hidden");
+        }}
+        aria-label="הצג תפריט נגישות"
+        title="הצג נגישות"
+        className="a11y-widget-btn fixed bottom-2 left-2 z-[9999] w-8 h-8 rounded-full bg-gray-400/60 hover:bg-blue-500 text-white flex items-center justify-center transition-all hover:scale-110 opacity-50 hover:opacity-100"
+      >
+        <A11yIcon className="w-4 h-4" />
+      </button>
+    );
+  }
+
   return (
     <>
-      {/* Floating accessibility button */}
-      <button
-        onClick={() => setOpen((v) => !v)}
-        aria-label="תפריט נגישות"
-        title="נגישות"
-        className="a11y-widget-btn fixed bottom-5 left-5 z-[9999] w-[52px] h-[52px] md:w-[58px] md:h-[58px] rounded-full shadow-[0_4px_20px_rgba(0,0,0,0.25)] flex items-center justify-center transition-transform hover:scale-110 active:scale-95"
-        style={{ background: "linear-gradient(135deg, #1565C0, #1E88E5)" }}
-      >
-        <A11yIcon className="w-7 h-7 md:w-8 md:h-8 text-white" />
-      </button>
+      {/* Floating accessibility button with dismiss X */}
+      <div className="a11y-widget-btn fixed bottom-5 left-5 z-[9999] group">
+        {/* Small X to dismiss/hide the widget */}
+        <button
+          onClick={hideWidget}
+          aria-label="הסתר כפתור נגישות"
+          title="הסתר"
+          className="absolute -top-2 -right-2 w-5 h-5 rounded-full bg-gray-500 hover:bg-red-500 text-white flex items-center justify-center transition-all opacity-0 group-hover:opacity-100 shadow-md"
+          style={{ fontSize: "10px", lineHeight: 1 }}
+        >
+          <X className="w-3 h-3" />
+        </button>
 
-      {/* Panel overlay */}
+        {/* Main button */}
+        <button
+          onClick={() => setOpen((v) => !v)}
+          aria-label="תפריט נגישות"
+          title="נגישות"
+          className="w-[52px] h-[52px] md:w-[58px] md:h-[58px] rounded-full shadow-[0_4px_20px_rgba(0,0,0,0.25)] flex items-center justify-center transition-transform hover:scale-110 active:scale-95"
+          style={{ background: "linear-gradient(135deg, #1565C0, #1E88E5)" }}
+        >
+          <A11yIcon className="w-7 h-7 md:w-8 md:h-8 text-white" />
+        </button>
+      </div>
+
+      {/* Panel overlay - centered on screen */}
       {open && (
         <>
           {/* Backdrop */}
@@ -121,13 +165,18 @@ const AccessibilityWidget = () => {
             className="fixed inset-0 bg-black/25 z-[9999] a11y-widget-backdrop"
           />
 
-          {/* Widget panel */}
+          {/* Widget panel - fixed center of viewport */}
           <div
             role="dialog"
             aria-label="הגדרות נגישות"
             aria-modal="true"
-            className="a11y-widget-panel fixed bottom-[85px] left-5 z-[10000] w-[310px] max-h-[75vh] overflow-hidden bg-white rounded-2xl shadow-[0_8px_40px_rgba(0,0,0,0.2)] border border-gray-100 flex flex-col"
-            style={{ direction: "rtl" }}
+            className="a11y-widget-panel fixed z-[10000] w-[310px] max-h-[80vh] overflow-hidden bg-white rounded-2xl shadow-[0_8px_40px_rgba(0,0,0,0.2)] border border-gray-100 flex flex-col"
+            style={{
+              direction: "rtl",
+              top: "50%",
+              left: "50%",
+              transform: "translate(-50%, -50%)",
+            }}
           >
             {/* Header */}
             <div
