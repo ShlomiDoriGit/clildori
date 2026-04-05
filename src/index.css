@@ -111,3 +111,96 @@ html {
 ::-webkit-scrollbar-thumb:hover {
   background: #5E17EB;
 }
+
+/* ===== Accessibility overrides ===== */
+
+/* High contrast */
+body.a11y-high-contrast {
+  filter: contrast(1.4);
+}
+body.a11y-high-contrast * {
+  border-color: #000 !important;
+}
+
+/* Invert colors */
+body.a11y-invert-colors {
+  filter: invert(1) hue-rotate(180deg);
+}
+body.a11y-invert-colors img,
+body.a11y-invert-colors video,
+body.a11y-invert-colors svg image {
+  filter: invert(1) hue-rotate(180deg);
+}
+
+/* Grayscale */
+body.a11y-grayscale {
+  filter: grayscale(1);
+}
+
+/* Combined filters */
+body.a11y-high-contrast.a11y-grayscale {
+  filter: contrast(1.4) grayscale(1);
+}
+body.a11y-high-contrast.a11y-invert-colors {
+  filter: contrast(1.4) invert(1) hue-rotate(180deg);
+}
+body.a11y-grayscale.a11y-invert-colors {
+  filter: grayscale(1) invert(1) hue-rotate(180deg);
+}
+
+/* Highlight links */
+body.a11y-highlight-links a,
+body.a11y-highlight-links button {
+  outline: 2px solid #1565C0 !important;
+  outline-offset: 2px;
+  text-decoration: underline !important;
+}
+
+/* Readable font */
+body.a11y-readable-font,
+body.a11y-readable-font * {
+  font-family: Arial, Helvetica, sans-serif !important;
+  word-spacing: 0.1em;
+}
+
+/* Line height */
+body.a11y-line-height,
+body.a11y-line-height * {
+  line-height: 2 !important;
+}
+
+/* Letter spacing */
+body.a11y-letter-spacing,
+body.a11y-letter-spacing * {
+  letter-spacing: 0.12em !important;
+  word-spacing: 0.2em !important;
+}
+
+/* Big cursor */
+body.a11y-big-cursor,
+body.a11y-big-cursor * {
+  cursor: url("data:image/svg+xml,%3Csvg xmlns='http://www.w3.org/2000/svg' width='48' height='48'%3E%3Cpath d='M7 3l28 20-13 3-7 14-4-17-4-20z' fill='%23000' stroke='%23fff' stroke-width='2'/%3E%3C/svg%3E") 6 3, auto !important;
+}
+
+/* Stop animations */
+body.a11y-stop-animations *,
+body.a11y-stop-animations *::before,
+body.a11y-stop-animations *::after {
+  animation-duration: 0s !important;
+  animation-delay: 0s !important;
+  transition-duration: 0s !important;
+  transition-delay: 0s !important;
+}
+
+/* Don't apply filters to accessibility widget itself */
+.a11y-widget-btn,
+.a11y-widget-panel,
+.a11y-widget-backdrop {
+  filter: none !important;
+}
+
+/* Focus visible for keyboard navigation */
+*:focus-visible {
+  outline: 3px solid #1565C0;
+  outline-offset: 2px;
+}
