@@ -114,37 +114,37 @@ html {
 
 /* ===== Accessibility overrides ===== */
 
-/* High contrast */
-body.a11y-high-contrast {
+/* High contrast — applied to content wrapper so the a11y widget stays unaffected */
+#a11y-content.a11y-high-contrast {
   filter: contrast(1.4);
 }
-body.a11y-high-contrast * {
+#a11y-content.a11y-high-contrast * {
   border-color: #000 !important;
 }
 
 /* Invert colors */
-body.a11y-invert-colors {
+#a11y-content.a11y-invert-colors {
   filter: invert(1) hue-rotate(180deg);
 }
-body.a11y-invert-colors img,
-body.a11y-invert-colors video,
-body.a11y-invert-colors svg image {
+#a11y-content.a11y-invert-colors img,
+#a11y-content.a11y-invert-colors video,
+#a11y-content.a11y-invert-colors svg image {
   filter: invert(1) hue-rotate(180deg);
 }
 
 /* Grayscale */
-body.a11y-grayscale {
+#a11y-content.a11y-grayscale {
   filter: grayscale(1);
 }
 
 /* Combined filters */
-body.a11y-high-contrast.a11y-grayscale {
+#a11y-content.a11y-high-contrast.a11y-grayscale {
   filter: contrast(1.4) grayscale(1);
 }
-body.a11y-high-contrast.a11y-invert-colors {
+#a11y-content.a11y-high-contrast.a11y-invert-colors {
   filter: contrast(1.4) invert(1) hue-rotate(180deg);
 }
-body.a11y-grayscale.a11y-invert-colors {
+#a11y-content.a11y-grayscale.a11y-invert-colors {
   filter: grayscale(1) invert(1) hue-rotate(180deg);
 }
 

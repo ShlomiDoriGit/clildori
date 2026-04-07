@@ -61,11 +61,17 @@ const AccessibilityWidget = () => {
   const apply = useCallback((s: AccessibilityState) => {
     const root = document.documentElement;
     const body = document.body;
+    // Visual filters target wrapper div so the floating widget stays unaffected
+    const wrapper = document.getElementById("a11y-content") || body;
 
     root.style.fontSize = s.fontSize === 0 ? "" : `${100 + s.fontSize * 15}%`;
-    body.classList.toggle("a11y-high-contrast", s.highContrast);
-    body.classList.toggle("a11y-invert-colors", s.invertColors);
-    body.classList.toggle("a11y-grayscale", s.grayscale);
+
+    // Filter-based effects → wrapper only
+    wrapper.classList.toggle("a11y-high-contrast", s.highContrast);
+    wrapper.classList.toggle("a11y-invert-colors", s.invertColors);
+    wrapper.classList.toggle("a11y-grayscale", s.grayscale);
+
+    // Non-filter effects → body (so they apply globally)
     body.classList.toggle("a11y-highlight-links", s.highlightLinks);
     body.classList.toggle("a11y-readable-font", s.readableFont);
     body.classList.toggle("a11y-big-cursor", s.bigCursor);
