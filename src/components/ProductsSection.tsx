@@ -8,19 +8,21 @@ import cardSlide17 from "@/assets/card-slide-17.png";
 
 const cardExamples = [cardsCoverNew, cardSlide13, cardSlide17];
 
-const recipeShort = 'חוברת מתכונים דיגיטלית שנבנתה במיוחד עבור אנשים עם רגישות לגלוטן וללקטוז, וגם עבור מי שמסתובב יום יום עם נפיחות, גזים או יציאות לא סדירות ולא מצליח להבין למה.';
+const recipeShort = 'חוברת מתכונים דיגיטלית שנבנתה במיוחד עבור אנשים עם רגישות לגלוטן וללקטוז, וגם עבור מי שמתמודד ביום יום עם נפיחות, גזים או יציאות לא סדירות, אבל עדיין לא הצליח לזהות מה גורם לזה.';
 
-const recipeFull = `החוברת כוללת מגוון מתכונים קלים להכנה, המבוססים על חומרי גלם איכותיים וידידותיים למערכת העיכול, ללא גלוטן, ללא לקטוז, ללא סוכר וללא ממתיקים מלאכותיים, כך שתוכלו ליהנות מאוכל טעים, מזין ומשביע מבלי להכביד על הגוף.
+const recipeFull = `החוברת כוללת מגוון מתכונים קלים להכנה, המבוססים על חומרי גלם ידידותיים למערכת העיכול, ללא גלוטן, דל לקטוז, ללא סוכר וללא ממתיקים מלאכותיים, כך שתוכלו ליהנות מאוכל טעים, מזין ומשביע מבלי להכביד על הגוף.
 
-מעבר לרעיונות לארוחות יומיומיות, החוברת מאפשרת לבצע אתחול תזונתי לגוף, להפחית עומס ממערכת העיכול, להרגיע את הבטן ולהתחיל להרגיש קלילים יותר.
+בנוסף, תמצאו בה המלצות לחומרי גלם שנבחרו בקפידה, עם דגש על איכות, תנאי גידול וייצור, ובדיקות לניקיון מרעלים ומתכות כבדות.
 
-זו דרך פשוטה להתחיל לאכול בצורה שמיטיבה עם הגוף, תומכת בהרגעת מערכת העיכול ומסייעת להפחית נפיחות ואי נוחות, תוך שמירה על תזונה מגוונת, טעימה ומאוזנת ביומיום.`;
+מעבר למתכונים פרקטיים לשגרה, החוברת מאפשרת לבצע אתחול תזונתי לגוף בדרך פשוטה ומאוזנת, להרגיע את הבטן ולהתחיל להרגיש קלילים יותר, תוך שמירה על תזונה מגוונת, טעימה ומזינה ביום יום.`;
 
-const cardsShort = 'סט קלפים שנוצר במיוחד עבור נשים המתמודדות עם מערכת יחסים מורכבת עם אוכל, מחשבות סביב אכילה, או תחושות של אשמה ושליטה. הקלפים נועדו להעניק רגע של עצירה, התבוננות וחיזוק פנימי בתוך היום יום.';
+const cardsShort = 'סט קלפים שנוצר במיוחד עבור נשים המתמודדות עם מערכת יחסים מורכבת עם אוכל, מחשבות סביב אכילה, תחושות של אשמה, צורך בשליטה, או קושי להקשיב לגוף ברגעים של עומס רגשי.';
 
-const cardsFull = `כל קלף כולל מסר מעודד, נקודת מבט חדשה או שאלה להתבוננות, המסייעים להתחבר מחדש לגוף, לרגשות ולצרכים האמיתיים. השימוש בקלפים מאפשר ליצור מרחב קטן של מודעות וחמלה עצמית, שמזכיר שאפשר לפתח מערכת יחסים רגועה ומיטיבה יותר עם אוכל.
+const cardsFull = `כל קלף מציע מסר מחזק, שאלה להתבוננות או נקודת מבט חדשה, שמטרתם לעצור לרגע את האוטומט, להתחבר לגוף ולרגשות, ולבחור את הצעד הבא מתוך מודעות, ולא מתוך אשמה או ביקורת עצמית.
 
-הקלפים יכולים לשמש ככלי אישי לרגעי התבוננות במהלך היום, כחלק מתהליך אישי, או ככלי תומך בתוך תהליך טיפולי. הם מזמינים לעצור לרגע, לנשום, ולהיזכר שהדרך לשינוי מתחילה ביחס עדין יותר כלפי עצמך.`;
+הקלפים נועדו ליצור מרחב קטן של נשימה בתוך היום יום, ולעזור לך לפתח מערכת יחסים רגועה, קשובה ומיטיבה יותר עם האוכל ועם הגוף.
+
+זהו כלי שיכול להשתלב כחלק מתהליך אישי, ברגעים שבהם את רוצה לעצור, לנשום ולהתחבר לעצמך מחדש, או ככלי תומך בתוך תהליך טיפולי. דרך פשוטה ונגישה להזכיר לעצמך ששינוי אמיתי לא מתחיל משליטה חזקה יותר, אלא מהקשבה, חמלה והבנה עמוקה יותר של הצרכים שלך.`;
 
 const ProductsSection = () => {
   const [cardSlide, setCardSlide] = useState(0);
@@ -62,8 +64,8 @@ const ProductsSection = () => {
             <div className="flex flex-col md:flex-row-reverse items-center gap-6 p-6 md:p-10">
               <div className="flex-1 text-right">
                 <h3 className="font-display text-2xl md:text-3xl font-bold text-foreground mb-1">אתחול לבטן</h3>
-                <p className="text-muted-foreground font-body text-sm mb-3">ספר המתכונים הדיגיטלי למערכת עיכול רגועה</p>
-                <p className="text-xs text-primary/80 font-body font-semibold mb-4">ללא גלוטן, ללא לקטוז, ללא סוכר וללא ממתיקים מלאכותיים</p>
+                <p className="text-muted-foreground font-body text-sm mb-3">ספר המתכונים הדיגיטלי למערכת עיכול רגועה.</p>
+                <p className="text-xs text-primary/80 font-body font-semibold mb-4">ללא גלוטן, דל לקטוז, ללא סוכר וללא ממתיקים מלאכותיים.</p>
                 <p className="text-muted-foreground font-body text-sm leading-[1.75] mb-4">
                   {recipeShort}
                 </p>
@@ -95,6 +97,9 @@ const ProductsSection = () => {
                     <span className="text-sm text-muted-foreground font-body">מחיר השקה:</span>
                     <span className="font-display text-3xl font-bold text-primary">79 ש״ח</span>
                   </div>
+                  <div className="flex items-baseline gap-2 text-xs text-muted-foreground font-body mt-3 pt-3 border-t border-gray-200">
+                    <span>מי שרוכש תוכנית ליווי מקבל את החוברת בחינם!</span>
+                  </div>
                 </div>
                 <div className="flex justify-end mt-2">
                   <motion.a
@@ -120,12 +125,6 @@ const ProductsSection = () => {
                 />
               </div>
             </div>
-
-            <div className="bg-gradient-purple px-6 py-3.5 text-center">
-              <p className="font-display text-sm md:text-base font-bold text-white">
-                מי שרוכש תוכנית ליווי מקבל את החוברת בחינם!
-              </p>
-            </div>
           </motion.div>
 
           {/* Product B: Cards */}
@@ -140,7 +139,7 @@ const ProductsSection = () => {
               {/* Text */}
               <div className="flex-1 text-right order-1 md:order-2">
                 <h3 className="font-display text-2xl md:text-3xl font-bold text-foreground mb-1">קלפי העצמה ושינוי</h3>
-                <p className="text-muted-foreground font-body text-sm mb-4">לקשר רגוע ובריא יותר עם אוכל</p>
+                <p className="text-muted-foreground font-body text-sm mb-4">לקשר רגוע ובריא יותר עם אוכל.</p>
                 <p className="text-muted-foreground font-body text-sm leading-[1.75] mb-4">
                   {cardsShort}
                 </p>
@@ -166,11 +165,11 @@ const ProductsSection = () => {
                 <div className="flex flex-col items-end gap-1 mb-4">
                   <div className="flex items-baseline gap-2">
                     <span className="text-sm text-muted-foreground font-body">מחיר מלא:</span>
-                    <span className="text-base text-muted-foreground line-through font-body">149 ש״ח</span>
+                    <span className="text-base text-muted-foreground line-through font-body">280 ש״ח</span>
                   </div>
                   <div className="flex items-baseline gap-2">
                     <span className="text-sm text-muted-foreground font-body">מחיר השקה:</span>
-                    <span className="font-display text-3xl font-bold text-primary">119 ש״ח</span>
+                    <span className="font-display text-3xl font-bold text-primary">249 ש״ח</span>
                   </div>
                 </div>
                 <div className="flex justify-end mt-2">

@@ -1,17 +1,28 @@
 import { useState } from "react";
 import { motion, AnimatePresence } from "framer-motion";
-import { Video, ClipboardList, Pill, HeartHandshake, Wrench, ChevronDown } from "lucide-react";
+import { Video, ClipboardList, Pill, HeartHandshake, Wrench, ChevronDown, Users, Lightbulb } from "lucide-react";
 
-const points = [
-  { title: "ייעוץ תזונתי אונליין", details: "סדרת פגישות ייעוץ תזונתי אונליין המותאמות אליך אישית.", icon: Video, num: "01" },
-  { title: "בניית תפריט מותאם אישית", details: "בניית תפריט תזונתי בהתאם למצב הבריאותי, בדיקות הדם, ההעדפות ואורח החיים שלך.", icon: ClipboardList, num: "02" },
-  { title: "פרוטוקול תוספי תזונה", details: "התאמת פרוטוקול תוספי תזונה מותאם מטרות ומבוסס ספרות עדכנית.", icon: Pill, num: "03" },
-  { title: "ליווי ותמיכה שוטפת", details: "ליווי ותמיכה שוטפת בין המפגשים, כולל מענה לשאלות והתאמות לפי הצורך.", icon: HeartHandshake, num: "04" },
-  { title: "כלים לשינוי הרגלים", details: "מתן כלים פרקטיים לשינוי הרגלים, ויסות אכילה, ניהול סטרס ושמירה על התוצאות לאורך זמן.", icon: Wrench, num: "05" },
+const healthyLifestylePoints = [
+  { title: "פגישות ייעוץ והערכה תזונתית", details: "סדרת פגישות אישיות בקליניקה, הכוללות הערכה תזונתית מעמיקה ובניית תהליך מקצועי המותאם לך.", icon: Video, num: "1" },
+  { title: "תפריט תזונתי מותאם אישית", details: "בניית תפריט תזונתי בהתאם למצב הבריאותי, בדיקות הדם, ההעדפות האישיות ואורח החיים שלך.", icon: ClipboardList, num: "2" },
+  { title: "פרוטוקול תוספי תזונה", details: "התאמת פרוטוקול תוספי תזונה המבוסס על המטרות האישיות, בדיקות הדם והספרות המקצועית העדכנית.", icon: Pill, num: "3" },
+  { title: "ליווי ותמיכה שוטפת", details: "ליווי רציף בין המפגשים, הכולל מעקב אחר ההתקדמות, מענה לשאלות, תמיכה והתאמות לפי הצורך.", icon: HeartHandshake, num: "4" },
+  { title: "כלים לשינוי הרגלים", details: "מתן כלים פרקטיים לשינוי הרגלים, ויסות אכילה, ניהול סטרס ושמירה על התוצאות לאורך זמן.", icon: Wrench, num: "5" },
+];
+
+const eatingDisordersPoints = [
+  { title: "הערכה תזונתית רגישה ומעמיקה", details: "היכרות עם דפוסי האכילה, הקשר עם הגוף והאוכל, ההיסטוריה הבריאותית, בדיקות הדם, התסמינים והצרכים הרגשיים סביב האכילה.", icon: Lightbulb, num: "1" },
+  { title: "פגישות שבועיות ותהליך הדרגתי", details: "ליווי תזונתי רציף הכולל פגישות שבועיות, המאפשר בניית יציבות והתקדמות הדרגתית בקצב מותאם ובטוח.", icon: Video, num: "2" },
+  { title: "מסגרת אכילה מותאמת", details: "בניית סדר אכילה הדרגתי ומותאם אישית, הכולל תכנון ארוחות, הרחבת מגוון המזונות והפחתת דפוסים שמייצרים קושי סביב האכילה.", icon: ClipboardList, num: "3" },
+  { title: "עבודה בצוות רב מקצועי", details: "במידת הצורך, התהליך מתקיים בשיתוף פעולה עם מטפל רגשי, פסיכיאטר, רופא משפחה וגורמי טיפול נוספים, כחלק ממעטפת טיפולית מקצועית ובטוחה.", icon: Users, num: "4" },
+  { title: "קשר עם הגוף והאכילה", details: "עבודה על זיהוי רעב ושובע, אכילה קשובה, תחושת מסוגלות, הפחתת אשמה סביב אוכל, ובנייה מחודשת של אמון בגוף.", icon: HeartHandshake, num: "5" },
 ];
 
 const ProgramSection = () => {
   const [openIndex, setOpenIndex] = useState<number | null>(null);
+  const [activeTab, setActiveTab] = useState<"healthy" | "disorders">("healthy");
+
+  const currentPoints = activeTab === "healthy" ? healthyLifestylePoints : eatingDisordersPoints;
 
   return (
     <section id="program" className="section-padding bg-white relative">
@@ -21,14 +32,53 @@ const ProgramSection = () => {
           whileInView={{ opacity: 1, y: 0 }}
           viewport={{ once: true, amount: 0.2 }}
           transition={{ duration: 0.6 }}
-          className="text-center mb-14"
+          className="text-center mb-10"
         >
           <span className="inline-block font-body text-sm font-semibold text-primary bg-primary/10 rounded-full px-4 py-1.5 mb-4">
             ליווי תזונתי
           </span>
-          <h2 className="font-display text-3xl md:text-5xl font-bold text-foreground">
+          <h2 className="font-display text-3xl md:text-5xl font-bold text-foreground mb-4">
             התהליך בקליניקה
           </h2>
+          <p className="text-muted-foreground font-body text-base md:text-lg max-w-2xl mx-auto">
+            בקליניקה קיימים שני מסלולי ליווי ייעודיים, המאפשרים להתאים את התהליך למצב הבריאותי, לדפוסי האכילה ולמטרות האישיות שלך. אפשר לבחור את המסלול המתאים ולהכיר את שלבי התהליך.
+          </p>
+        </motion.div>
+
+        {/* Tabs */}
+        <motion.div
+          initial={{ opacity: 0, y: 10 }}
+          whileInView={{ opacity: 1, y: 0 }}
+          viewport={{ once: true, amount: 0.2 }}
+          transition={{ delay: 0.1, duration: 0.5 }}
+          className="flex justify-center gap-4 mb-12"
+        >
+          <button
+            onClick={() => {
+              setActiveTab("healthy");
+              setOpenIndex(null);
+            }}
+            className={`font-display font-semibold px-6 md:px-8 py-3 rounded-full transition-all duration-300 ${
+              activeTab === "healthy"
+                ? "bg-gradient-purple text-white shadow-lg"
+                : "bg-gray-100 text-foreground hover:bg-gray-200"
+            }`}
+          >
+            אורח חיים בריא
+          </button>
+          <button
+            onClick={() => {
+              setActiveTab("disorders");
+              setOpenIndex(null);
+            }}
+            className={`font-display font-semibold px-6 md:px-8 py-3 rounded-full transition-all duration-300 ${
+              activeTab === "disorders"
+                ? "bg-gradient-purple text-white shadow-lg"
+                : "bg-gray-100 text-foreground hover:bg-gray-200"
+            }`}
+          >
+            הפרעות אכילה
+          </button>
         </motion.div>
 
         {/* Elegant cards — Mobile: vertical list, Desktop: 5 columns */}
@@ -36,7 +86,7 @@ const ProgramSection = () => {
 
           {/* Desktop: 5-column horizontal */}
           <div className="hidden md:grid md:grid-cols-5 gap-5 mb-4">
-            {points.map((point, i) => {
+            {currentPoints.map((point, i) => {
               const Icon = point.icon;
               return (
                 <motion.button
@@ -77,7 +127,7 @@ const ProgramSection = () => {
 
           {/* Mobile: Elegant stacked cards */}
           <div className="md:hidden space-y-3 mb-4">
-            {points.map((point, i) => {
+            {currentPoints.map((point, i) => {
               const Icon = point.icon;
               const isOpen = openIndex === i;
               return (
@@ -157,7 +207,7 @@ const ProgramSection = () => {
                 >
                   <div className="bg-purple-50/50 rounded-2xl p-6 text-center mb-6 border border-purple-100">
                     <p className="text-muted-foreground font-body text-base leading-relaxed">
-                      {points[openIndex].details}
+                      {currentPoints[openIndex].details}
                     </p>
                   </div>
                 </motion.div>

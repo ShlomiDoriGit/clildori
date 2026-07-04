@@ -4,16 +4,30 @@ import logoIcon from "@/assets/logo-icon.png";
 import footerBg from "@/assets/footer-bg.png";
 
 const Footer = () => (
-  <footer
-    id="footer"
-    className="relative py-20 md:py-28 overflow-hidden"
-    style={{
-      backgroundImage: `url(${footerBg})`,
-      backgroundSize: "cover",
-      backgroundPosition: "center",
-      backgroundRepeat: "no-repeat",
-    }}
-  >
+  <>
+    {/* Wave transition before footer */}
+    <div className="w-full bg-white">
+      <svg viewBox="0 0 1440 80" fill="none" xmlns="http://www.w3.org/2000/svg" preserveAspectRatio="none" className="w-full h-12 md:h-16">
+        <defs>
+          <linearGradient id="footerGradient" x1="0%" y1="0%" x2="0%" y2="100%">
+            <stop offset="0%" stopColor="white" />
+            <stop offset="100%" stopColor="#F8F5FF" />
+          </linearGradient>
+        </defs>
+        <path d="M0 30C240 60 480 80 720 60C960 40 1200 20 1440 50V80H0Z" fill="url(#footerGradient)" />
+      </svg>
+    </div>
+
+    <footer
+      id="footer"
+      className="relative py-20 md:py-28 overflow-hidden"
+      style={{
+        backgroundImage: `url(${footerBg})`,
+        backgroundSize: "cover",
+        backgroundPosition: "center",
+        backgroundRepeat: "no-repeat",
+      }}
+    >
     {/* Overlay for readability */}
     <div className="absolute inset-0 bg-white/60 backdrop-blur-[2px]" />
 
@@ -92,7 +106,8 @@ const Footer = () => (
         © {new Date().getFullYear()} כליל דורי — כל הזכויות שמורות
       </p>
     </div>
-  </footer>
+    </footer>
+  </>
 );
 
 export default Footer;
