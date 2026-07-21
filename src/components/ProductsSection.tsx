@@ -1,8 +1,8 @@
 import { useState } from "react";
 import { motion, AnimatePresence } from "framer-motion";
 import { ChevronRight, ChevronLeft, ChevronDown, ChevronUp, ShoppingBag } from "lucide-react";
-import recipeBook from "@/assets/recipe-book.png";
-import cardsCoverNew from "@/assets/cards-cover-new.png";
+import recipeBook from "@/assets/recipe-cover.jpg";
+import cardsCoverNew from "@/assets/cards-title.jpg";
 import cardSlide13 from "@/assets/card-slide-13.png";
 import cardSlide17 from "@/assets/card-slide-17.png";
 

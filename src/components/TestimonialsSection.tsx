@@ -1,18 +1,20 @@
 import { useState, useEffect } from "react";
 import { motion, AnimatePresence } from "framer-motion";
 import { ChevronRight, ChevronLeft, Play, Star, ExternalLink } from "lucide-react";
-import successThumbnail from "@/assets/success-thumbnail.jpeg";
+import successThumbnail from "@/assets/success-cover.jpg";
 import articleScreenshot from "@/assets/article-screenshot.png";
 import testimonial1 from "@/assets/testimonial-1.jpg";
 import testimonial2 from "@/assets/testimonial-2.jpg";
 import testimonial3 from "@/assets/testimonial-3.jpg";
 import testimonial4 from "@/assets/testimonial-4.jpg";
+import testimonial5 from "@/assets/testimonial-5.jpg";
 
 const testimonials = [
-  { image: testimonial1, alt: "תוצאות מדהימות - לפני ואחרי" },
-  { image: testimonial2, alt: "שיפור משמעותי בבריאות" },
-  { image: testimonial3, alt: "חוויה מעולה עם כליל" },
-  { image: testimonial4, alt: "שינוי אמיתי ובריא" },
+  { image: testimonial5, alt: "המלצה של מטופל על התהליך" },
+  { image: testimonial1, alt: "המלצה של מטופלת על התהליך" },
+  { image: testimonial2, alt: "המלצה של מטופל על שיפור בבדיקות הדם" },
+  { image: testimonial3, alt: "המלצה של מטופלת על הליווי" },
+  { image: testimonial4, alt: "תוצאות לפני ואחרי של מטופל" },
 ];
 
 const TestimonialsSection = () => {

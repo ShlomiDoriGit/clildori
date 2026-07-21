@@ -1,6 +1,6 @@
 import { motion } from "framer-motion";
 import { Award } from "lucide-react";
-import aboutMePhoto from "@/assets/about-me-new.jpeg";
+import aboutMePhoto from "@/assets/about-me-2026.jpg";
 import certDietitian from "@/assets/cert-dietitian.jpeg";
 import certUniversity from "@/assets/cert-university.jpeg";
 import certGroups from "@/assets/cert-groups.jpeg";
