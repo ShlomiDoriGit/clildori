@@ -6,7 +6,7 @@ import footerBg from "@/assets/footer-bg.png";
 const Footer = () => (
   <footer
     id="footer"
-    className="relative py-20 md:py-28 overflow-hidden"
+    className="relative pt-28 pb-20 md:pt-36 md:pb-28 overflow-hidden"
     style={{
       backgroundImage: `url(${footerBg})`,
       backgroundSize: "cover",
@@ -16,6 +16,13 @@ const Footer = () => (
   >
     {/* Overlay for readability */}
     <div className="absolute inset-0 bg-white/60 backdrop-blur-[2px]" />
+
+    {/* Top wave — complementary to the hero wave, blends the white section above into the footer graphic */}
+    <div className="absolute top-0 left-0 right-0 z-[5] -translate-y-px pointer-events-none">
+      <svg viewBox="0 0 1440 80" fill="none" xmlns="http://www.w3.org/2000/svg" preserveAspectRatio="none" className="w-full h-16 md:h-20">
+        <path d="M0 0H1440V50C1200 20 960 40 720 60C480 80 240 70 0 40Z" fill="white" />
+      </svg>
+    </div>
 
     {/* Logo watermark */}
     <img

@@ -1,17 +1,54 @@
 import { useState } from "react";
 import { motion, AnimatePresence } from "framer-motion";
-import { Video, ClipboardList, Pill, HeartHandshake, Wrench, ChevronDown } from "lucide-react";
+import {
+  Stethoscope,
+  ClipboardList,
+  Pill,
+  HeartHandshake,
+  Wrench,
+  HeartPulse,
+  CalendarClock,
+  Salad,
+  Users,
+  Heart,
+  ChevronDown,
+} from "lucide-react";
 
-const points = [
-  { title: "ייעוץ תזונתי אונליין", details: "סדרת פגישות ייעוץ תזונתי אונליין המותאמות אליך אישית.", icon: Video, num: "01" },
-  { title: "בניית תפריט מותאם אישית", details: "בניית תפריט תזונתי בהתאם למצב הבריאותי, בדיקות הדם, ההעדפות ואורח החיים שלך.", icon: ClipboardList, num: "02" },
-  { title: "פרוטוקול תוספי תזונה", details: "התאמת פרוטוקול תוספי תזונה מותאם מטרות ומבוסס ספרות עדכנית.", icon: Pill, num: "03" },
-  { title: "ליווי ותמיכה שוטפת", details: "ליווי ותמיכה שוטפת בין המפגשים, כולל מענה לשאלות והתאמות לפי הצורך.", icon: HeartHandshake, num: "04" },
-  { title: "כלים לשינוי הרגלים", details: "מתן כלים פרקטיים לשינוי הרגלים, ויסות אכילה, ניהול סטרס ושמירה על התוצאות לאורך זמן.", icon: Wrench, num: "05" },
+const tracks = [
+  {
+    id: "lifestyle",
+    label: "אורח חיים בריא",
+    points: [
+      { title: "פגישות ייעוץ והערכה תזונתית", details: "סדרת פגישות אישיות בקליניקה, הכוללות הערכה תזונתית מעמיקה ובניית תהליך מקצועי המותאם לך.", icon: Stethoscope, num: "1" },
+      { title: "תפריט תזונתי מותאם אישית", details: "בניית תפריט תזונתי בהתאם למצב הבריאותי, בדיקות הדם, ההעדפות האישיות ואורח החיים שלך.", icon: ClipboardList, num: "2" },
+      { title: "פרוטוקול תוספי תזונה", details: "התאמת פרוטוקול תוספי תזונה המבוסס על המטרות האישיות, בדיקות הדם והספרות המקצועית העדכנית.", icon: Pill, num: "3" },
+      { title: "ליווי ותמיכה שוטפת", details: "ליווי רציף בין המפגשים, הכולל מעקב אחר ההתקדמות, מענה לשאלות, תמיכה והתאמות לפי הצורך.", icon: HeartHandshake, num: "4" },
+      { title: "כלים לשינוי הרגלים", details: "מתן כלים פרקטיים לשינוי הרגלים, ויסות אכילה, ניהול סטרס ושמירה על התוצאות לאורך זמן.", icon: Wrench, num: "5" },
+    ],
+  },
+  {
+    id: "eating-disorders",
+    label: "הפרעות אכילה",
+    points: [
+      { title: "הערכה תזונתית רגישה ומעמיקה", details: "היכרות עם דפוסי האכילה, הקשר עם הגוף והאוכל, ההיסטוריה הבריאותית, בדיקות הדם, התסמינים והצרכים הרגשיים סביב האכילה.", icon: HeartPulse, num: "1" },
+      { title: "פגישות שבועיות ותהליך הדרגתי", details: "ליווי תזונתי רציף הכולל פגישות שבועיות, המאפשר בניית יציבות והתקדמות הדרגתית בקצב מותאם ובטוח.", icon: CalendarClock, num: "2" },
+      { title: "מסגרת אכילה מותאמת", details: "בניית סדר אכילה הדרגתי ומותאם אישית, הכולל תכנון ארוחות, הרחבת מגוון המזונות והפחתת דפוסים שמייצרים קושי סביב האכילה.", icon: Salad, num: "3" },
+      { title: "עבודה בצוות רב מקצועי", details: "במידת הצורך, התהליך מתקיים בשיתוף פעולה עם מטפל רגשי, פסיכיאטר, רופא משפחה וגורמי טיפול נוספים, כחלק ממעטפת טיפולית מקצועית ובטוחה.", icon: Users, num: "4" },
+      { title: "קשר עם הגוף והאכילה", details: "עבודה על זיהוי רעב ושובע, אכילה קשובה, תחושת מסוגלות, הפחתת אשמה סביב אוכל, ובנייה מחודשת של אמון בגוף.", icon: Heart, num: "5" },
+    ],
+  },
 ];
 
 const ProgramSection = () => {
+  const [activeTrack, setActiveTrack] = useState(0);
   const [openIndex, setOpenIndex] = useState<number | null>(null);
+
+  const points = tracks[activeTrack].points;
+
+  const selectTrack = (i: number) => {
+    setActiveTrack(i);
+    setOpenIndex(null);
+  };
 
   return (
     <section id="program" className="section-padding bg-white relative">
@@ -21,14 +58,42 @@ const ProgramSection = () => {
           whileInView={{ opacity: 1, y: 0 }}
           viewport={{ once: true, amount: 0.2 }}
           transition={{ duration: 0.6 }}
-          className="text-center mb-14"
+          className="text-center mb-8"
         >
           <span className="inline-block font-body text-sm font-semibold text-primary bg-primary/10 rounded-full px-4 py-1.5 mb-4">
             ליווי תזונתי
           </span>
-          <h2 className="font-display text-3xl md:text-5xl font-bold text-foreground">
+          <h2 className="font-display text-3xl md:text-5xl font-bold text-foreground mb-5">
             התהליך בקליניקה
           </h2>
+          <p className="text-muted-foreground font-body text-base md:text-lg leading-relaxed max-w-3xl mx-auto">
+            בקליניקה קיימים שני מסלולי ליווי ייעודיים, המאפשרים להתאים את התהליך למצב הבריאותי, לדפוסי האכילה ולמטרות האישיות שלך. אפשר לבחור את המסלול המתאים ולהכיר את שלבי התהליך:
+          </p>
+        </motion.div>
+
+        {/* Track toggle */}
+        <motion.div
+          initial={{ opacity: 0, y: 12 }}
+          whileInView={{ opacity: 1, y: 0 }}
+          viewport={{ once: true }}
+          transition={{ duration: 0.5 }}
+          className="flex justify-center mb-10"
+        >
+          <div className="inline-flex gap-1.5 p-1.5 rounded-full bg-purple-50 border border-purple-100 shadow-sm">
+            {tracks.map((track, i) => (
+              <button
+                key={track.id}
+                onClick={() => selectTrack(i)}
+                className={`font-display text-sm md:text-base font-bold rounded-full px-5 md:px-7 py-2.5 transition-all duration-300 ${
+                  activeTrack === i
+                    ? "bg-gradient-purple text-white shadow-md"
+                    : "text-primary hover:bg-white"
+                }`}
+              >
+                {track.label}
+              </button>
+            ))}
+          </div>
         </motion.div>
 
         {/* Elegant cards — Mobile: vertical list, Desktop: 5 columns */}
@@ -40,7 +105,7 @@ const ProgramSection = () => {
               const Icon = point.icon;
               return (
                 <motion.button
-                  key={i}
+                  key={`${activeTrack}-${i}`}
                   initial={{ opacity: 0, y: 20 }}
                   whileInView={{ opacity: 1, y: 0 }}
                   viewport={{ once: true }}
@@ -82,7 +147,7 @@ const ProgramSection = () => {
               const isOpen = openIndex === i;
               return (
                 <motion.div
-                  key={i}
+                  key={`${activeTrack}-${i}`}
                   initial={{ opacity: 0, x: i % 2 === 0 ? -20 : 20 }}
                   whileInView={{ opacity: 1, x: 0 }}
                   viewport={{ once: true }}

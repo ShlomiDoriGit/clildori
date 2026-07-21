@@ -234,7 +234,7 @@ const TestimonialsSection = () => {
               בתקשורת
             </span>
             <h2 className="font-display text-3xl md:text-5xl font-bold text-foreground">
-              כליל דורי בתקשורת
+              כתבות ותוכן מקצועי
             </h2>
           </motion.div>
 
