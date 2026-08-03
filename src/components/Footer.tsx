@@ -17,12 +17,8 @@ const Footer = () => (
     {/* Overlay for readability */}
     <div className="absolute inset-0 bg-white/25" />
 
-    {/* Top wave — complementary to the hero wave, blends the white section above into the footer graphic */}
-    <div className="absolute top-0 left-0 right-0 z-[5] -translate-y-px pointer-events-none">
-      <svg viewBox="0 0 1440 80" fill="none" xmlns="http://www.w3.org/2000/svg" preserveAspectRatio="none" className="w-full h-16 md:h-20">
-        <path d="M0 0H1440V50C1200 20 960 40 720 60C480 80 240 70 0 40Z" fill="white" />
-      </svg>
-    </div>
+    {/* Soft colour blend — melts the white page above into the footer graphic */}
+    <div className="absolute top-0 left-0 right-0 h-40 md:h-56 z-[5] pointer-events-none bg-gradient-to-b from-white via-white/70 to-transparent" />
 
     {/* Logo watermark */}
     <img

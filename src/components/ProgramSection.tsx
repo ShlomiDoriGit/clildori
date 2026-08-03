@@ -66,12 +66,21 @@ const ProgramSection = () => {
           <h2 className="font-display text-3xl md:text-5xl font-bold text-foreground mb-5">
             התהליך בקליניקה
           </h2>
-          <p className="text-muted-foreground font-body text-base md:text-lg leading-relaxed max-w-3xl mx-auto">
+          {/* Desktop — 3 balanced lines */}
+          <p className="hidden md:block text-muted-foreground font-body text-lg leading-relaxed max-w-3xl mx-auto">
             בקליניקה קיימים שני מסלולי ליווי ייעודיים, המאפשרים להתאים את התהליך
-            <br className="hidden md:inline" />
-            {" "}למצב הבריאותי, לדפוסי האכילה ולמטרות האישיות שלך.
-            <br className="hidden md:inline" />
-            {" "}אפשר לבחור את המסלול המתאים ולהכיר את שלבי התהליך:
+            <br />
+            למצב הבריאותי, לדפוסי האכילה ולמטרות האישיות שלך.
+            <br />
+            אפשר לבחור את המסלול המתאים ולהכיר את שלבי התהליך:
+          </p>
+          {/* Mobile — identical copy, sized so it lands on exactly 3 lines */}
+          <p className="md:hidden text-muted-foreground font-body text-[13px] leading-[1.75]">
+            בקליניקה קיימים שני מסלולי ליווי ייעודיים, המאפשרים להתאים
+            <br />
+            את התהליך למצב הבריאותי, לדפוסי האכילה ולמטרות האישיות שלך.
+            <br />
+            אפשר לבחור את המסלול המתאים ולהכיר את שלבי התהליך:
           </p>
         </motion.div>
 

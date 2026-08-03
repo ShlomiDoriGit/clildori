@@ -1,10 +1,17 @@
 import { motion } from "framer-motion";
-import { Award } from "lucide-react";
+import { Award, GraduationCap, Users, HeartHandshake, Leaf } from "lucide-react";
 import aboutMePhoto from "@/assets/about-me-2026.jpg";
 import certDietitian from "@/assets/cert-dietitian.jpeg";
 import certUniversity from "@/assets/cert-university.jpeg";
 import certGroups from "@/assets/cert-groups.jpeg";
 import certEatingDisorders from "@/assets/cert-eating-disorders.jpeg";
+
+const highlights = [
+  { icon: GraduationCap, title: "B.Sc", sub: "בתזונה קלינית" },
+  { icon: Users, title: "9 שנות ניסיון", sub: "בליווי נשים וגברים" },
+  { icon: HeartHandshake, title: "גישה שלמה", sub: "לאדם ולחיים" },
+  { icon: Leaf, title: "תזונה · איזון · חיים", sub: "תהליך שמחזיק לאורך זמן" },
+];
 
 const certs = [
   { image: certDietitian, alt: "תעודת תזונאית-דיאטנית ממשרד הבריאות" },
@@ -15,9 +22,6 @@ const certs = [
 
 const CredentialsSection = () => (
   <section id="about" className="section-padding bg-white relative overflow-hidden">
-    {/* Decorative blob */}
-    <div className="absolute top-0 left-0 w-96 h-96 bg-purple-200/20 rounded-full blur-3xl -translate-x-1/2 -translate-y-1/2 pointer-events-none" />
-
     <div className="container mx-auto px-6 md:px-8 relative z-10">
       {/* About me */}
       <motion.div
@@ -44,13 +48,12 @@ const CredentialsSection = () => (
         className="max-w-5xl mx-auto mb-20 bg-white rounded-3xl shadow-xl border border-gray-100 p-6 md:p-10"
       >
         {/* Desktop: side by side. Mobile: image floats with text */}
-        <div className="hidden md:flex flex-row items-center gap-8 lg:gap-12">
-          <div className="shrink-0 order-last">
+        <div className="hidden md:flex flex-row items-stretch gap-8 lg:gap-12">
+          <div className="shrink-0 order-last w-[340px] lg:w-[420px]">
             <img
               src={aboutMePhoto}
               alt="כליל דורי - תזונאית קלינית"
-              className="w-[320px] lg:w-[400px] rounded-3xl object-cover shadow-2xl ring-[6px] ring-purple-100"
-              style={{ aspectRatio: "3/4" }}
+              className="w-full h-full rounded-3xl object-cover shadow-2xl"
             />
           </div>
           <div className="flex-1 min-w-0 text-right">
@@ -74,7 +77,7 @@ const CredentialsSection = () => (
           <img
             src={aboutMePhoto}
             alt="כליל דורי - תזונאית קלינית"
-            className="w-[260px] sm:w-[300px] rounded-3xl object-cover shadow-2xl ring-[6px] ring-purple-100 mb-6"
+            className="w-[280px] sm:w-[340px] rounded-3xl object-cover shadow-2xl mb-6"
             style={{ aspectRatio: "3/4" }}
           />
           <div className="text-right w-full">
@@ -91,6 +94,24 @@ const CredentialsSection = () => (
               אני מאמינה שתזונה נכונה היא לא מגבלה, אלא כלי עוצמתי ליצירת גוף מאוזן, בריא וחזק, מתוך תהליך שאפשר להתמיד בו לאורך זמן, להרגיש בו טוב באמת, ולבנות דרכו חיים בריאים, חופשיים ומאוזנים יותר.
             </p>
           </div>
+        </div>
+
+        {/* Credential strip */}
+        <div className="mt-8 md:mt-10 pt-6 md:pt-8 border-t border-gray-100 grid grid-cols-2 md:grid-cols-4 gap-y-6 gap-x-2 md:divide-x md:divide-x-reverse md:divide-gray-100">
+          {highlights.map((item, i) => {
+            const Icon = item.icon;
+            return (
+              <div key={i} className="flex flex-col items-center text-center px-2">
+                <Icon className="h-7 w-7 text-primary mb-2" strokeWidth={1.5} />
+                <span className="font-display text-sm font-bold text-foreground leading-tight">
+                  {item.title}
+                </span>
+                <span className="font-body text-xs text-muted-foreground leading-tight mt-0.5">
+                  {item.sub}
+                </span>
+              </div>
+            );
+          })}
         </div>
       </motion.div>
 
