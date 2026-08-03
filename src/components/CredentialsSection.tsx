@@ -44,12 +44,12 @@ const CredentialsSection = () => (
         className="max-w-5xl mx-auto mb-20 bg-white rounded-3xl shadow-xl border border-gray-100 p-6 md:p-10"
       >
         {/* Desktop: side by side. Mobile: image floats with text */}
-        <div className="hidden md:flex flex-row items-center gap-10">
+        <div className="hidden md:flex flex-row items-center gap-8 lg:gap-12">
           <div className="shrink-0 order-last">
             <img
               src={aboutMePhoto}
               alt="כליל דורי - תזונאית קלינית"
-              className="w-48 lg:w-56 rounded-2xl object-cover shadow-lg ring-4 ring-purple-100"
+              className="w-[320px] lg:w-[400px] rounded-3xl object-cover shadow-2xl ring-[6px] ring-purple-100"
               style={{ aspectRatio: "3/4" }}
             />
           </div>
@@ -74,7 +74,7 @@ const CredentialsSection = () => (
           <img
             src={aboutMePhoto}
             alt="כליל דורי - תזונאית קלינית"
-            className="w-[180px] sm:w-[200px] rounded-2xl object-cover shadow-lg ring-4 ring-purple-100 mb-6"
+            className="w-[260px] sm:w-[300px] rounded-3xl object-cover shadow-2xl ring-[6px] ring-purple-100 mb-6"
             style={{ aspectRatio: "3/4" }}
           />
           <div className="text-right w-full">

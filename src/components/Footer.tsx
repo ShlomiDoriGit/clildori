@@ -1,7 +1,7 @@
 import { motion } from "framer-motion";
 import { CalendarDays, Mail, Instagram } from "lucide-react";
 import logoIcon from "@/assets/logo-icon.png";
-import footerBg from "@/assets/footer-bg.png";
+import footerBg from "@/assets/footer-bg-new.jpg";
 
 const Footer = () => (
   <footer
@@ -15,7 +15,7 @@ const Footer = () => (
     }}
   >
     {/* Overlay for readability */}
-    <div className="absolute inset-0 bg-white/60 backdrop-blur-[2px]" />
+    <div className="absolute inset-0 bg-white/25" />
 
     {/* Top wave — complementary to the hero wave, blends the white section above into the footer graphic */}
     <div className="absolute top-0 left-0 right-0 z-[5] -translate-y-px pointer-events-none">
