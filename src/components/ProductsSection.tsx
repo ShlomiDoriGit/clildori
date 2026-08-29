@@ -1,12 +1,17 @@
 import { useState } from "react";
 import { motion, AnimatePresence } from "framer-motion";
-import { ChevronRight, ChevronLeft, ChevronDown, ChevronUp, ShoppingBag } from "lucide-react";
+import { ChevronRight, ChevronLeft, ChevronDown, ChevronUp, ShoppingBag, Sparkles } from "lucide-react";
 import recipeBook from "@/assets/recipe-cover.jpg";
+import guideCover from "@/assets/guide-5kg-cover.jpg";
 import cardsCoverNew from "@/assets/cards-title.jpg";
 import cardSlide13 from "@/assets/card-slide-13.png";
 import cardSlide17 from "@/assets/card-slide-17.png";
 
 const cardExamples = [cardsCoverNew, cardSlide13, cardSlide17];
+
+const guideShort = 'בניתי את המדריך מתוך הניסיון שצברתי בטיפול במאות מטופלים לאורך השנים, במטרה להפוך את הצעד הראשון לשינוי לפשוט, ברור וקל ליישום. המדריך מרכז צעדים מעשיים שיעזרו לך לעשות סדר באכילה, לחזק את תחושת השובע, לתמוך באיזון המטבולי ולהטמיע הרגלים שמקדמים ירידה במשקל ובריאות לאורך זמן.';
+
+const guideFull = `הכלים במדריך פשוטים וישימים, ואפשר להתחיל לבצע אותם כבר היום, ללא הכנה מיוחדת ומבלי לשנות את כל השגרה בבת אחת. שינוי משמעותי מתחיל בצעד אחד מדויק, והמדריך יעזור לך לעשות את הצעד הזה בקלות, לבנות מסגרת פעולה שמתאימה לאורח החיים שלך ולהתחיל לראות תוצאות, בלי לספור קלוריות ובלי צעדים קיצוניים.`;
 
 const recipeShort = 'חוברת מתכונים דיגיטלית שנבנתה במיוחד עבור אנשים עם רגישות לגלוטן וללקטוז, וגם עבור מי שמתמודד ביום יום עם נפיחות, גזים או יציאות לא סדירות, אבל עדיין לא הצליח לזהות מה גורם לזה.';
 
@@ -26,6 +31,7 @@ const cardsFull = `כל קלף מציע מסר מחזק, שאלה להתבוננ
 
 const ProductsSection = () => {
   const [cardSlide, setCardSlide] = useState(0);
+  const [guideExpanded, setGuideExpanded] = useState(false);
   const [recipeExpanded, setRecipeExpanded] = useState(false);
   const [cardsExpanded, setCardsExpanded] = useState(false);
 
@@ -52,6 +58,84 @@ const ProductsSection = () => {
         </motion.div>
 
         <div className="max-w-5xl mx-auto space-y-8">
+
+          {/* Product 0: Digital guide — leading product */}
+          <motion.div
+            initial={{ opacity: 0, y: 30 }}
+            whileInView={{ opacity: 1, y: 0 }}
+            viewport={{ once: true, amount: 0.15 }}
+            transition={{ duration: 0.6 }}
+            className="rounded-3xl bg-gradient-to-br from-purple-50 via-white to-purple-50/50 border-2 border-primary/25 shadow-xl overflow-hidden hover:shadow-2xl transition-shadow duration-300"
+          >
+            <div className="bg-gradient-purple px-6 py-2.5 text-center">
+              <p className="inline-flex items-center gap-2 font-display text-sm md:text-base font-bold text-white">
+                <Sparkles className="h-4 w-4 shrink-0" />
+                המוצר המוביל שלנו · מבצע השקה
+              </p>
+            </div>
+
+            <div className="flex flex-col md:flex-row-reverse items-center gap-6 p-6 md:p-10">
+              <div className="flex-1 text-right">
+                <h3 className="font-display text-2xl md:text-3xl font-bold text-foreground mb-1">לרדת את ה־5 ק״ג הראשונים</h3>
+                <p className="text-muted-foreground font-body text-sm mb-3">מדריך דיגיטלי מעשי.</p>
+                <p className="text-xs text-primary/80 font-body font-semibold mb-4">בלי לספור קלוריות ובלי צעדים קיצוניים.</p>
+                <p className="text-muted-foreground font-body text-sm leading-[1.75] mb-4">
+                  {guideShort}
+                </p>
+                {guideExpanded && (
+                  <motion.div
+                    initial={{ opacity: 0, height: 0 }}
+                    animate={{ opacity: 1, height: "auto" }}
+                    transition={{ duration: 0.3 }}
+                  >
+                    <p className="text-muted-foreground font-body text-sm leading-[1.75] whitespace-pre-line mb-4">
+                      {guideFull}
+                    </p>
+                  </motion.div>
+                )}
+                <button
+                  onClick={() => setGuideExpanded(!guideExpanded)}
+                  className="flex items-center gap-1 text-primary font-body text-xs font-semibold mb-5 hover:underline transition-all mr-auto"
+                  style={{ direction: "ltr" }}
+                >
+                  {guideExpanded ? <ChevronUp className="h-3.5 w-3.5" /> : <ChevronDown className="h-3.5 w-3.5" />}
+                  {guideExpanded ? "הצג פחות" : "המשך קריאה"}
+                </button>
+                <div className="flex flex-col items-end gap-1 mb-4">
+                  <div className="flex items-baseline gap-2">
+                    <span className="text-sm text-muted-foreground font-body">מחיר מלא:</span>
+                    <span className="text-base text-muted-foreground line-through font-body">230 ש״ח</span>
+                  </div>
+                  <div className="flex items-baseline gap-2">
+                    <span className="text-sm text-muted-foreground font-body">מחיר השקה:</span>
+                    <span className="font-display text-3xl font-bold text-primary">149 ש״ח</span>
+                  </div>
+                </div>
+                <div className="flex justify-end mt-2">
+                  <motion.a
+                    href="https://wa.me/972559272658"
+                    target="_blank"
+                    rel="noopener noreferrer"
+                    whileHover={{ scale: 1.03 }}
+                    whileTap={{ scale: 0.97 }}
+                    className="inline-flex items-center gap-2 bg-gradient-purple text-white font-display font-bold text-sm rounded-full px-8 py-3 shadow-md hover:shadow-lg transition-all"
+                  >
+                    לרכישה לחצו
+                  </motion.a>
+                </div>
+              </div>
+
+              <div className="shrink-0">
+                <motion.img
+                  whileHover={{ scale: 1.03, rotate: 1 }}
+                  transition={{ duration: 0.3 }}
+                  src={guideCover}
+                  alt="לרדת את ה־5 ק״ג הראשונים - מדריך דיגיטלי מעשי"
+                  className="w-[180px] sm:w-[220px] md:w-[240px] h-auto object-contain rounded-2xl shadow-lg"
+                />
+              </div>
+            </div>
+          </motion.div>
 
           {/* Product A: Recipe Book */}
           <motion.div

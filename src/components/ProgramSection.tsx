@@ -17,7 +17,7 @@ import {
 const tracks = [
   {
     id: "lifestyle",
-    label: "אורח חיים בריא",
+    label: "אריכות ימים",
     points: [
       { title: "פגישות ייעוץ והערכה תזונתית", details: "סדרת פגישות אישיות בקליניקה, הכוללות הערכה תזונתית מעמיקה ובניית תהליך מקצועי המותאם לך.", icon: Stethoscope, num: "1" },
       { title: "תפריט תזונתי מותאם אישית", details: "בניית תפריט תזונתי בהתאם למצב הבריאותי, בדיקות הדם, ההעדפות האישיות ואורח החיים שלך.", icon: ClipboardList, num: "2" },
@@ -154,7 +154,7 @@ const ProgramSection = () => {
           </div>
 
           {/* Mobile: Elegant stacked cards */}
-          <div className="md:hidden space-y-3 mb-4">
+          <div className="md:hidden space-y-3 mb-4 overflow-x-clip">
             {points.map((point, i) => {
               const Icon = point.icon;
               const isOpen = openIndex === i;

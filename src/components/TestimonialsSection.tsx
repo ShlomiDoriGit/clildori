@@ -124,14 +124,14 @@ const TestimonialsSection = () => {
             {/* Navigation arrows */}
             <button
               onClick={() => go(-1)}
-              className="absolute top-1/2 -translate-y-1/2 -right-2 md:-right-14 z-10 w-10 h-10 md:w-12 md:h-12 rounded-full bg-white shadow-lg border border-gray-100 flex items-center justify-center text-muted-foreground hover:text-primary hover:shadow-xl hover:border-primary/20 transition-all active:scale-95"
+              className="absolute top-1/2 -translate-y-1/2 -right-2 lg:-right-14 z-10 w-10 h-10 md:w-12 md:h-12 rounded-full bg-white shadow-lg border border-gray-100 flex items-center justify-center text-muted-foreground hover:text-primary hover:shadow-xl hover:border-primary/20 transition-all active:scale-95"
               aria-label="הקודם"
             >
               <ChevronRight className="h-5 w-5 md:h-6 md:w-6" />
             </button>
             <button
               onClick={() => go(1)}
-              className="absolute top-1/2 -translate-y-1/2 -left-2 md:-left-14 z-10 w-10 h-10 md:w-12 md:h-12 rounded-full bg-white shadow-lg border border-gray-100 flex items-center justify-center text-muted-foreground hover:text-primary hover:shadow-xl hover:border-primary/20 transition-all active:scale-95"
+              className="absolute top-1/2 -translate-y-1/2 -left-2 lg:-left-14 z-10 w-10 h-10 md:w-12 md:h-12 rounded-full bg-white shadow-lg border border-gray-100 flex items-center justify-center text-muted-foreground hover:text-primary hover:shadow-xl hover:border-primary/20 transition-all active:scale-95"
               aria-label="הבא"
             >
               <ChevronLeft className="h-5 w-5 md:h-6 md:w-6" />

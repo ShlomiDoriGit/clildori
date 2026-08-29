@@ -1,6 +1,6 @@
 import { motion } from "framer-motion";
 import { CalendarDays, Sparkles } from "lucide-react";
-import profileHero from "@/assets/profile-hero.jpeg";
+import profileHero from "@/assets/profile-hero-2026.jpg";
 
 const HeroSection = () => (
   <section

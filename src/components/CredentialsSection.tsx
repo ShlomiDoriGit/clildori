@@ -1,16 +1,16 @@
 import { motion } from "framer-motion";
-import { Award, GraduationCap, Users, HeartHandshake, Leaf } from "lucide-react";
-import aboutMePhoto from "@/assets/about-me-2026.jpg";
+import { Award, BadgeCheck, Users, HeartHandshake, Infinity as InfinityIcon } from "lucide-react";
+import aboutMePhoto from "@/assets/about-me-2027.jpg";
 import certDietitian from "@/assets/cert-dietitian.jpeg";
 import certUniversity from "@/assets/cert-university.jpeg";
 import certGroups from "@/assets/cert-groups.jpeg";
 import certEatingDisorders from "@/assets/cert-eating-disorders.jpeg";
 
 const highlights = [
-  { icon: GraduationCap, title: "B.Sc", sub: "בתזונה קלינית" },
-  { icon: Users, title: "9 שנות ניסיון", sub: "בליווי נשים וגברים" },
-  { icon: HeartHandshake, title: "גישה שלמה", sub: "לאדם ולחיים" },
-  { icon: Leaf, title: "תזונה · איזון · חיים", sub: "תהליך שמחזיק לאורך זמן" },
+  { icon: BadgeCheck, title: "תזונאית קלינית מוסמכת", sub: "B.Sc בתזונה קלינית" },
+  { icon: Users, title: "9 שנות ניסיון", sub: "בליווי תהליכי תזונה ושינוי הרגלים" },
+  { icon: HeartHandshake, title: "גישה שלמה", sub: "חיבור בין גוף, נפש ושגרה" },
+  { icon: InfinityIcon, title: "יציבות והמשכיות", sub: "תהליך שמחזיק לאורך זמן" },
 ];
 
 const certs = [
@@ -103,7 +103,7 @@ const CredentialsSection = () => (
             return (
               <div key={i} className="flex flex-col items-center text-center px-2">
                 <Icon className="h-7 w-7 text-primary mb-2" strokeWidth={1.5} />
-                <span className="font-display text-sm font-bold text-foreground leading-tight">
+                <span className="font-display text-[13px] md:text-sm font-bold text-foreground leading-tight min-h-[2.4rem] lg:min-h-0 flex items-center justify-center">
                   {item.title}
                 </span>
                 <span className="font-body text-xs text-muted-foreground leading-tight mt-0.5">
