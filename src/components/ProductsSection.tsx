@@ -1,6 +1,6 @@
 import { useState } from "react";
 import { motion, AnimatePresence } from "framer-motion";
-import { ChevronRight, ChevronLeft, ChevronDown, ChevronUp, ShoppingBag, Sparkles } from "lucide-react";
+import { ChevronRight, ChevronLeft, ChevronDown, ChevronUp, ShoppingBag } from "lucide-react";
 import recipeBook from "@/assets/recipe-cover.jpg";
 import guideCover from "@/assets/guide-5kg-cover.jpg";
 import cardsCoverNew from "@/assets/cards-title.jpg";
@@ -9,9 +9,11 @@ import cardSlide17 from "@/assets/card-slide-17.png";
 
 const cardExamples = [cardsCoverNew, cardSlide13, cardSlide17];
 
-const guideShort = 'בניתי את המדריך מתוך הניסיון שצברתי בטיפול במאות מטופלים לאורך השנים, במטרה להפוך את הצעד הראשון לשינוי לפשוט, ברור וקל ליישום. המדריך מרכז צעדים מעשיים שיעזרו לך לעשות סדר באכילה, לחזק את תחושת השובע, לתמוך באיזון המטבולי ולהטמיע הרגלים שמקדמים ירידה במשקל ובריאות לאורך זמן.';
+const guideShort = `בניתי את המדריך מתוך הניסיון שצברתי בטיפול במאות מטופלים לאורך השנים, במטרה להפוך את הצעד הראשון לפשוט, ברור וקל ליישום.
 
-const guideFull = `הכלים במדריך פשוטים וישימים, ואפשר להתחיל לבצע אותם כבר היום, ללא הכנה מיוחדת ומבלי לשנות את כל השגרה בבת אחת. שינוי משמעותי מתחיל בצעד אחד מדויק, והמדריך יעזור לך לעשות את הצעד הזה בקלות, לבנות מסגרת פעולה שמתאימה לאורח החיים שלך ולהתחיל לראות תוצאות, בלי לספור קלוריות ובלי צעדים קיצוניים.`;
+המדריך בנוי כתוכנית הדרגתית בת שמונה שבועות, שתלווה אותך צעד אחר צעד בדרך לשינוי שאפשר להתמיד בו. הוא יעזור לך לעשות סדר באכילה, לחזק את תחושת השובע, לתמוך באיזון המטבולי ולהטמיע הרגלים שמקדמים ירידה במשקל ושיפור הבריאות לאורך זמן.`;
+
+const guideFull = `הכלים במדריך פשוטים וישימים, ואפשר להתחיל ליישם אותם כבר מהיום הראשון, ללא הכנה מיוחדת ומבלי לשנות את כל השגרה בבת אחת. כך אפשר לבנות בהדרגה מסגרת פעולה שמתאימה לאורח החיים שלך ולהניע שינוי משמעותי, בלי לספור קלוריות ובלי צעדים קיצוניים.`;
 
 const recipeShort = 'חוברת מתכונים דיגיטלית שנבנתה במיוחד עבור אנשים עם רגישות לגלוטן וללקטוז, וגם עבור מי שמתמודד ביום יום עם נפיחות, גזים או יציאות לא סדירות, אבל עדיין לא הצליח לזהות מה גורם לזה.';
 
@@ -67,19 +69,11 @@ const ProductsSection = () => {
             transition={{ duration: 0.6 }}
             className="rounded-3xl bg-gradient-to-br from-purple-50 via-white to-purple-50/50 border-2 border-primary/25 shadow-xl overflow-hidden hover:shadow-2xl transition-shadow duration-300"
           >
-            <div className="bg-gradient-purple px-6 py-2.5 text-center">
-              <p className="inline-flex items-center gap-2 font-display text-sm md:text-base font-bold text-white">
-                <Sparkles className="h-4 w-4 shrink-0" />
-                המוצר המוביל שלנו · מבצע השקה
-              </p>
-            </div>
-
             <div className="flex flex-col md:flex-row-reverse items-center gap-6 p-6 md:p-10">
               <div className="flex-1 text-right">
                 <h3 className="font-display text-2xl md:text-3xl font-bold text-foreground mb-1">לרדת את ה־5 ק״ג הראשונים</h3>
-                <p className="text-muted-foreground font-body text-sm mb-3">מדריך דיגיטלי מעשי.</p>
-                <p className="text-xs text-primary/80 font-body font-semibold mb-4">בלי לספור קלוריות ובלי צעדים קיצוניים.</p>
-                <p className="text-muted-foreground font-body text-sm leading-[1.75] mb-4">
+                <p className="text-muted-foreground font-body text-sm mb-4">מדריך דיגיטלי פרקטי לירידה במשקל ב־8 שבועות.</p>
+                <p className="text-muted-foreground font-body text-sm leading-[1.75] whitespace-pre-line mb-4">
                   {guideShort}
                 </p>
                 {guideExpanded && (
