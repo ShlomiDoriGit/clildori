@@ -8,8 +8,10 @@ import testimonial2 from "@/assets/testimonial-2.jpg";
 import testimonial3 from "@/assets/testimonial-3.jpg";
 import testimonial4 from "@/assets/testimonial-4.jpg";
 import testimonial5 from "@/assets/testimonial-5.jpg";
+import testimonial6 from "@/assets/testimonial-6.jpg";
 
 const testimonials = [
+  { image: testimonial6, alt: "המלצה של שרה על התהליך ועל התחושה בגוף" },
   { image: testimonial5, alt: "המלצה של מטופל על התהליך" },
   { image: testimonial1, alt: "המלצה של מטופלת על התהליך" },
   { image: testimonial2, alt: "המלצה של מטופל על שיפור בבדיקות הדם" },
