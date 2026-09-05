@@ -125,7 +125,7 @@ const ProductsSection = () => {
                   transition={{ duration: 0.3 }}
                   src={guideCover}
                   alt="לרדת את ה־5 ק״ג הראשונים - מדריך דיגיטלי מעשי"
-                  className="w-[180px] sm:w-[220px] md:w-[240px] h-auto object-contain rounded-2xl shadow-lg"
+                  className="w-[240px] sm:w-[290px] md:w-[320px] max-w-full h-auto object-contain rounded-2xl shadow-lg"
                 />
               </div>
             </div>
@@ -196,7 +196,7 @@ const ProductsSection = () => {
                   transition={{ duration: 0.3 }}
                   src={recipeBook}
                   alt="אתחול לבטן - חוברת מתכונים"
-                  className="w-[180px] sm:w-[220px] md:w-[240px] h-auto object-contain rounded-2xl shadow-lg"
+                  className="w-[240px] sm:w-[290px] md:w-[320px] max-w-full h-auto object-contain rounded-2xl shadow-lg"
                 />
               </div>
             </div>
@@ -268,7 +268,7 @@ const ProductsSection = () => {
               </div>
 
               {/* Card carousel — one large card at a time */}
-              <div className="shrink-0 order-2 md:order-1 relative w-[260px] sm:w-[300px] md:w-[260px]">
+              <div className="shrink-0 order-2 md:order-1 relative w-[260px] sm:w-[320px] md:w-[360px] max-w-full">
                 <button onClick={() => goCard(-1)} className="absolute top-1/2 -translate-y-1/2 -right-5 z-10 w-8 h-8 rounded-full bg-white shadow-lg border border-gray-100 flex items-center justify-center text-muted-foreground hover:text-primary transition-all active:scale-95" aria-label="הקודם">
                   <ChevronRight className="h-4 w-4" />
                 </button>
@@ -280,7 +280,7 @@ const ProductsSection = () => {
                     key={cardSlide}
                     src={cardExamples[cardSlide]}
                     alt={`דוגמה לקלף ${cardSlide + 1}`}
-                    className="w-full h-72 sm:h-80 md:h-80 object-contain rounded-2xl"
+                    className="w-full h-[190px] sm:h-[232px] md:h-[262px] object-contain rounded-2xl"
                     initial={{ opacity: 0, scale: 0.95 }}
                     animate={{ opacity: 1, scale: 1 }}
                     exit={{ opacity: 0, scale: 0.95 }}

@@ -74,8 +74,7 @@ const HeroSection = () => (
           <img
             src={profileHero}
             alt="כליל דורי - תזונאית קלינית"
-            className="relative w-[260px] sm:w-[300px] md:w-[340px] lg:w-[400px] rounded-[2rem] object-cover shadow-2xl ring-4 ring-white/10"
-            style={{ aspectRatio: "3/4" }}
+            className="relative w-[270px] sm:w-[320px] md:w-[360px] lg:w-[420px] max-w-full h-auto rounded-[2rem] object-contain shadow-2xl ring-4 ring-white/10"
           />
         </motion.div>
       </div>

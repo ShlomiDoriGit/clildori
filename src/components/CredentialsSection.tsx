@@ -49,11 +49,11 @@ const CredentialsSection = () => (
       >
         {/* Desktop: side by side. Mobile: image floats with text */}
         <div className="hidden md:flex flex-row items-stretch gap-8 lg:gap-12">
-          <div className="shrink-0 order-last w-[340px] lg:w-[420px]">
+          <div className="shrink-0 order-last self-start w-[360px] lg:w-[440px]">
             <img
               src={aboutMePhoto}
               alt="כליל דורי - תזונאית קלינית"
-              className="w-full h-full rounded-3xl object-cover shadow-2xl"
+              className="w-full h-auto rounded-3xl object-contain shadow-2xl"
             />
           </div>
           <div className="flex-1 min-w-0 text-right">
@@ -77,8 +77,7 @@ const CredentialsSection = () => (
           <img
             src={aboutMePhoto}
             alt="כליל דורי - תזונאית קלינית"
-            className="w-[280px] sm:w-[340px] rounded-3xl object-cover shadow-2xl mb-6"
-            style={{ aspectRatio: "3/4" }}
+            className="w-[300px] sm:w-[380px] max-w-full h-auto rounded-3xl object-contain shadow-2xl mb-6"
           />
           <div className="text-right w-full">
             <p className="text-muted-foreground font-body text-sm leading-relaxed mb-4">
