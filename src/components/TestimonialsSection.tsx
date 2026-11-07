@@ -1,6 +1,7 @@
-import { useState, useEffect } from "react";
-import { motion, AnimatePresence } from "framer-motion";
-import { ChevronRight, ChevronLeft, Play, Star, ExternalLink } from "lucide-react";
+import { motion } from "framer-motion";
+import TestimonialCarousel from "@/components/TestimonialCarousel";
+import { MaskRise } from "@/components/motion/Sunrise";
+import { Play, Star, ExternalLink } from "lucide-react";
 import successThumbnail from "@/assets/success-cover.jpg";
 import articleScreenshot from "@/assets/article-screenshot.png";
 import testimonial1 from "@/assets/testimonial-1.jpg";
@@ -22,19 +23,6 @@ const testimonials = [
 ];
 
 const TestimonialsSection = () => {
-  const [current, setCurrent] = useState(0);
-
-  useEffect(() => {
-    const timer = setInterval(() => setCurrent((p) => (p + 1) % testimonials.length), 5000);
-    return () => clearInterval(timer);
-  }, []);
-
-  const go = (dir: number) =>
-    setCurrent((p) => (p + dir + testimonials.length) % testimonials.length);
-
-  // Get 3 visible testimonials (current, next, next+1)
-  const getIdx = (offset: number) => (current + offset) % testimonials.length;
-
   return (
     <>
       {/* Video Section — Before/After with video overlay */}
@@ -44,11 +32,11 @@ const TestimonialsSection = () => {
             initial={{ opacity: 0, y: 20 }}
             whileInView={{ opacity: 1, y: 0 }}
             viewport={{ once: true, amount: 0.2 }}
-            transition={{ duration: 0.6 }}
+            transition={{ duration: 0.6, ease: [0.23, 1, 0.32, 1] }}
             className="text-center mb-12"
           >
             <h2 className="font-display text-3xl md:text-5xl font-bold text-foreground">
-              סיפורי הצלחה
+              <MaskRise>סיפורי הצלחה</MaskRise>
             </h2>
           </motion.div>
 
@@ -56,7 +44,7 @@ const TestimonialsSection = () => {
             initial={{ opacity: 0, y: 30 }}
             whileInView={{ opacity: 1, y: 0 }}
             viewport={{ once: true, amount: 0.2 }}
-            transition={{ delay: 0.15, duration: 0.6 }}
+            transition={{ delay: 0.15, duration: 0.6, ease: [0.23, 1, 0.32, 1] }}
             className="max-w-lg md:max-w-2xl mx-auto"
           >
             <a
@@ -90,7 +78,7 @@ const TestimonialsSection = () => {
                 {/* Play button */}
                 <div className="absolute inset-0 flex items-center justify-center">
                   <motion.div
-                    whileHover={{ scale: 1.15 }}
+                    whileHover={{ scale: 1.06 }}
                     className="w-16 h-16 md:w-20 md:h-20 rounded-full bg-white/95 flex items-center justify-center shadow-2xl group-hover:bg-white transition-colors"
                   >
                     <Play className="w-6 h-6 md:w-8 md:h-8 text-primary fill-primary mr-[-2px]" />
@@ -116,72 +104,15 @@ const TestimonialsSection = () => {
             initial={{ opacity: 0, y: 20 }}
             whileInView={{ opacity: 1, y: 0 }}
             viewport={{ once: true, amount: 0.2 }}
-            transition={{ duration: 0.6 }}
+            transition={{ duration: 0.6, ease: [0.23, 1, 0.32, 1] }}
             className="text-center mb-12"
           >
             <h2 className="font-display text-3xl md:text-5xl font-bold text-foreground">
-              מטופלים מספרים
+              <MaskRise>מטופלים מספרים</MaskRise>
             </h2>
           </motion.div>
 
-          <div className="relative max-w-4xl mx-auto">
-            {/* Navigation arrows */}
-            <button
-              onClick={() => go(-1)}
-              className="absolute top-1/2 -translate-y-1/2 -right-2 lg:-right-14 z-10 w-10 h-10 md:w-12 md:h-12 rounded-full bg-white shadow-lg border border-gray-100 flex items-center justify-center text-muted-foreground hover:text-primary hover:shadow-xl hover:border-primary/20 transition-all active:scale-95"
-              aria-label="הקודם"
-            >
-              <ChevronRight className="h-5 w-5 md:h-6 md:w-6" />
-            </button>
-            <button
-              onClick={() => go(1)}
-              className="absolute top-1/2 -translate-y-1/2 -left-2 lg:-left-14 z-10 w-10 h-10 md:w-12 md:h-12 rounded-full bg-white shadow-lg border border-gray-100 flex items-center justify-center text-muted-foreground hover:text-primary hover:shadow-xl hover:border-primary/20 transition-all active:scale-95"
-              aria-label="הבא"
-            >
-              <ChevronLeft className="h-5 w-5 md:h-6 md:w-6" />
-            </button>
-
-            {/* Cards grid — 3 visible on desktop, 1 on mobile */}
-            <div className="grid grid-cols-1 md:grid-cols-3 gap-4 md:gap-6 px-8 md:px-0">
-              {[0, 1, 2].map((offset) => {
-                const idx = getIdx(offset);
-                return (
-                  <motion.div
-                    key={`${current}-${offset}`}
-                    initial={{ opacity: 0, scale: 0.9 }}
-                    animate={{ opacity: 1, scale: 1 }}
-                    transition={{ duration: 0.4, delay: offset * 0.1 }}
-                    className={`rounded-2xl overflow-hidden shadow-lg border border-gray-100 bg-white ${
-                      offset === 0 ? "" : "hidden md:block"
-                    }`}
-                  >
-                    <img
-                      src={testimonials[idx].image}
-                      alt={testimonials[idx].alt}
-                      className="w-full aspect-[3/4] object-contain bg-white"
-                      loading="lazy"
-                    />
-                  </motion.div>
-                );
-              })}
-            </div>
-
-            {/* Dots */}
-            <div className="flex justify-center gap-2.5 mt-8">
-              {testimonials.map((_, i) => (
-                <button
-                  key={i}
-                  onClick={() => setCurrent(i)}
-                  className={`rounded-full transition-all duration-300 ${
-                    i === current
-                      ? "bg-primary w-8 h-3"
-                      : "bg-gray-200 w-3 h-3 hover:bg-gray-300"
-                  }`}
-                  aria-label={`עדות ${i + 1}`}
-                />
-              ))}
-            </div>
-          </div>
+          <TestimonialCarousel items={testimonials} />
         </div>
       </section>
 
@@ -192,7 +123,7 @@ const TestimonialsSection = () => {
             initial={{ opacity: 0, y: 20 }}
             whileInView={{ opacity: 1, y: 0 }}
             viewport={{ once: true, amount: 0.2 }}
-            transition={{ duration: 0.6 }}
+            transition={{ duration: 0.6, ease: [0.23, 1, 0.32, 1] }}
             className="max-w-xl mx-auto"
           >
             <a
@@ -216,8 +147,7 @@ const TestimonialsSection = () => {
                 ))}
               </div>
               <motion.span
-                whileHover={{ scale: 1.03 }}
-                className="inline-flex items-center gap-2 font-display text-base font-bold text-white bg-gradient-purple rounded-full px-8 py-3.5 shadow-md group-hover:shadow-lg transition-all"
+                className="press inline-flex items-center gap-2 font-display text-base font-bold text-white bg-gradient-purple rounded-full px-8 py-3.5 shadow-md group-hover:shadow-lg transition-all"
               >
                 לחצו לצפייה בכל הביקורות
               </motion.span>
@@ -233,14 +163,14 @@ const TestimonialsSection = () => {
             initial={{ opacity: 0, y: 20 }}
             whileInView={{ opacity: 1, y: 0 }}
             viewport={{ once: true, amount: 0.2 }}
-            transition={{ duration: 0.6 }}
+            transition={{ duration: 0.6, ease: [0.23, 1, 0.32, 1] }}
             className="text-center mb-12"
           >
             <span className="inline-block font-body text-sm font-semibold text-primary bg-primary/10 rounded-full px-4 py-1.5 mb-4">
               בתקשורת
             </span>
             <h2 className="font-display text-3xl md:text-5xl font-bold text-foreground">
-              כתבות ותוכן מקצועי
+              <MaskRise>כתבות ותוכן מקצועי</MaskRise>
             </h2>
           </motion.div>
 
@@ -248,7 +178,7 @@ const TestimonialsSection = () => {
             initial={{ opacity: 0, y: 30 }}
             whileInView={{ opacity: 1, y: 0 }}
             viewport={{ once: true, amount: 0.2 }}
-            transition={{ delay: 0.15, duration: 0.6 }}
+            transition={{ delay: 0.15, duration: 0.6, ease: [0.23, 1, 0.32, 1] }}
             className="max-w-2xl mx-auto"
           >
             <a

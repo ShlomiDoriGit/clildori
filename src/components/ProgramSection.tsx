@@ -1,5 +1,6 @@
 import { useState } from "react";
 import { motion, AnimatePresence } from "framer-motion";
+import { MaskRise } from "@/components/motion/Sunrise";
 import {
   Stethoscope,
   ClipboardList,
@@ -57,14 +58,14 @@ const ProgramSection = () => {
           initial={{ opacity: 0, y: 20 }}
           whileInView={{ opacity: 1, y: 0 }}
           viewport={{ once: true, amount: 0.2 }}
-          transition={{ duration: 0.6 }}
+          transition={{ duration: 0.6, ease: [0.23, 1, 0.32, 1] }}
           className="text-center mb-8"
         >
           <span className="inline-block font-body text-sm font-semibold text-primary bg-primary/10 rounded-full px-4 py-1.5 mb-4">
             ליווי תזונתי
           </span>
           <h2 className="font-display text-3xl md:text-5xl font-bold text-foreground mb-5">
-            התהליך בקליניקה
+            <MaskRise>התהליך בקליניקה</MaskRise>
           </h2>
           {/* Desktop — 3 balanced lines */}
           <p className="hidden md:block text-muted-foreground font-body text-lg leading-relaxed max-w-3xl mx-auto">
@@ -89,7 +90,7 @@ const ProgramSection = () => {
           initial={{ opacity: 0, y: 12 }}
           whileInView={{ opacity: 1, y: 0 }}
           viewport={{ once: true }}
-          transition={{ duration: 0.5 }}
+          transition={{ duration: 0.5, ease: [0.23, 1, 0.32, 1] }}
           className="flex justify-center mb-10"
         >
           <div className="inline-flex gap-1.5 p-1.5 rounded-full bg-purple-50 border border-purple-100 shadow-sm">
@@ -122,10 +123,10 @@ const ProgramSection = () => {
                   initial={{ opacity: 0, y: 20 }}
                   whileInView={{ opacity: 1, y: 0 }}
                   viewport={{ once: true }}
-                  transition={{ delay: i * 0.1, duration: 0.5 }}
-                  whileHover={{ y: -8, boxShadow: "0 20px 40px rgba(94, 23, 235, 0.12)" }}
+                  transition={{ delay: i * 0.1, duration: 0.5, ease: [0.23, 1, 0.32, 1] }}
+                  whileHover={{ y: -3, boxShadow: "0 14px 30px rgba(94, 23, 235, 0.10)" }}
                   onClick={() => setOpenIndex(openIndex === i ? null : i)}
-                  className={`group flex flex-col items-center text-center p-6 rounded-3xl border-2 transition-all duration-300 cursor-pointer relative overflow-hidden ${
+                  className={`group flex flex-col items-center text-center p-6 rounded-3xl border-2 transition-[border-color,background-color] duration-200 cursor-pointer relative overflow-hidden ${
                     openIndex === i
                       ? "border-primary bg-white shadow-xl"
                       : "border-gray-100 bg-white hover:border-primary/30 shadow-md"
@@ -161,10 +162,10 @@ const ProgramSection = () => {
               return (
                 <motion.div
                   key={`${activeTrack}-${i}`}
-                  initial={{ opacity: 0, x: i % 2 === 0 ? -20 : 20 }}
-                  whileInView={{ opacity: 1, x: 0 }}
+                  initial={{ opacity: 0, y: 8 }}
+                  whileInView={{ opacity: 1, y: 0 }}
                   viewport={{ once: true }}
-                  transition={{ delay: i * 0.08, duration: 0.4 }}
+                  transition={{ delay: i * 0.08, duration: 0.4, ease: [0.23, 1, 0.32, 1] }}
                 >
                   <button
                     onClick={() => setOpenIndex(isOpen ? null : i)}
@@ -206,7 +207,7 @@ const ProgramSection = () => {
                         initial={{ height: 0, opacity: 0 }}
                         animate={{ height: "auto", opacity: 1 }}
                         exit={{ height: 0, opacity: 0 }}
-                        transition={{ duration: 0.3 }}
+                        transition={{ duration: 0.25, ease: [0.23, 1, 0.32, 1] }}
                         className="overflow-hidden"
                       >
                         <div className="bg-purple-50/50 rounded-xl p-4 mt-2 mr-[76px]">
@@ -249,7 +250,7 @@ const ProgramSection = () => {
           initial={{ opacity: 0, y: 10 }}
           whileInView={{ opacity: 1, y: 0 }}
           viewport={{ once: true }}
-          transition={{ delay: 0.5, duration: 0.5 }}
+          transition={{ delay: 0.5, duration: 0.5, ease: [0.23, 1, 0.32, 1] }}
           className="mt-10 max-w-2xl mx-auto"
         >
           <div className="bg-gradient-to-r from-green-50 to-emerald-50 border-2 border-green-200 rounded-2xl px-6 sm:px-8 py-5 text-center shadow-md">

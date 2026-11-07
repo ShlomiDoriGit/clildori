@@ -1,4 +1,5 @@
 import { useState } from "react";
+import { MaskRise, InView, SettleIn, EASE_OUT } from "@/components/motion/Sunrise";
 import { motion, AnimatePresence } from "framer-motion";
 import { ChevronRight, ChevronLeft, ChevronDown, ChevronUp, ShoppingBag } from "lucide-react";
 import recipeBook from "@/assets/recipe-cover.jpg";
@@ -48,7 +49,7 @@ const ProductsSection = () => {
           initial={{ opacity: 0, y: 20 }}
           whileInView={{ opacity: 1, y: 0 }}
           viewport={{ once: true, amount: 0.2 }}
-          transition={{ duration: 0.6 }}
+          transition={{ duration: 0.6, ease: [0.23, 1, 0.32, 1] }}
           className="text-center mb-16"
         >
           <span className="inline-block font-body text-sm font-semibold text-primary bg-primary/10 rounded-full px-4 py-1.5 mb-4">
@@ -56,7 +57,7 @@ const ProductsSection = () => {
             חנות
           </span>
           <h2 className="font-display text-3xl md:text-5xl font-bold text-foreground">
-            מוצרים
+            <MaskRise>מוצרים</MaskRise>
           </h2>
         </motion.div>
 
@@ -67,11 +68,11 @@ const ProductsSection = () => {
             initial={{ opacity: 0, y: 30 }}
             whileInView={{ opacity: 1, y: 0 }}
             viewport={{ once: true, amount: 0.15 }}
-            transition={{ duration: 0.6 }}
+            transition={{ duration: 0.6, ease: [0.23, 1, 0.32, 1] }}
             className="rounded-3xl bg-gradient-to-br from-purple-50 via-white to-purple-50/50 border border-purple-100 shadow-lg overflow-hidden hover:shadow-xl transition-shadow duration-300"
           >
             <div className="flex flex-col md:flex-row-reverse items-center gap-6 p-6 md:p-10">
-              <div className="flex-1 text-right order-2 md:order-none">
+              <InView className="flex-1 text-right order-2 md:order-none stagger-in">
                 <h3 className="font-display text-2xl md:text-3xl font-bold text-foreground mb-1">לרדת את ה־5 ק״ג הראשונים</h3>
                 <p className="text-muted-foreground font-body text-sm mb-4">מדריך דיגיטלי פרקטי לירידה במשקל ב־8 שבועות.</p>
                 <p className="text-muted-foreground font-body text-sm leading-[1.75] mb-4">
@@ -81,7 +82,7 @@ const ProductsSection = () => {
                   <motion.div
                     initial={{ opacity: 0, height: 0 }}
                     animate={{ opacity: 1, height: "auto" }}
-                    transition={{ duration: 0.3 }}
+                    transition={{ duration: 0.3, ease: [0.23, 1, 0.32, 1] }}
                   >
                     <p className="text-muted-foreground font-body text-sm leading-[1.75] whitespace-pre-line mb-4">
                       {guideFull}
@@ -111,19 +112,21 @@ const ProductsSection = () => {
                     href={productLink("לרדת את ה־5 ק״ג הראשונים")}
                     target="_blank"
                     rel="noopener noreferrer"
-                    whileHover={{ scale: 1.03 }}
                     whileTap={{ scale: 0.97 }}
                     className="inline-flex items-center gap-2 bg-gradient-purple text-white font-display font-bold text-sm rounded-full px-8 py-3 shadow-md hover:shadow-lg transition-all"
                   >
                     לרכישה לחצו
                   </motion.a>
                 </div>
-              </div>
+              </InView>
 
               <div className="order-1 md:order-none w-full md:w-auto md:shrink-0">
                 <motion.img
-                  whileHover={{ scale: 1.03, rotate: 1 }}
-                  transition={{ duration: 0.3 }}
+                  initial={{ opacity: 0, y: 28, scale: 0.96, rotate: -2 }}
+                  whileInView={{ opacity: 1, y: 0, scale: 1, rotate: 0 }}
+                  viewport={{ once: true, amount: 0.3 }}
+                  transition={{ duration: 0.8, delay: 0.1, ease: EASE_OUT }}
+                  whileHover={{ scale: 1.02, transition: { duration: 0.3, ease: EASE_OUT } }}
                   src={guideCover}
                   alt="לרדת את ה־5 ק״ג הראשונים - מדריך דיגיטלי מעשי"
                   className="w-full md:w-[340px] lg:w-[360px] max-w-full h-auto object-contain rounded-2xl shadow-lg"
@@ -137,11 +140,11 @@ const ProductsSection = () => {
             initial={{ opacity: 0, y: 30 }}
             whileInView={{ opacity: 1, y: 0 }}
             viewport={{ once: true, amount: 0.15 }}
-            transition={{ duration: 0.6 }}
+            transition={{ duration: 0.6, ease: [0.23, 1, 0.32, 1] }}
             className="rounded-3xl bg-gradient-to-br from-purple-50 via-white to-purple-50/50 border border-purple-100 shadow-lg overflow-hidden hover:shadow-xl transition-shadow duration-300"
           >
             <div className="flex flex-col md:flex-row-reverse items-center gap-6 p-6 md:p-10">
-              <div className="flex-1 text-right order-2 md:order-none">
+              <InView className="flex-1 text-right order-2 md:order-none stagger-in">
                 <h3 className="font-display text-2xl md:text-3xl font-bold text-foreground mb-1">אתחול לבטן</h3>
                 <p className="text-muted-foreground font-body text-sm mb-3">ספר המתכונים הדיגיטלי למערכת עיכול רגועה.</p>
                 <p className="text-xs text-primary/80 font-body font-semibold mb-4">ללא גלוטן, דל לקטוז, ללא סוכר וללא ממתיקים מלאכותיים.</p>
@@ -152,7 +155,7 @@ const ProductsSection = () => {
                   <motion.div
                     initial={{ opacity: 0, height: 0 }}
                     animate={{ opacity: 1, height: "auto" }}
-                    transition={{ duration: 0.3 }}
+                    transition={{ duration: 0.3, ease: [0.23, 1, 0.32, 1] }}
                   >
                     <p className="text-muted-foreground font-body text-sm leading-[1.75] whitespace-pre-line mb-4">
                       {recipeFull}
@@ -182,19 +185,21 @@ const ProductsSection = () => {
                     href={productLink("אתחול לבטן")}
                     target="_blank"
                     rel="noopener noreferrer"
-                    whileHover={{ scale: 1.03 }}
                     whileTap={{ scale: 0.97 }}
                     className="inline-flex items-center gap-2 bg-gradient-purple text-white font-display font-bold text-sm rounded-full px-8 py-3 shadow-md hover:shadow-lg transition-all"
                   >
                     לרכישה לחצו
                   </motion.a>
                 </div>
-              </div>
+              </InView>
 
               <div className="order-1 md:order-none w-full md:w-auto md:shrink-0">
                 <motion.img
-                  whileHover={{ scale: 1.03, rotate: 1 }}
-                  transition={{ duration: 0.3 }}
+                  initial={{ opacity: 0, y: 28, scale: 0.96, rotate: -2 }}
+                  whileInView={{ opacity: 1, y: 0, scale: 1, rotate: 0 }}
+                  viewport={{ once: true, amount: 0.3 }}
+                  transition={{ duration: 0.8, delay: 0.1, ease: EASE_OUT }}
+                  whileHover={{ scale: 1.02, transition: { duration: 0.3, ease: EASE_OUT } }}
                   src={recipeBook}
                   alt="אתחול לבטן - חוברת מתכונים"
                   className="w-full md:w-[340px] lg:w-[360px] max-w-full h-auto object-contain rounded-2xl shadow-lg"
@@ -214,12 +219,12 @@ const ProductsSection = () => {
             initial={{ opacity: 0, y: 30 }}
             whileInView={{ opacity: 1, y: 0 }}
             viewport={{ once: true, amount: 0.15 }}
-            transition={{ duration: 0.6, delay: 0.15 }}
+            transition={{ duration: 0.6, delay: 0.15, ease: [0.23, 1, 0.32, 1] }}
             className="rounded-3xl bg-gradient-to-br from-purple-50 via-white to-purple-50/50 border border-purple-100 shadow-lg overflow-hidden hover:shadow-xl transition-shadow duration-300"
           >
             <div className="flex flex-col md:flex-row items-center gap-6 p-6 md:p-10">
               {/* Text */}
-              <div className="flex-1 text-right order-2">
+              <InView className="flex-1 text-right order-2 stagger-in">
                 <h3 className="font-display text-2xl md:text-3xl font-bold text-foreground mb-1">קלפי העצמה ושינוי</h3>
                 <p className="text-muted-foreground font-body text-sm mb-4">לקשר רגוע ובריא יותר עם אוכל.</p>
                 <p className="text-muted-foreground font-body text-sm leading-[1.75] mb-4">
@@ -229,7 +234,7 @@ const ProductsSection = () => {
                   <motion.div
                     initial={{ opacity: 0, height: 0 }}
                     animate={{ opacity: 1, height: "auto" }}
-                    transition={{ duration: 0.3 }}
+                    transition={{ duration: 0.3, ease: [0.23, 1, 0.32, 1] }}
                   >
                     <p className="text-muted-foreground font-body text-sm leading-[1.75] whitespace-pre-line mb-4">
                       {cardsFull}
@@ -259,17 +264,16 @@ const ProductsSection = () => {
                     href={productLink("קלפי העצמה ושינוי")}
                     target="_blank"
                     rel="noopener noreferrer"
-                    whileHover={{ scale: 1.03 }}
                     whileTap={{ scale: 0.97 }}
                     className="inline-flex items-center gap-2 bg-gradient-purple text-white font-display font-bold text-sm rounded-full px-8 py-3 shadow-md hover:shadow-lg transition-all"
                   >
                     לרכישה לחצו
                   </motion.a>
                 </div>
-              </div>
+              </InView>
 
               {/* Card carousel — one large card at a time */}
-              <div className="order-1 relative w-full md:w-[360px] lg:w-[380px] max-w-full md:shrink-0">
+              <SettleIn tilt={2} className="order-1 relative w-full md:w-[360px] lg:w-[380px] max-w-full md:shrink-0">
                 <button onClick={() => goCard(-1)} className="absolute top-1/2 -translate-y-1/2 right-0 md:-right-5 z-10 w-8 h-8 rounded-full bg-white shadow-lg border border-gray-100 flex items-center justify-center text-muted-foreground hover:text-primary transition-all active:scale-95" aria-label="הקודם">
                   <ChevronRight className="h-4 w-4" />
                 </button>
@@ -285,7 +289,7 @@ const ProductsSection = () => {
                     initial={{ opacity: 0, scale: 0.95 }}
                     animate={{ opacity: 1, scale: 1 }}
                     exit={{ opacity: 0, scale: 0.95 }}
-                    transition={{ duration: 0.3 }}
+                    transition={{ duration: 0.3, ease: [0.23, 1, 0.32, 1] }}
                   />
                 </AnimatePresence>
                 <div className="flex justify-center gap-2 mt-3">
@@ -299,7 +303,7 @@ const ProductsSection = () => {
                     />
                   ))}
                 </div>
-              </div>
+              </SettleIn>
             </div>
           </motion.div>
         </div>

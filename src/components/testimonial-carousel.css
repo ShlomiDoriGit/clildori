@@ -1,0 +1,72 @@
+.tc {
+  --ease-out: cubic-bezier(0.23, 1, 0.32, 1);
+}
+
+/* 3D coverflow: transform + opacity are set per frame from the carousel scroll (see tween) */
+.tc-card {
+  transform-origin: center;
+  will-change: transform;
+  backface-visibility: hidden;
+  transition: box-shadow 400ms ease;
+}
+.tc-slide[data-active="true"] .tc-card {
+  box-shadow: 0 24px 50px rgba(94, 23, 235, 0.2);
+}
+
+/* "Tap to enlarge" label only on the middle slide */
+.tc-zoom {
+  opacity: 0;
+  transform: translateY(4px);
+  transition: opacity 200ms ease, transform 200ms var(--ease-out);
+}
+.tc-slide[data-active="true"] .tc-zoom {
+  opacity: 1;
+  transform: none;
+}
+
+/* Arrows */
+.tc-arrow {
+  transition: transform 160ms var(--ease-out), box-shadow 200ms ease;
+}
+.tc-arrow:active {
+  transform: translateY(-50%) scale(0.94);
+}
+@media (hover: hover) and (pointer: fine) {
+  .tc-arrow:hover { box-shadow: 0 10px 26px rgba(94, 23, 235, 0.18); }
+}
+
+/* Dots: the current one stretches into a progress bar that fills until the next slide */
+.tc-dot {
+  width: 10px;
+  transition: width 300ms var(--ease-out), background-color 200ms ease;
+}
+.tc-dot[data-active="true"] {
+  width: 36px;
+}
+.tc-fill {
+  transform-origin: right; /* RTL fill */
+  animation: tc-fill linear forwards;
+}
+@keyframes tc-fill {
+  from { transform: scaleX(0); }
+  to { transform: scaleX(1); }
+}
+
+/* Swipe hint fades away after the first interaction */
+.tc-hint {
+  transition: opacity 300ms ease;
+}
+.tc-hint.is-gone {
+  opacity: 0;
+}
+
+.tc-viewport:focus-visible {
+  outline: 2px solid hsl(var(--primary));
+  outline-offset: 4px;
+  border-radius: 1.5rem;
+}
+
+@media (prefers-reduced-motion: reduce) {
+  .tc-card, .tc-dot, .tc-zoom { transition-property: opacity; }
+  .tc-fill { animation: none; transform: scaleX(1); }
+}
