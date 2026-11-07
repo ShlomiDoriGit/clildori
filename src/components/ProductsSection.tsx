@@ -6,14 +6,15 @@ import guideCover from "@/assets/guide-5kg-cover.jpg";
 import cardsCoverNew from "@/assets/cards-title.jpg";
 import cardSlide13 from "@/assets/card-slide-13.png";
 import cardSlide17 from "@/assets/card-slide-17.png";
+import { productLink } from "@/lib/whatsapp";
 
 const cardExamples = [cardsCoverNew, cardSlide13, cardSlide17];
 
-const guideShort = `בניתי את המדריך מתוך הניסיון שצברתי בטיפול במאות מטופלים לאורך השנים, במטרה להפוך את הצעד הראשון לפשוט, ברור וקל ליישום.
+const guideShort = 'בניתי את המדריך מתוך הניסיון שצברתי בטיפול במאות מטופלים לאורך השנים, במטרה להפוך את הצעד הראשון לפשוט, ברור וקל ליישום.';
 
-המדריך בנוי כתוכנית הדרגתית בת שמונה שבועות, שתלווה אותך צעד אחר צעד בדרך לשינוי שאפשר להתמיד בו. הוא יעזור לך לעשות סדר באכילה, לחזק את תחושת השובע, לתמוך באיזון המטבולי ולהטמיע הרגלים שמקדמים ירידה במשקל ושיפור הבריאות לאורך זמן.`;
+const guideFull = `המדריך בנוי כתוכנית הדרגתית בת שמונה שבועות, שתלווה אותך צעד אחר צעד בדרך לשינוי שאפשר להתמיד בו. הוא יעזור לך לעשות סדר באכילה, לחזק את תחושת השובע, לתמוך באיזון המטבולי ולהטמיע הרגלים שמקדמים ירידה במשקל ושיפור הבריאות לאורך זמן.
 
-const guideFull = `הכלים במדריך פשוטים וישימים, ואפשר להתחיל ליישם אותם כבר מהיום הראשון, ללא הכנה מיוחדת ומבלי לשנות את כל השגרה בבת אחת. כך אפשר לבנות בהדרגה מסגרת פעולה שמתאימה לאורח החיים שלך ולהניע שינוי משמעותי, בלי לספור קלוריות ובלי צעדים קיצוניים.`;
+הכלים במדריך פשוטים וישימים, ואפשר להתחיל ליישם אותם כבר מהיום הראשון, ללא הכנה מיוחדת ומבלי לשנות את כל השגרה בבת אחת. כך אפשר לבנות בהדרגה מסגרת פעולה שמתאימה לאורח החיים שלך ולהניע שינוי משמעותי, בלי לספור קלוריות ובלי צעדים קיצוניים.`;
 
 const recipeShort = 'חוברת מתכונים דיגיטלית שנבנתה במיוחד עבור אנשים עם רגישות לגלוטן וללקטוז, וגם עבור מי שמתמודד ביום יום עם נפיחות, גזים או יציאות לא סדירות, אבל עדיין לא הצליח לזהות מה גורם לזה.';
 
@@ -73,7 +74,7 @@ const ProductsSection = () => {
               <div className="flex-1 text-right order-2 md:order-none">
                 <h3 className="font-display text-2xl md:text-3xl font-bold text-foreground mb-1">לרדת את ה־5 ק״ג הראשונים</h3>
                 <p className="text-muted-foreground font-body text-sm mb-4">מדריך דיגיטלי פרקטי לירידה במשקל ב־8 שבועות.</p>
-                <p className="text-muted-foreground font-body text-sm leading-[1.75] whitespace-pre-line mb-4">
+                <p className="text-muted-foreground font-body text-sm leading-[1.75] mb-4">
                   {guideShort}
                 </p>
                 {guideExpanded && (
@@ -107,7 +108,7 @@ const ProductsSection = () => {
                 </div>
                 <div className="flex justify-end mt-2">
                   <motion.a
-                    href="https://wa.me/972559272658"
+                    href={productLink("לרדת את ה־5 ק״ג הראשונים")}
                     target="_blank"
                     rel="noopener noreferrer"
                     whileHover={{ scale: 1.03 }}
@@ -178,7 +179,7 @@ const ProductsSection = () => {
                 </div>
                 <div className="flex justify-end mt-2">
                   <motion.a
-                    href="https://wa.me/972559272658"
+                    href={productLink("אתחול לבטן")}
                     target="_blank"
                     rel="noopener noreferrer"
                     whileHover={{ scale: 1.03 }}
@@ -255,7 +256,7 @@ const ProductsSection = () => {
                 </div>
                 <div className="flex justify-end mt-2">
                   <motion.a
-                    href="https://wa.me/972559272658"
+                    href={productLink("קלפי העצמה ושינוי")}
                     target="_blank"
                     rel="noopener noreferrer"
                     whileHover={{ scale: 1.03 }}

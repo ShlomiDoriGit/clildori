@@ -2,6 +2,7 @@ import { useState, useCallback, useEffect } from "react";
 import { motion, AnimatePresence } from "framer-motion";
 import { Menu, X, CalendarDays } from "lucide-react";
 import logoIcon from "@/assets/logo-icon.png";
+import { consultLink } from "@/lib/whatsapp";
 
 const navItems = [
   { label: "התהליך בקליניקה", target: "program" },
@@ -45,7 +46,7 @@ const LogoBanner = () => {
           />
           <div className="hidden sm:flex flex-col text-right leading-tight">
             <span className="font-display text-xl font-extrabold text-primary tracking-tight">כליל דורי</span>
-            <span className="font-body text-xs text-muted-foreground tracking-wide">תזונאית קלינית</span>
+            <span className="font-body text-xs text-muted-foreground tracking-wide">תזונה מותאמת גוף ונפש</span>
           </div>
         </a>
 
@@ -66,7 +67,7 @@ const LogoBanner = () => {
 
         {/* Left: CTA button (desktop) */}
         <motion.button
-          onClick={() => window.open("https://wa.me/972559272658", "_blank")}
+          onClick={() => window.open(consultLink, "_blank")}
           whileHover={{ scale: 1.04, boxShadow: "0 8px 25px rgba(94, 23, 235, 0.3)" }}
           whileTap={{ scale: 0.97 }}
           className="hidden md:inline-flex items-center gap-2 rounded-full bg-gradient-purple text-white px-7 py-2.5 text-sm font-display font-bold shadow-md transition-all"
@@ -121,7 +122,7 @@ const LogoBanner = () => {
               initial={{ opacity: 0, y: 10 }}
               animate={{ opacity: 1, y: 0 }}
               transition={{ delay: 0.25 }}
-              onClick={() => { setMenuOpen(false); window.open("https://wa.me/972559272658", "_blank"); }}
+              onClick={() => { setMenuOpen(false); window.open(consultLink, "_blank"); }}
               className="mt-3 flex items-center justify-center gap-2 rounded-full bg-gradient-purple text-white px-6 py-3.5 text-sm font-display font-bold shadow-lg active:scale-95 transition-transform"
             >
               <CalendarDays className="h-4 w-4" />

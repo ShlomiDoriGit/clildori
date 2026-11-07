@@ -2,6 +2,7 @@ import { motion } from "framer-motion";
 import { CalendarDays, Mail, Instagram } from "lucide-react";
 import logoIcon from "@/assets/logo-icon.png";
 import footerBg from "@/assets/footer-bg-new.jpg";
+import { consultLink } from "@/lib/whatsapp";
 
 const Footer = () => (
   <footer
@@ -48,7 +49,7 @@ const Footer = () => (
       </motion.div>
 
       <motion.a
-        href="https://wa.me/972559272658"
+        href={consultLink}
         target="_blank"
         rel="noopener noreferrer"
         initial={{ opacity: 0, y: 16 }}

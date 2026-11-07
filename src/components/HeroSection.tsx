@@ -1,6 +1,7 @@
 import { motion } from "framer-motion";
 import { CalendarDays, Sparkles } from "lucide-react";
 import profileHero from "@/assets/profile-hero-2026.jpg";
+import { consultLink } from "@/lib/whatsapp";
 
 const HeroSection = () => (
   <section
@@ -52,7 +53,7 @@ const HeroSection = () => (
           </p>
 
           <motion.button
-            onClick={() => window.open("https://wa.me/972559272658", "_blank")}
+            onClick={() => window.open(consultLink, "_blank")}
             whileHover={{ scale: 1.05, boxShadow: "0 12px 40px rgba(140, 82, 255, 0.4)" }}
             whileTap={{ scale: 0.97 }}
             className="inline-flex items-center gap-3 rounded-full bg-white text-primary px-8 py-4 text-lg font-display font-bold shadow-xl hover:shadow-2xl transition-all"
